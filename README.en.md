@@ -2,7 +2,7 @@
 
 Windows GUI and CLI for Fujifilm RAF, with the original S3/S5 engines and RAW FILE CONVERTER EX (SILKYPIX).
 
-[简体中文](README.md) · [Published Windows releases](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/latest)
+[简体中文](README.md) · [Download Windows 1.7.7](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.7)
 
 ## Run
 
@@ -20,7 +20,7 @@ Captions, selectors and Help buttons are vertically centered. Unchecking a camer
 - TIFF supports sRGB / Adobe RGB, except legacy standard 8-bit TIFF which follows camera color. RFC EX checks output bit depth and ICC. JPEG is encoded from full 16-bit sRGB development, default quality 92.
 - RAW browsing uses embedded previews and does not redraw when export films change. Official editor sidecars are not imported.
 - Uncompressed 40MP 16-bit RGB TIFF is approximately 239 MB. All cameras follow the configured parallel task count, with no fixed RFC EX two-worker cap. The UI shows a current-task-count notice only while memory pressure reduces parallelism; the notice disappears after recovery. Each batch first completes one conversion alone and measures its actual memory use. The measured task and available RAM/system commit determine the initial parallel count against a 90% budget; no fixed per-task memory assumption is used. Live measurements then allow concurrency to increase when usage is low or decrease when high, always bounded by the configured count. Profiling and estimation run in the background without extra UI messages; a memory-pressure notice appears only when the budget reduces concurrency.
-- Version 1.7.6 is built and packaged; runtime testing was not performed at the user’s request.
+- Version 1.7.7 was tested and approved by the user; the existing portable archive is published without rebuilding or additional runtime tests.
 
 Other listed Fujifilm models can attempt default conversion but are not individually validated. Modern film overrides currently support X-T50 only. Other brands are not supported. Tested on Windows 11, not on a completely clean Windows installation.
 
@@ -45,3 +45,5 @@ Project code is MIT licensed; third-party binaries retain their original terms. 
 Help summaries use the [X-T50 manual](https://fujifilm-dsc.com/en/manual/x-t50/menu_shooting/image_quality_setting/#film_simulation) and [S5 Pro manual, p.111](https://dl.fujifilm-x.com/support/manual/s/finepix_s5pro_manual_01.pdf). Software results may differ from in-camera JPEGs.
 
 Memory scheduling: the first successful task supplies measured peaks for the initial estimate; a 5-second smoothed live per-task measurement then replaces that estimate. Usage below 88% for 5 seconds permits an increase if tasks remain queued, limited to 25% of the current count per adjustment (at least one). Usage above 92% for 3 seconds reduces concurrency; at 95% the hold is shortened to 1 second. Ordinary adjustments are at least 5 seconds apart, and reductions wait for active tasks to drain. The 90% budget is a target, not an OS-enforced hard limit. The configured value is never changed, and no additional CPU-based cap is applied.
+
+Version 1.7.7 adjusts only layout, alignment and spacing in the main window and film-help dialog. Conversion behavior, parameter defaults, camera-specific film choices and scheduling remain as in 1.7.6. Tested and approved by the user; published without rebuilding or additional runtime tests.

@@ -41,7 +41,7 @@ namespace S5Raw {
    }catch(UserError e){Emit(new {type="error",code=e.Code,message=e.Message},e.Message);return e.Code;}
    catch(Exception e){Emit(new {type="error",code=5,message=e.Message},e.Message);return 5;}
   }
-  static void Help(){Console.WriteLine(@"Fuji S3/S5 Pro RAW Converter 1.7.6 — FUJIFILM 原厂 RAW 转换命令行
+  static void Help(){Console.WriteLine(@"Fuji S3/S5 Pro RAW Converter 1.7.7 — FUJIFILM 原厂 RAW 转换命令行
 
 s5raw convert -i photo.RAF -o photo.tif --bits 16
 s5raw convert -i folder --output-dir output --recursive --json
