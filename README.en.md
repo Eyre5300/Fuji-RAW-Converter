@@ -59,13 +59,41 @@ Other applications can launch the CLI with `--json` and read UTF-8 JSON Lines. A
 
 ## Build from source
 
-End users can skip this section. On Windows:
+`src` contains the project's editable C# source:
+
+| Files | Purpose |
+| --- | --- |
+| `Gui.cs`, `UiLanguage.cs`, `Preferences.cs` | Main UI, languages and saved settings |
+| `Viewer.cs`, `Compare.cs`, `Canvas.cs`, `FullPreview.cs` | Browsing, comparison, display and caching |
+| `PhotoFiles.cs`, `PhotoInfo.cs` | File matching and photo metadata |
+| `Cli.cs`, `Common.cs` | CLI, batch jobs, camera detection and shared code |
+| `NativeWorker.cs`, `Native16.cs`, `NativeBrowser.cs` | Fujifilm conversion and browsing integration |
+| `FilmSimulation.cs`, `JpegExport.cs`, `TiffOrientation.cs` | Film modes, JPEG export and orientation |
+| `Launcher.cs`, manifest and configuration | Root launcher, DPI and runtime settings |
+
+**Download this repository's main branch to build a complete Windows portable package. No previous release or Hyper-Utility installation is needed.** Extracted DLLs and color resources are included in `resources/engine` and copied automatically. The proprietary engine is supplied as precompiled binaries, not rebuildable source. Windows with .NET Framework 4.8 is required; the build uses its bundled C# compiler without NuGet.
+
+Run from the source directory:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\build.ps1 -DestinationPath .\dist\Fuji-S3-S5-RAW-Converter
+powershell -ExecutionPolicy Bypass -File .\package.ps1
 ```
 
-Uses the .NET Framework C# compiler without NuGet. Builds do not produce proprietary Fujifilm engines. Extract the portable release into the destination before building, or copy its complete `data/engine` into the output while retaining the newly compiled `s5raw-browser.exe`.
+Outputs `dist/Fuji-S3-S5-RAW-Converter/` and `dist/Fuji-S3-S5-RAW-Converter-1.6.2-Windows.zip`. Use `build.ps1` to build without creating a ZIP. All four project executables, including the RAW browsing worker, are rebuilt from source. When changing the version, update `src/Common.cs`, `src/Cli.cs` and the user guides.
+
+Engine dependencies occupy about **170 MiB** in the repository after removing about 23 MiB of duplicate copies. The build restores the directory layout required by each engine. About **145 MiB** consists of 24 FF1/FF2 color-data files referenced by S3/S5 film-simulation profiles. The complete official installer, help files and sample photos are not included.
+
+### Ubuntu / macOS users
+
+Edit the source and build your fork on GitHub's Windows runner: fork the repository, commit your changes, open **Actions → Build Windows package → Run workflow**, then download the ZIP from **Artifacts** after completion. Enable Actions in your fork first if prompted. The output is a Windows application.
+
+Native Ubuntu/macOS builds and execution are not supported: the UI uses WinForms/WPF and the Fujifilm engines are 32-bit Windows DLLs. Bundling these DLLs does not remove the platform dependencies. Wine compatibility has not been verified.
+
+### Modifying and publishing
+
+Project-authored source, scripts and documentation use the [MIT license](LICENSE), allowing modifications and redistribution with the copyright and license notice retained. Third-party files in `resources/engine` are excluded from MIT and retain their original terms; see [component provenance and scope](resources/NOTICE.txt).
+
+The automatically generated Source code attachments for the existing `v1.6.2` tag are unchanged. Use the main branch for the complete build setup described above.
 
 ## Official software archive
 

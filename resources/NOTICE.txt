@@ -1,0 +1,27 @@
+Third-party components / 第三方组件
+
+resources/engine contains the extracted conversion and RAW browsing dependencies
+used by this project, not the complete Hyper-Utility installation or updater.
+The build copies them into data/engine. Common files are stored only once in
+the repository and copied into each engine's directory when building.
+
+RAFCNV / RAFCNVX: Original Fujifilm conversion modules, camera profiles and
+color resources. FG05FC09.dll and FG05FC0B.dll are version 6.2.0.27 from the
+HS-V3 1.1b updater. Other resources come from the installed Hyper-Utility3.
+The 24 FF1/FF2 files (about 145 MiB) are referenced by the S3 Pro and S5 Pro
+film-simulation configurations. They are not unused application assets.
+
+browser: PIR030RAF RAW reader and its companion imaging libraries.
+Legacy Microsoft runtime DLLs are included where required by these components.
+
+All third-party files retain their respective owners' rights and license terms.
+The project's MIT license does not cover these files or grant redistribution
+rights for them. This project is not affiliated with or endorsed by Fujifilm.
+
+富士内核、浏览组件、色彩和胶片资源以及微软运行库仍适用原权利人的许可，
+不属于本项目 MIT 许可范围。本项目不是富士官方产品。
+
+HS-V3 1.1b updater provenance:
+https://www.touslesdrivers.com/index.php?v_code=27749&v_page=23
+https://fichiers.touslesdrivers.com/27749/V3UP11B.EXE
+SHA256: 03221b5da5ed0d4cacac97cf1db4ab35f7e077a796f64ea3f6a18c37e74bd237

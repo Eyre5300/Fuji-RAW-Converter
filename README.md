@@ -65,13 +65,41 @@ RAW 浏览调用富士原厂插件。S5 Pro 样片显示的是内嵌相机 JPEG�
 
 ## 源码构建
 
-普通使用者跳过本节。Windows 上运行：
+`src` 是我们自己的 C# 源码，可以修改并重新编译：
+
+| 文件 | 用途 |
+| --- | --- |
+| `Gui.cs`、`UiLanguage.cs`、`Preferences.cs` | 主界面、中英文、设置保存 |
+| `Viewer.cs`、`Compare.cs`、`Canvas.cs`、`FullPreview.cs` | 图片浏览、对照、显示与缓存 |
+| `PhotoFiles.cs`、`PhotoInfo.cs` | 文件匹配与照片信息 |
+| `Cli.cs`、`Common.cs` | 命令行、批量任务、机型判断与公共代码 |
+| `NativeWorker.cs`、`Native16.cs`、`NativeBrowser.cs` | 调用富士转换和浏览内核 |
+| `FilmSimulation.cs`、`JpegExport.cs`、`TiffOrientation.cs` | 胶片模拟、JPEG 导出、方向修正 |
+| `Launcher.cs`、清单与配置文件 | 根目录启动程序、DPI 与运行配置 |
+
+**下载本仓库 main 分支即可构建完整 Windows 便携版，不需要再下载旧发布包或安装 Hyper-Utility。** 所需的已提取 DLL 和色彩资源放在 `resources/engine`，构建时自动复制；富士内核本身是预编译文件，不是可重新编译的源码。Windows 需有 .NET Framework 4.8，使用其自带 C# 编译器，无需 NuGet。
+
+在源码目录运行：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\build.ps1 -DestinationPath .\dist\Fuji-S3-S5-RAW-Converter
+powershell -ExecutionPolicy Bypass -File .\package.ps1
 ```
 
-使用 .NET Framework 自带 C# 编译器，无需 NuGet。构建不生成富士闭源内核：可先将便携版解压到目标目录，再执行构建；或补齐发布包的 `data/engine`，保留刚编译的 `s5raw-browser.exe`。
+生成 `dist/Fuji-S3-S5-RAW-Converter/` 和 `dist/Fuji-S3-S5-RAW-Converter-1.6.2-Windows.zip`。只编译、不压缩时运行 `build.ps1`。四个项目程序都会由源码重新编译，包括 RAW 浏览辅助程序。修改版本号时同步更新 `src/Common.cs`、`src/Cli.cs` 与使用说明。
+
+仓库中的内核依赖约 **170 MiB**：已去掉约 23 MiB 的重复副本，构建时恢复两个内核需要的目录结构。其中约 **145 MiB** 是 S3/S5 胶片模拟配置引用的 24 个 FF1/FF2 色彩数据文件。没有包含完整官方安装程序、帮助文件或样片。
+
+### Ubuntu / macOS 用户
+
+可以修改源码并通过 GitHub 的 Windows 构建环境生成修改版：Fork 仓库 → 提交修改 → 打开 **Actions → Build Windows package → Run workflow** → 完成后下载 **Artifacts** 中的 ZIP。首次使用 Fork 的 Actions 时，如页面提示则先启用工作流。生成的是 Windows 程序。
+
+当前项目不能原生在 Ubuntu/macOS 上构建和运行：界面依赖 WinForms/WPF，富士内核是 32 位 Windows DLL。附带 DLL 不会消除这些平台依赖；本项目未验证 Wine 兼容性。
+
+### 修改与发布许可
+
+我们自己的源码、脚本与文档采用 [MIT 许可](LICENSE)，允许修改和发布自己的版本，保留版权与许可文本即可。`resources/engine` 内的第三方组件不适用 MIT，其原许可不因本项目公开而改变，详见 [组件来源与许可范围](resources/NOTICE.txt)。
+
+旧版 `v1.6.2` 标签下的自动生成 Source code 附件保留原状；上述完整构建入口请使用 main 分支。
 
 ## 官方软件更新包
 

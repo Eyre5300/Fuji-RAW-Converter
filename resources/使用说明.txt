@@ -1,0 +1,15 @@
+﻿Fuji S3/S5 Pro RAW Converter 1.6.2
+
+开始使用
+1. 完整解压 ZIP。
+2. 双击主目录的 Fuji-S3-S5-RAW-Converter.exe。
+3. 添加照片或文件夹，勾选照片，选择格式与胶片模拟，点击“转换选中项”。
+
+data 文件夹需与启动程序放在一起。无需编译源码，也无需运行官方更新包。
+双击照片可浏览；“对照”自动匹配 TIFF/JPEG，右侧可切换结果。
+默认输出到源文件夹，同名文件自动加序号。打开与输出位置会自动记住。
+顶栏可切换简体中文 / English。
+
+命令行：data\s5raw.exe --help
+英文说明：data\README.en.txt
+项目说明：https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter
