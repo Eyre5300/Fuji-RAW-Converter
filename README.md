@@ -2,11 +2,11 @@
 
 富士 RAF 转换工具：集成 S3/S5 Pro 原厂内核与 RAW FILE CONVERTER EX（SILKYPIX）内核，提供 Windows 界面和命令行。
 
-[English](README.en.md) · [下载 1.7.3 Windows 便携版](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.3)
+[English](README.en.md) · [GitHub 已发布版本](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/latest)
 
 ## 使用
 
-完整解压 `Fuji-S3-S5-RAW-Converter-1.7.3-Windows.zip`，双击根目录 `Fuji-S3-S5-RAW-Converter.exe`，保留旁边的 `data` 文件夹。需要 64 位 Windows 和 .NET Framework 4.8；无需启动官方转换软件或 USB 连接相机。
+完整解压 `Fuji-S3-S5-RAW-Converter-1.7.4-Windows.zip`，双击根目录 `Fuji-S3-S5-RAW-Converter.exe`，保留旁边的 `data` 文件夹。需要 64 位 Windows 和 .NET Framework 4.8；无需启动官方转换软件或 USB 连接相机。
 
 1. 添加 RAF 照片或文件夹，勾选需要导出的照片。
 2. 选择 JPEG、8 位或原生 16 位 TIFF，以及输出位置。
@@ -24,7 +24,9 @@
 - TIFF 可选 sRGB / Adobe RGB（旧内核标准 8 位 TIFF 使用相机色彩）。RFC EX 输出前检查实际位深与 ICC。JPEG 从完整 16 位 sRGB 图像编码，质量默认 92。
 - RAW 浏览使用内嵌相机预览，胶片设置不会即时重绘预览；请查看导出结果。不导入官方软件另存的编辑旁车文件。
 - 40MP 未压缩 16 位 RGB TIFF 约 239 MB，适合后期处理；日常分享可用 JPEG。
-- 含 RFC EX 的批次最多并行处理两张以限制内存，旧机型批次可使用设置的并行数。
+- 所有机型均按设置的并行数调度，不再为 X-T50 / RFC EX 设置固定两张上限。界面分别显示设置值、正在运行的任务数和当前启动上限。
+- 物理内存或系统提交量达到 90% 时暂停新任务，已运行任务继续完成；两者回落至 80% 以下后每两秒增加一个并行名额，恢复到设置值。该过程及原因始终显示，不会改写设置值。
+- 1.7.4 已编译打包；按用户要求未进行运行测试。
 
 其他富士机型按附带固定版本内核的机型表尝试默认转换，尚未逐台实拍验证，现代机型的胶片覆盖参数目前仅开放给 X-T50；其他品牌 RAW 不支持。本机 Windows 11 已验证，未进行全新系统依赖验收。
 

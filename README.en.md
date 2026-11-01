@@ -2,7 +2,7 @@
 
 Windows GUI and CLI for Fujifilm RAF, with the original S3/S5 engines and RAW FILE CONVERTER EX (SILKYPIX).
 
-[简体中文](README.md) · [Download Windows 1.7.3](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.3)
+[简体中文](README.md) · [Download Windows 1.7.4](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/latest)
 
 ## Run
 
@@ -19,7 +19,8 @@ Captions, selectors and Help buttons are vertically centered. Unchecking a camer
 - ACROS and Monochrome produce black-and-white output; Sepia produces a brown monochrome. Choose PROVIA explicitly for color. As-shot may retain a monochrome camera setting.
 - TIFF supports sRGB / Adobe RGB, except legacy standard 8-bit TIFF which follows camera color. RFC EX checks output bit depth and ICC. JPEG is encoded from full 16-bit sRGB development, default quality 92.
 - RAW browsing uses embedded previews and does not redraw when export films change. Official editor sidecars are not imported.
-- Uncompressed 40MP 16-bit RGB TIFF is approximately 239 MB. Batches containing RFC EX photos use at most two workers to limit memory.
+- Uncompressed 40MP 16-bit RGB TIFF is approximately 239 MB. All cameras follow the configured parallel task count, with no fixed RFC EX two-worker cap. The UI separately displays the requested count, active tasks, admission limit and reason. RAM or system commit at 90% pauses new tasks while active tasks finish; once both fall to 80% or below, one slot is restored every two seconds. The configured value is never rewritten.
+- Version 1.7.4 is built and packaged; runtime testing was not performed at the user’s request.
 
 Other listed Fujifilm models can attempt default conversion but are not individually validated. Modern film overrides currently support X-T50 only. Other brands are not supported. Tested on Windows 11, not on a completely clean Windows installation.
 

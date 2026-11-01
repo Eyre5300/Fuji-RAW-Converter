@@ -1,4 +1,4 @@
-﻿Fuji S3/S5 Pro RAW Converter 1.7.3
+﻿Fuji S3/S5 Pro RAW Converter 1.7.4
 
 Extract the entire ZIP and run the launcher in the parent folder. Keep data beside it.
 Requires 64-bit Windows and .NET Framework 4.8. No official GUI or USB camera connection is needed.
@@ -13,7 +13,8 @@ RAW previews are embedded camera JPEGs and do not change with export film settin
 Use Compare to inspect exported pixels. Official editor sidecars are not imported.
 TIFF supports sRGB/Adobe RGB, except legacy standard 8-bit TIFF which follows camera color.
 An uncompressed 40MP 16-bit RGB TIFF is about 239 MB. JPEG uses full 16-bit sRGB development before encoding.
-Batches containing RFC EX images use at most two workers to limit memory.
+All cameras follow the configured parallel task count. Requested, active and admission limits are displayed separately. RAM or system commit >=90% pauses new tasks while active tasks finish; both <=80% restores one slot every two seconds. The configured value is never rewritten.
+Version 1.7.4: compiled and packaged, not runtime-tested at the user’s request.
 Other listed Fujifilm cameras can attempt default conversion but are not individually validated.
 Modern film overrides are currently limited to X-T50. Other camera brands are not supported.
 
@@ -21,4 +22,4 @@ Use data/s5raw.exe --help for CLI options and info -i photo.RAF --json for avail
 Job-list entries can independently specify film and colorSpace; omitted fields use global options.
 The original RAW files are read-only. Preferences are stored under HKEY_CURRENT_USER/Software/S5Raw.
 
-Release: https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.3
+Release: https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/latest

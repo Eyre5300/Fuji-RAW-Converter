@@ -41,7 +41,7 @@ namespace S5Raw {
    }catch(UserError e){Emit(new {type="error",code=e.Code,message=e.Message},e.Message);return e.Code;}
    catch(Exception e){Emit(new {type="error",code=5,message=e.Message},e.Message);return 5;}
   }
-  static void Help(){Console.WriteLine(@"Fuji S3/S5 Pro RAW Converter 1.7.3 — FUJIFILM 原厂 RAW 转换命令行
+  static void Help(){Console.WriteLine(@"Fuji S3/S5 Pro RAW Converter 1.7.4 — FUJIFILM 原厂 RAW 转换命令行
 
 s5raw convert -i photo.RAF -o photo.tif --bits 16
 s5raw convert -i folder --output-dir output --recursive --json
@@ -53,7 +53,8 @@ s5raw doctor --json
 输出：默认存入各源文件夹；-o 指定单文件，--output-dir 指定批量目录。
 选项：--format tiff|jpeg       默认 TIFF；单文件也可由 .jpg 扩展名识别
       --quality 1–100          JPEG 质量，默认 92，全尺寸 sRGB
-      --jobs / -j 数量         并行数，默认 CPU 可用逻辑核心数
+      --jobs / -j 数量         并行数，默认 CPU 可用逻辑核心数；无机型隐藏上限
+                              内存/提交量 ≥90% 暂停新任务，≤80% 后逐步恢复
       --job-list 文件          JSON 数组，每项含 input、relative，可单独指定 film、colorSpace
       --bits 8|16              默认 8；16 为原厂原生 16 位/通道
       --color-space srgb|adobe-rgb  16 位或胶片模拟 TIFF 的输出空间，默认 srgb
@@ -208,7 +209,7 @@ preview 仅提取内嵌 JPEG。Ctrl+C 可取消，原始 RAF 始终只读。
    var engineDirs=new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase);
    string parent=o.TempDir??Path.GetTempPath();Directory.CreateDirectory(parent);
    string work=Path.Combine(parent,"s5raw-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(work);
-   int completed=0,failed=0,skipped=0,next=-1;var used=new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+   int completed=0,failed=0,skipped=0;var used=new HashSet<string>(StringComparer.OrdinalIgnoreCase);
    try{
     string nativeWork=Shared.NativePath(work);
     // A batch can contain different legacy films as well as RFC EX files.
@@ -217,11 +218,12 @@ preview 仅提取内嵌 JPEG。Ctrl+C 可取消，原始 RAF 始终只读。
      foreach(var file in Directory.GetFiles(source))File.Copy(file,Path.Combine(dest,Path.GetFileName(file)));
      engineDirs.Add(source,dest);
     }
-    int lanes=Math.Min(o.Jobs,jobs.Count);if(hasModern)lanes=Math.Min(lanes,2);
-    Emit(new {type="batch_started",total=jobs.Count,parallel=lanes,version=Shared.Version},"开始转换 "+jobs.Count+" 个文件");
-    var threads=new List<Thread>();
+    int lanes=Math.Min(o.Jobs,jobs.Count);
+    var scheduler=new AdaptiveParallelism(o.Jobs,jobs.Count,MemoryPressure.Read,delegate(ParallelState state){Emit(state,"并行：设置 "+state.requested+"，运行 "+state.active+"，当前启动上限 "+state.limit+"，状态 "+state.reason+"；内存保护：90% 暂停，80% 恢复");});
+    Emit(new {type="batch_started",total=jobs.Count,parallel=lanes,requestedParallel=o.Jobs,version=Shared.Version},"开始转换 "+jobs.Count+" 个文件");
+    scheduler.Tick();var threads=new List<Thread>();
     for(int lane=0;lane<lanes;lane++){var thread=new Thread(delegate(){while(!Cancelled()){
-     int i=Interlocked.Increment(ref next);if(i>=jobs.Count)break;Job j=jobs[i];string actual=null;
+     int i=scheduler.Take(Cancelled);if(i<0)break;Job j=jobs[i];string actual=null;
      try{
       var info=ReadRaf(j.Input,o.EngineDir);if(!(bool)info["supported"])throw new IOException("当前原厂内核不支持："+info["model"]+"（"+info["processorCode"]+"）");
       bool modern=(string)info["backend"]=="rfcex";if(modern&&!RfcEx.Films((string)info["model"]).Contains(j.Film))throw new IOException("此相机不支持所选胶片模式："+j.Film);
@@ -243,7 +245,9 @@ preview 仅提取内嵌 JPEG。Ctrl+C 可取消，原始 RAF 始终只读。
       Directory.Delete(one,true);
      }catch(OperationCanceledException){cancelled=true;break;}
      catch(Exception ex){Interlocked.Increment(ref failed);Emit(new {type="file_error",index=i+1,total=jobs.Count,input=j.Input,output=actual??j.Output,message=ex.Message},"失败："+j.Input+" — "+ex.Message);}
+     finally{scheduler.Complete();}
     }});thread.SetApartmentState(ApartmentState.STA);threads.Add(thread);thread.Start();}
+    while(threads.Any(t=>t.IsAlive)){scheduler.Tick();Thread.Sleep(250);}
     foreach(var thread in threads)thread.Join();
     bool stop=Cancelled();Emit(new {type="summary",total=jobs.Count,completed=completed,skipped=skipped,failed=failed,cancelled=stop},"完成 "+completed+"，跳过 "+skipped+"，失败 "+failed+(stop?"，已取消":""));
     return stop?130:failed>0?5:0;
