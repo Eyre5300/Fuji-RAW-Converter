@@ -2,7 +2,7 @@
 
 Windows GUI and CLI for Fujifilm RAF, with the original S3/S5 engines and RAW FILE CONVERTER EX (SILKYPIX).
 
-[简体中文](README.md) · [Download Windows 1.7.2](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.2)
+[简体中文](README.md) · [Download Windows 1.7.3](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.3)
 
 ## Run
 

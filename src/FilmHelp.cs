@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text;
 using System.Drawing;
 using System.Linq;
@@ -53,14 +53,19 @@ namespace S5Raw {
    text.AppendLine(english?"Official reference:":"官方参考：");text.AppendLine(keys.Any(k=>k.StartsWith("f",StringComparison.Ordinal))?SManual:XManual);
    return text.ToString();
   }
+  internal static FlowLayoutPanel CreateFooter(bool english,out Button close){
+   // AutoSize reserves space for the actual font/button height, including padding.
+   var footer=new FlowLayoutPanel{Dock=DockStyle.Fill,AutoSize=true,AutoSizeMode=AutoSizeMode.GrowAndShrink,FlowDirection=FlowDirection.RightToLeft,WrapContents=false,Margin=Padding.Empty,Padding=new Padding(0,8,0,4)};
+   close=new Button{Text=english?"Close":"关闭",AutoSize=true,AutoSizeMode=AutoSizeMode.GrowAndShrink,MinimumSize=new Size(90,32),Padding=new Padding(8,4,8,4),Margin=Padding.Empty,DialogResult=DialogResult.OK};footer.Controls.Add(close);return footer;
+  }
   internal static void Show(IWin32Window owner,string model,string[] keys,string selected){
    bool english=L.English;
-   using(var form=new Form{Text=(english?"Film simulation help — ":"胶片模拟说明 — ")+model,StartPosition=FormStartPosition.CenterParent,ClientSize=new Size(700,560),MinimumSize=new Size(520,400),ShowInTaskbar=false,Font=new Font("Microsoft YaHei UI",10),AutoScaleMode=AutoScaleMode.Dpi}){
-    var layout=new TableLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(14),ColumnCount=1,RowCount=3};layout.RowStyles.Add(new RowStyle(SizeType.Absolute,34));layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,40));form.Controls.Add(layout);
+   using(var form=new Form{Text=(english?"Film simulation help — ":"胶片模拟说明 — ")+model,StartPosition=FormStartPosition.CenterParent,ClientSize=new Size(700,560),MinimumSize=new Size(520,400),ShowInTaskbar=false,Font=new Font("Microsoft YaHei UI",10),AutoScaleDimensions=new SizeF(96,96),AutoScaleMode=AutoScaleMode.Dpi}){
+    var layout=new TableLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(14),ColumnCount=1,RowCount=3};layout.RowStyles.Add(new RowStyle(SizeType.Absolute,34));layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));form.Controls.Add(layout);
     layout.Controls.Add(new Label{Text=model+(english?" · Available film simulations":" · 可用胶片模拟"),Dock=DockStyle.Fill,TextAlign=ContentAlignment.MiddleLeft},0,0);
     var body=new RichTextBox{Dock=DockStyle.Fill,ReadOnly=true,BackColor=Color.White,BorderStyle=BorderStyle.FixedSingle,WordWrap=true,DetectUrls=true,Text=BuildText(model,keys,selected,english)};
     body.LinkClicked+=delegate(object sender,LinkClickedEventArgs e){try{System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(e.LinkText){UseShellExecute=true});}catch(Exception ex){MessageBox.Show(form,ex.Message);}};layout.Controls.Add(body,0,1);
-    var close=new Button{Text=english?"Close":"关闭",Width=90,Height=30,Anchor=AnchorStyles.Right,DialogResult=DialogResult.OK};layout.Controls.Add(close,0,2);form.AcceptButton=form.CancelButton=close;
+    Button close;var footer=CreateFooter(english,out close);layout.Controls.Add(footer,0,2);form.AcceptButton=form.CancelButton=close;
     form.Shown+=delegate{int at=body.Text.IndexOf(english?"[Selected]":"【当前选择】",StringComparison.Ordinal);body.Select(Math.Max(0,at),0);body.ScrollToCaret();close.Focus();};
     form.ShowDialog(owner);
    }

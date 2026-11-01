@@ -1,4 +1,4 @@
-﻿Fuji S3/S5 Pro RAW Converter 1.7.2
+﻿Fuji S3/S5 Pro RAW Converter 1.7.3
 
 Extract the entire ZIP and run the launcher in the parent folder. Keep data beside it.
 Requires 64-bit Windows and .NET Framework 4.8. No official GUI or USB camera connection is needed.
@@ -21,4 +21,4 @@ Use data/s5raw.exe --help for CLI options and info -i photo.RAF --json for avail
 Job-list entries can independently specify film and colorSpace; omitted fields use global options.
 The original RAW files are read-only. Preferences are stored under HKEY_CURRENT_USER/Software/S5Raw.
 
-Release: https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.2
+Release: https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.3

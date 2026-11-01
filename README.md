@@ -2,11 +2,11 @@
 
 富士 RAF 转换工具：集成 S3/S5 Pro 原厂内核与 RAW FILE CONVERTER EX（SILKYPIX）内核，提供 Windows 界面和命令行。
 
-[English](README.en.md) · [下载 1.7.2 Windows 便携版](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.2)
+[English](README.en.md) · [下载 1.7.3 Windows 便携版](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.3)
 
 ## 使用
 
-完整解压 `Fuji-S3-S5-RAW-Converter-1.7.2-Windows.zip`，双击根目录 `Fuji-S3-S5-RAW-Converter.exe`，保留旁边的 `data` 文件夹。需要 64 位 Windows 和 .NET Framework 4.8；无需启动官方转换软件或 USB 连接相机。
+完整解压 `Fuji-S3-S5-RAW-Converter-1.7.3-Windows.zip`，双击根目录 `Fuji-S3-S5-RAW-Converter.exe`，保留旁边的 `data` 文件夹。需要 64 位 Windows 和 .NET Framework 4.8；无需启动官方转换软件或 USB 连接相机。
 
 1. 添加 RAF 照片或文件夹，勾选需要导出的照片。
 2. 选择 JPEG、8 位或原生 16 位 TIFF，以及输出位置。
