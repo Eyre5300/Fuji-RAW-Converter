@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace S5Raw {
  public static class Shared {
-  public const string Version = "1.6.2";
+  public const string Version = "1.7.2";
   public static string Json(object value) { return new JavaScriptSerializer().Serialize(value); }
   public static string Quote(string value) {
    var b=new StringBuilder("\"");int slashes=0;
@@ -44,7 +44,8 @@ namespace S5Raw {
     if((code.StartsWith("FF")||code.StartsWith("FA"))&&int.TryParse(code.Substring(2),System.Globalization.NumberStyles.None,System.Globalization.CultureInfo.InvariantCulture,out processor))module="FG"+processor.ToString("X6")+".dll";
     if(offset<108||length<4||(long)offset+length>stream.Length)throw new IOException("RAF 预览范围无效");
     stream.Position=offset;if(stream.ReadByte()!=255||stream.ReadByte()!=216)throw new IOException("RAF 预览数据无效");
-    return new Dictionary<string,object>{{"input",file},{"model",model},{"processorCode",code},{"nativeModule",module},{"bytes",stream.Length},{"previewOffset",offset},{"previewBytes",length},{"supported",module!=null&&File.Exists(Path.Combine(engine??EngineDirectory,module))}};
+    bool legacy=module!=null&&File.Exists(Path.Combine(engine??EngineDirectory,module));bool modern=!legacy&&RfcEx.Supports(model);
+    return new Dictionary<string,object>{{"input",file},{"model",model},{"processorCode",code},{"nativeModule",module},{"bytes",stream.Length},{"previewOffset",offset},{"previewBytes",length},{"supported",legacy||modern},{"backend",legacy?"rafcnv":modern?"rfcex":"unsupported"},{"legacySupported",legacy}};
    }
   }
   public static bool Accept(string file,out string reason){

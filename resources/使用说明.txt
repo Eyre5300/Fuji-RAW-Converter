@@ -1,4 +1,20 @@
-﻿Fuji S3/S5 Pro RAW Converter 1.6.2
+﻿Fuji S3/S5 Pro RAW Converter 1.7.2
+
+每个机型的胶片选框后有“帮助”按钮，可查看全部可选模式说明，默认定位到当前模式。
+1.7.0 新增 RFC EX（SILKYPIX）内核，自动识别 X-T50 等富士 RAF。
+无需启动官方软件或连接相机；RFC EX 需要 64 位 Windows。
+X-T50：拍摄设置及 20 个胶片选项，包括 REALA ACE、Classic Chrome、ACROS 等。
+S3/S5：继续使用原有内核和 F1/F2 模式。每种已导入机型各有独立胶片选框。
+例如 X-T50 选 PROVIA、S5 Pro 选 F1b，可以同时批量导出并分别生效。
+取消勾选某机型会禁用该行，但保留其选择；重新勾选后恢复。机型多时可滚动。
+ACROS 与普通黑白模式会导出黑白照片；需要彩色可选 PROVIA、Velvia、ASTIA 等。
+“默认 / 拍摄设置”跟随 RAW 的拍摄信息，拍摄时本身为黑白时可能仍导出黑白。
+其他富士机型按所附内核尝试默认转换，尚未逐台实测；其他品牌 RAW 不支持。
+输出支持完整尺寸 JPEG、8 位 / 原生 16 位 TIFF；TIFF 可选 sRGB / Adobe RGB。
+RAW 预览使用相机内嵌 JPEG，胶片效果请查看导出结果；不导入官方软件编辑旁车文件。
+含 RFC EX 的批次最多同时处理两张。40MP 未压缩 16 位 TIFF 约 239 MB。
+GitHub 发布页：https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.2
+
 
 开始使用
 1. 完整解压 ZIP。

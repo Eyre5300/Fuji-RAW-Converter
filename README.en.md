@@ -1,106 +1,44 @@
-# Fuji S3/S5 Pro RAW Converter
+﻿# Fuji S3/S5 Pro RAW Converter
 
-A Windows GUI and CLI for Fujifilm S3 Pro / S5 Pro RAF photos, using the original Fujifilm conversion engines.
+Windows GUI and CLI for Fujifilm RAF, with the original S3/S5 engines and RAW FILE CONVERTER EX (SILKYPIX).
 
-[简体中文](README.md) · [Download for Windows](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/latest)
+[简体中文](README.md) · [Download Windows 1.7.2](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.2)
 
-## Download and run
+## Run
 
-1. Open the [download page](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/latest) and download **`Fuji-S3-S5-RAW-Converter-1.6.2-Windows.zip`**.
-2. **Extract the entire ZIP**, then double-click **`Fuji-S3-S5-RAW-Converter.exe`** in the main folder.
-3. Add photos or a folder, check the photos, select the output format and film simulation, and click **Convert selected**.
+Extract the whole ZIP and open `Fuji-S3-S5-RAW-Converter.exe`. Keep the `data` folder alongside it. Requires 64-bit Windows and .NET Framework 4.8. No official GUI or USB-connected camera is needed.
 
-You do not need Source code downloads, a compiler or the separate official updater. Keep the `data` folder beside the launcher.
+Add and check RAF photos, choose an output format and location, then choose a film separately for each camera model. X-T50 can use PROVIA while S5 Pro uses F1b in the same batch. Each selector has a **Help** button explaining all modes available for that model and locating the current choice without changing it. Click **Convert selected** to export.
 
-```text
-Fuji-S3-S5-RAW-Converter/
-├─ Fuji-S3-S5-RAW-Converter.exe  ← Open this
-├─ 使用说明.txt
-└─ data/                       ← Runtime files
-```
+Captions, selectors and Help buttons are vertically centered. Unchecking a camera disables its selector but retains its choice. More than three rows scroll. The toolbar switches Chinese/English. Compare matches and displays exported TIFF/JPEG files.
 
-Requires Windows and .NET Framework 4.8. Windows 11 has been tested; dependencies have not been verified on a completely clean system.
+## Capabilities
 
-## Features
+- X-T50: full-resolution JPEG, 8-bit and native 16-bit TIFF; as-shot plus 20 film choices.
+- S3/S5: original engines and supported F1/F2 modes remain available.
+- ACROS and Monochrome produce black-and-white output; Sepia produces a brown monochrome. Choose PROVIA explicitly for color. As-shot may retain a monochrome camera setting.
+- TIFF supports sRGB / Adobe RGB, except legacy standard 8-bit TIFF which follows camera color. RFC EX checks output bit depth and ICC. JPEG is encoded from full 16-bit sRGB development, default quality 92.
+- RAW browsing uses embedded previews and does not redraw when export films change. Official editor sidecars are not imported.
+- Uncompressed 40MP 16-bit RGB TIFF is approximately 239 MB. Batches containing RFC EX photos use at most two workers to limit memory.
 
-- RAF thumbnails, selection, browsing and photo metadata; convert only checked items.
-- Original **8-bit / native 16-bit TIFF** and **full-resolution JPEG** export.
-- Original film simulations: Standard, F1, F1a, F1b, F1c, F2. Available choices depend on the selected files and color space. Both TIFF and JPEG support them.
-- Double-click to browse. Compare automatically matches by folder and filename, with selectable TIFF/JPEG results.
-- Batch concurrency defaults to the logical CPU count and is adjustable.
-- Output beside source files by default; rename existing outputs automatically. Remember input/output locations.
-- Simplified Chinese / English selector in the top toolbar, with high-DPI support.
-- Portrait TIFF pixel and thumbnail orientation normalization.
+Other listed Fujifilm models can attempt default conversion but are not individually validated. Modern film overrides currently support X-T50 only. Other brands are not supported. Tested on Windows 11, not on a completely clean Windows installation.
 
-16-bit TIFF supports sRGB / Adobe RGB. JPEG uses a complete 16-bit sRGB render before encoding; default quality is 92. Film simulations change exported pixels, not the RAW browsing preview. Results are not guaranteed to match in-camera JPEGs exactly.
-
-RAW browsing uses the original Fujifilm plugin. The tested S5 Pro file displays an embedded 1440×960 camera JPEG, while full export is 4256×2848. The left preview is not a full-resolution RAW decode. Display buffers are 8-bit and ICC-tagged results are mapped to sRGB.
-
-## Camera compatibility
-
-Primarily intended for **S3 Pro / S5 Pro**. Files are accepted by matching RAF processor codes to original engine modules, not a hard-coded two-camera list.
-
-Other header/module matches checked: S2 Pro, F700, E550, E900, S5000, S5500, S5200/S5600, S6000fd/S6500fd, S9500 and S9600. A header match is not complete conversion validation. One S3 Pro file previously passed native 16-bit TIFF conversion; current checks focus on S5 Pro.
-
-## Command line and integration
-
-The CLI remains `data/s5raw.exe` for compatibility with S5Raw. Run from the extracted folder:
+## CLI and build
 
 ```powershell
-.\data\s5raw.exe convert -i "D:\Photos\photo.RAF" -o "D:\Output\photo.tif" --bits 16
-.\data\s5raw.exe convert -i "D:\Photos\photo.RAF" -o "D:\Output\photo.jpg" --film f1b
-.\data\s5raw.exe convert -i "D:\Photos" --output-dir "D:\Output" --recursive --format jpeg --existing rename --json
-.\data\s5raw.exe --help
+.\data\s5raw.exe convert -i photo.RAF -o photo.tif --bits 16 --film provia
+.\data\s5raw.exe convert -i s5pro.RAF -o photo.jpg --film f1b
+.\data\s5raw.exe convert --job-list jobs.json --output-dir output --format jpeg --json
+.\data\s5raw.exe info -i photo.RAF --json
+.\data\s5raw.exe doctor --json
 ```
 
-`--film`: `standard|f1|f1a|f1b|f1c|f2`. `--jobs N`: concurrency. `--color-space adobe-rgb`: 16-bit TIFF or film-simulation TIFF.
+Job-list entries contain `input` and `relative`, optionally overriding `film` and `colorSpace` per file. Omitted values use global options. JSON Lines `completed` events confirm saved outputs. See `--help` for all options.
 
-Other applications can launch the CLI with `--json` and read UTF-8 JSON Lines. A `completed` event signals a saved output. CLI defaults to standard 8-bit TIFF and error on existing files; GUI starts with 16-bit TIFF and automatic renaming.
+Run `powershell -ExecutionPolicy Bypass -File .\package.ps1` on Windows. No NuGet or old release is required. Five executables are built using the .NET Framework compiler. The extracted dependencies in `resources/engine` are copied automatically. `build.ps1 -DestinationPath` and `package.ps1 -OutputDirectory` support separate output directories. Resources total about 558 MiB; the ZIP is about 513 MiB.
 
-## Build from source
+The isolated RFC EX x64 worker uses a private ABI pinned to SILKYPIX64.dll 8.1.20.0 by SHA-256. Do not substitute another DLL version. `extract-rfcex.ps1` extracts a matching installation and creates a checksum manifest. Legacy workers are x86. WinForms/WPF and native Windows engines prevent native Linux/macOS operation; Wine is untested. GitHub Actions builds Windows ZIPs.
 
-`src` contains the project's editable C# source:
+Project code is MIT licensed; third-party binaries retain their original terms. See [LICENSE](LICENSE) and [NOTICE](resources/NOTICE.txt). This is not an official Fujifilm product.
 
-| Files | Purpose |
-| --- | --- |
-| `Gui.cs`, `UiLanguage.cs`, `Preferences.cs` | Main UI, languages and saved settings |
-| `Viewer.cs`, `Compare.cs`, `Canvas.cs`, `FullPreview.cs` | Browsing, comparison, display and caching |
-| `PhotoFiles.cs`, `PhotoInfo.cs` | File matching and photo metadata |
-| `Cli.cs`, `Common.cs` | CLI, batch jobs, camera detection and shared code |
-| `NativeWorker.cs`, `Native16.cs`, `NativeBrowser.cs` | Fujifilm conversion and browsing integration |
-| `FilmSimulation.cs`, `JpegExport.cs`, `TiffOrientation.cs` | Film modes, JPEG export and orientation |
-| `Launcher.cs`, manifest and configuration | Root launcher, DPI and runtime settings |
-
-**Download this repository's main branch to build a complete Windows portable package. No previous release or Hyper-Utility installation is needed.** Extracted DLLs and color resources are included in `resources/engine` and copied automatically. The proprietary engine is supplied as precompiled binaries, not rebuildable source. Windows with .NET Framework 4.8 is required; the build uses its bundled C# compiler without NuGet.
-
-Run from the source directory:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\package.ps1
-```
-
-Outputs `dist/Fuji-S3-S5-RAW-Converter/` and `dist/Fuji-S3-S5-RAW-Converter-1.6.2-Windows.zip`. Use `build.ps1` to build without creating a ZIP. All four project executables, including the RAW browsing worker, are rebuilt from source. When changing the version, update `src/Common.cs`, `src/Cli.cs` and the user guides.
-
-Engine dependencies occupy about **170 MiB** in the repository after removing about 23 MiB of duplicate copies. The build restores the directory layout required by each engine. About **145 MiB** consists of 24 FF1/FF2 color-data files referenced by S3/S5 film-simulation profiles. The complete official installer, help files and sample photos are not included.
-
-### Ubuntu / macOS users
-
-Edit the source and build your fork on GitHub's Windows runner: fork the repository, commit your changes, open **Actions → Build Windows package → Run workflow**, then download the ZIP from **Artifacts** after completion. Enable Actions in your fork first if prompted. The output is a Windows application.
-
-Native Ubuntu/macOS builds and execution are not supported: the UI uses WinForms/WPF and the Fujifilm engines are 32-bit Windows DLLs. Bundling these DLLs does not remove the platform dependencies. Wine compatibility has not been verified.
-
-### Modifying and publishing
-
-Project-authored source, scripts and documentation use the [MIT license](LICENSE), allowing modifications and redistribution with the copyright and license notice retained. Third-party files in `resources/engine` are excluded from MIT and retain their original terms; see [component provenance and scope](resources/NOTICE.txt).
-
-The automatically generated Source code attachments for the existing `v1.6.2` tag are unchanged. Use the main branch for the complete build setup described above.
-
-## Official software archive
-
-The download page separately provides **`V3UP11B.EXE`**, the historical HS-V3 Windows **1.1b updater** found during research. It is not a full installer and may require an existing installation or original media. **You do not need it to run this tool.**
-
-Retrieved from a [historical mirror](https://www.touslesdrivers.com/index.php?v_code=27749&v_page=23). The Release includes provenance and engine inspection notes in `HS-V3-1.1b-source-and-checksum.txt`, plus `SHA256SUMS.txt` for asset checksums.
-
-Version 1.6.2 updates two conversion modules to **6.2.0.27** and aligns the language selector. One copied S5 Pro sample passed 8-bit TIFF, 16-bit TIFF and JPEG export; F1b pixels matched the previous engine. No image-quality improvement is inferred.
-
-This is not an official Fujifilm product. Original engines, browser components and profiles retain their respective owners' rights; publishing this source does not relicense them.
+Help summaries use the [X-T50 manual](https://fujifilm-dsc.com/en/manual/x-t50/menu_shooting/image_quality_setting/#film_simulation) and [S5 Pro manual, p.111](https://dl.fujifilm-x.com/support/manual/s/finepix_s5pro_manual_01.pdf). Software results may differ from in-camera JPEGs.

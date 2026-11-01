@@ -11,18 +11,24 @@ using System.Windows.Forms;
 [assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.8")]
 namespace S5Raw {
  class MainForm:Form {
-  sealed class Photo {public string Input,Relative,Output,NativeModule,Key=Guid.NewGuid().ToString("N");public ListViewItem Item;}
+  sealed class Photo {public string Input,Relative,Output,NativeModule,Model,Backend,Key=Guid.NewGuid().ToString("N");public ListViewItem Item;}
   ListView inputs=new ListView();ImageList thumbnails=new ImageList();TextBox output=new TextBox(),log=new TextBox();
   CheckBox sameFolder=new CheckBox{Text=L.T("源文件夹"),Checked=true,AutoSize=true,Anchor=AnchorStyles.Left};
-  ComboBox language=new ComboBox();ComboBox format=new ComboBox(),color=new ComboBox(),existing=new ComboBox(),film=new ComboBox();string[] availableFilms=FilmSimulation.Keys;NumericUpDown quality=new NumericUpDown{Minimum=1,Maximum=100,Value=92,Width=58};
+  ComboBox language=new ComboBox();ComboBox format=new ComboBox(),color=new ComboBox(),existing=new ComboBox();NumericUpDown quality=new NumericUpDown{Minimum=1,Maximum=100,Value=92,Width=58};
   CheckBox recursive=new CheckBox{Text=L.T("包含子文件夹"),Checked=true,AutoSize=true};Label qualityLabel=new Label{Text=L.T("JPEG 质量"),AutoSize=false,Width=80,Height=32,TextAlign=ContentAlignment.MiddleLeft,Margin=new Padding(8,0,0,0)},selection=new Label(),status=new Label();
   NumericUpDown parallel=new NumericUpDown{Minimum=1,Maximum=Math.Max(256,Environment.ProcessorCount),Value=Environment.ProcessorCount};int[] fileProgress;int finishedFiles;
   Button start=new Button(),cancel=new Button();ProgressBar progress=new ProgressBar();FlowLayoutPanel actions=new FlowLayoutPanel();TableLayoutPanel settings=new TableLayoutPanel();
+  sealed class CameraFilmRow {public ComboBox Choice;public Button Help;public Label Caption;public string[] Keys=new string[0];}
+  readonly Dictionary<string,CameraFilmRow> filmControls=new Dictionary<string,CameraFilmRow>();
+  readonly Dictionary<string,string> cameraFilms=new Dictionary<string,string>();
+  TableLayoutPanel layout,filmRows=new TableLayoutPanel{Dock=DockStyle.Top,AutoSize=true,AutoSizeMode=AutoSizeMode.GrowAndShrink,ColumnCount=2,Margin=Padding.Empty};
+  Panel filmViewport=new Panel{Dock=DockStyle.Fill,AutoScroll=true,Margin=Padding.Empty};Label filmHeading;
+  string filmLayoutKey=null;
   Process process;string controlFolder,cancelPath;bool closeWhenDone,thumbnailRunning;Queue<Photo> thumbnailQueue=new Queue<Photo>();
   public MainForm(){
    sameFolder.Checked=Preferences.Get("OutputInSource","1")!="0";output.Text=Preferences.Get("OutputFolder");
    SuspendLayout();Text="Fuji S3/S5 Pro RAW Converter "+Shared.Version;StartPosition=FormStartPosition.CenterScreen;ClientSize=new Size(940,716);MinimumSize=new Size(900,636);Font=new Font("Microsoft YaHei UI",10);BackColor=Color.FromArgb(246,248,250);
-   var layout=new TableLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(16),ColumnCount=1,RowCount=8};
+   layout=new TableLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(16),ColumnCount=1,RowCount=8};
    layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,28));layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));foreach(float h in new[]{160f,44f,12f,28f,0f})layout.RowStyles.Add(new RowStyle(SizeType.Absolute,h));Controls.Add(layout);
    actions.Dock=DockStyle.Fill;actions.AutoSize=true;actions.AutoSizeMode=AutoSizeMode.GrowAndShrink;actions.WrapContents=true;actions.Padding=new Padding(0,2,0,4);var topBar=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=2,RowCount=1,Margin=Padding.Empty};topBar.RowStyles.Add(new RowStyle(SizeType.Percent,100));layout.RowStyles[0].SizeType=SizeType.Absolute;layout.RowStyles[0].Height=50;topBar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));topBar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,140));topBar.Controls.Add(actions,0,0);language.DropDownStyle=ComboBoxStyle.DropDownList;language.Anchor=AnchorStyles.Top|AnchorStyles.Right;language.Width=134;language.MinimumSize=new Size(134,0);language.Margin=new Padding(3,7,3,3);language.AccessibleName="Language";language.Items.AddRange(new object[]{"简体中文","English"});language.SelectedIndex=L.English?1:0;language.SelectedIndexChanged+=delegate{L.SetEnglish(language.SelectedIndex==1);};topBar.Controls.Add(language,1,0);layout.Controls.Add(topBar,0,0);
    AddButton(actions,L.T("添加照片"),delegate{using(var d=new OpenFileDialog{Filter=L.T("富士 RAW (*.RAF)|*.RAF"),Multiselect=true,InitialDirectory=OpenFolder()})if(d.ShowDialog(this)==DialogResult.OK)AddInputs(d.FileNames);});
@@ -43,7 +49,8 @@ namespace S5Raw {
    color.DropDownStyle=ComboBoxStyle.DropDownList;color.Anchor=AnchorStyles.Left|AnchorStyles.Right;color.Items.AddRange(new object[]{"sRGB","Adobe RGB (1998)"});color.SelectedIndex=0;qualityLabel.Dock=DockStyle.Fill;quality.Anchor=AnchorStyles.Left|AnchorStyles.Right;formats.Controls.Add(format,0,0);formats.Controls.Add(color,1,0);formats.Controls.Add(qualityLabel,2,0);formats.Controls.Add(quality,3,0);format.SelectedIndexChanged+=delegate{UpdateFormat();};UpdateFormat();settings.Controls.Add(formats,1,1);settings.SetColumnSpan(formats,3);
    settings.Controls.Add(FieldLabel(L.T("同名文件")),0,2);existing.DropDownStyle=ComboBoxStyle.DropDownList;existing.Anchor=AnchorStyles.Left|AnchorStyles.Right;existing.Items.AddRange(new object[]{L.T("自动加序号"),L.T("跳过"),L.T("报错"),L.T("覆盖")});existing.SelectedIndex=0;
    var options=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=3,RowCount=1,Margin=Padding.Empty};options.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,180));options.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,88));options.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,72));options.Controls.Add(existing,0,0);var parallelLabel=FieldLabel(L.T("并行数"));parallelLabel.Padding=new Padding(12,0,0,0);options.Controls.Add(parallelLabel,1,0);parallel.Anchor=AnchorStyles.Left;parallel.Width=72;parallel.MinimumSize=new Size(72,0);options.Controls.Add(parallel,2,0);settings.Controls.Add(options,1,2);settings.SetColumnSpan(options,3);
-   settings.Controls.Add(FieldLabel(L.T("胶片模拟")),0,3);film.DropDownStyle=ComboBoxStyle.DropDownList;film.Anchor=AnchorStyles.Left;film.Width=174;film.MinimumSize=new Size(174,0);film.Items.AddRange(FilmSimulation.Labels.Select(L.T).ToArray());film.SelectedIndex=0;film.SelectedIndexChanged+=delegate{UpdateFormat();};color.SelectedIndexChanged+=delegate{RefreshFilms();};settings.Controls.Add(film,1,3);settings.SetColumnSpan(film,2);
+   filmHeading=FieldLabel(L.T("胶片模拟"));filmHeading.Dock=DockStyle.Top;filmHeading.Height=36;settings.Controls.Add(filmHeading,0,3);
+   filmRows.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,160));filmRows.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));filmViewport.Controls.Add(filmRows);settings.Controls.Add(filmViewport,1,3);settings.SetColumnSpan(filmViewport,3);color.SelectedIndexChanged+=delegate{UpdateFormat();};
    var run=new FlowLayoutPanel{Dock=DockStyle.Fill,WrapContents=true,AutoSize=true,AutoSizeMode=AutoSizeMode.GrowAndShrink,Padding=new Padding(0,2,0,4)};layout.RowStyles[4].SizeType=SizeType.AutoSize;start.Text=L.T("转换选中项 (0)");start.Size=new Size(160,34);start.BackColor=Color.FromArgb(28,103,84);start.ForeColor=Color.White;start.FlatStyle=FlatStyle.Flat;start.Click+=delegate{StartBatch();};cancel.Text=L.T("取消");cancel.Size=new Size(70,34);cancel.Enabled=false;cancel.Click+=delegate{CancelBatch();};run.Controls.Add(start);run.Controls.Add(cancel);
    AddButton(run,L.T("预览"),delegate{BrowseInput();});AddButton(run,L.T("对照"),delegate{CompareSelected();});AddButton(run,L.T("浏览转换结果"),delegate{BrowseOutput();});AddButton(run,L.T("打开输出文件夹"),delegate{OpenOutputFolder();});AddButton(run,L.T("日志"),delegate{layout.RowStyles[7].Height=log.Visible?0:100*CurrentScale();log.Visible=!log.Visible;});layout.Controls.Add(run,0,4);
    progress.Dock=DockStyle.Fill;progress.Margin=new Padding(3,2,3,2);layout.Controls.Add(progress,0,5);status.Text=L.T("就绪");status.Dock=DockStyle.Fill;status.TextAlign=ContentAlignment.MiddleLeft;layout.Controls.Add(status,0,6);
@@ -62,22 +69,48 @@ namespace S5Raw {
   static Label FieldLabel(string text){return new Label{Text=text,Dock=DockStyle.Fill,TextAlign=ContentAlignment.MiddleLeft,Margin=Padding.Empty};}
   static void AddButton(Control parent,string text,Action action){float dpi;using(var g=parent.CreateGraphics())dpi=g.DpiX/96f;var b=new Button{Text=text,AutoSize=false,Width=Math.Max(65,(int)(TextRenderer.MeasureText(text,parent.Font).Width/dpi)+24),Height=34,Margin=new Padding(3),FlatStyle=FlatStyle.Flat,BackColor=Color.White};b.FlatAppearance.BorderColor=Color.FromArgb(195,201,205);b.Click+=delegate{action();};parent.Controls.Add(b);}
   void Placeholder(){var imageListHandle=thumbnails.Handle;using(var b=new Bitmap(thumbnails.ImageSize.Width,thumbnails.ImageSize.Height))using(var g=Graphics.FromImage(b)){g.Clear(Color.FromArgb(225,231,235));TextRenderer.DrawText(g,"RAF",Font,new Rectangle(Point.Empty,thumbnails.ImageSize),Color.DimGray,TextFormatFlags.HorizontalCenter|TextFormatFlags.VerticalCenter);thumbnails.Images.Add("pending",b);}}
-  string SelectedFilm {get{return film.SelectedIndex<0?"standard":availableFilms[film.SelectedIndex];}}
-  void UpdateFormat(){color.Enabled=format.SelectedIndex==0||(format.SelectedIndex==1&&SelectedFilm!="standard");quality.Visible=qualityLabel.Visible=format.SelectedIndex==2;RefreshFilms();}
+  string FilmFor(Photo photo){string value;return cameraFilms.TryGetValue(photo.Model,out value)?value:"standard";}
+  bool UsesColorSpace(Photo photo){return format.SelectedIndex==0||(format.SelectedIndex==1&&(photo.Backend=="rfcex"||FilmFor(photo)!="standard"));}
+  void UpdateFormat(){RefreshFilms();color.Enabled=process==null&&(format.SelectedIndex==0||(format.SelectedIndex==1&&inputs.CheckedItems.Cast<ListViewItem>().Any(i=>UsesColorSpace((Photo)i.Tag))));quality.Visible=qualityLabel.Visible=format.SelectedIndex==2;}
   bool refreshingFilms;
   void RefreshFilms(){
-   if(refreshingFilms||film.Items.Count==0)return;refreshingFilms=true;
+   if(refreshingFilms||filmViewport.Parent==null)return;refreshingFilms=true;
    try{
-    string selected=SelectedFilm,space=format.SelectedIndex==2?"srgb":color.SelectedIndex==1?"adobe-rgb":"srgb";
-    var allowed=new HashSet<string>(FilmSimulation.Keys);
-    foreach(var module in inputs.CheckedItems.Cast<ListViewItem>().Select(i=>((Photo)i.Tag).NativeModule).Distinct())allowed.IntersectWith(FilmSimulation.Available(FilmSimulation.EngineDirectory,module,space));
-    string[] next=FilmSimulation.Keys.Where(allowed.Contains).ToArray();
-    if(!next.SequenceEqual(availableFilms)){
-     availableFilms=next;film.BeginUpdate();film.Items.Clear();foreach(string key in next)film.Items.Add(L.T(FilmSimulation.Labels[Array.IndexOf(FilmSimulation.Keys,key)]));film.SelectedIndex=Math.Max(0,Array.IndexOf(next,selected));film.EndUpdate();
+    var photos=inputs.Items.Cast<ListViewItem>().Select(i=>(Photo)i.Tag).ToArray();
+    var groups=photos.GroupBy(p=>p.Model).OrderBy(g=>g.Key,StringComparer.OrdinalIgnoreCase).ToArray();
+    string signature=string.Join("|",groups.Select(g=>g.Key).ToArray());float scale=CurrentScale();int rowHeight=(int)(36*scale);
+    if(signature!=filmLayoutKey){
+     filmRows.SuspendLayout();foreach(Control child in filmRows.Controls.Cast<Control>().ToArray())child.Dispose();filmRows.Controls.Clear();filmRows.RowStyles.Clear();filmControls.Clear();
+     filmRows.RowCount=Math.Max(1,groups.Length);
+     if(groups.Length==0){var hint=FieldLabel(L.T("勾选照片后显示对应机型模式"));filmRows.Controls.Add(hint,0,0);filmRows.SetColumnSpan(hint,2);filmRows.RowStyles.Add(new RowStyle(SizeType.Absolute,rowHeight));}
+     for(int i=0;i<groups.Length;i++){
+      string model=groups[i].Key;var row=new CameraFilmRow{Caption=FieldLabel(model),Choice=new ComboBox{DropDownStyle=ComboBoxStyle.DropDownList,Anchor=AnchorStyles.Top|AnchorStyles.Left,Width=(int)(260*scale),Margin=Padding.Empty,AccessibleName=model+" "+L.T("胶片模拟")}};
+      filmRows.RowStyles.Add(new RowStyle(SizeType.Absolute,rowHeight));filmRows.Controls.Add(row.Caption,0,i);
+      row.Help=new Button{Text=L.T("帮助"),AccessibleName=model+" "+L.T("胶片模拟说明"),FlatStyle=FlatStyle.Flat,BackColor=Color.White};row.Help.FlatAppearance.BorderColor=Color.FromArgb(195,201,205);
+      row.Help.Click+=delegate{string current;cameraFilms.TryGetValue(model,out current);FilmHelp.Show(this,model,row.Keys,current??"standard");};
+      var cell=new Panel{Dock=DockStyle.Fill,Margin=Padding.Empty};cell.Controls.Add(row.Choice);cell.Controls.Add(row.Help);cell.Layout+=delegate{float dpi=CurrentScale();int gap=(int)(8*dpi);row.Help.Size=new Size(Math.Max(row.Help.MinimumSize.Width,(int)(66*dpi)),row.Choice.Height);row.Choice.Width=Math.Max(1,Math.Min((int)(260*dpi),cell.ClientSize.Width-row.Help.Width-gap-6));row.Choice.Location=new Point(3,Math.Max(0,(cell.ClientSize.Height-row.Choice.Height)/2));row.Help.Location=new Point(row.Choice.Right+gap,row.Choice.Top);};filmRows.Controls.Add(cell,1,i);filmControls.Add(model,row);
+      row.Choice.SelectedIndexChanged+=delegate{if(refreshingFilms||row.Choice.SelectedIndex<0)return;cameraFilms[model]=row.Keys[row.Choice.SelectedIndex];UpdateFormat();};
+     }
+     filmLayoutKey=signature;filmRows.ResumeLayout(true);
+    }
+    // Equal-height table cells center captions and selectors on the same axis.
+    filmHeading.Height=rowHeight;filmRows.ColumnStyles[0].Width=160*scale;
+    settings.RowStyles[3].Height=Math.Max(1,Math.Min(3,groups.Length))*rowHeight;
+    layout.RowStyles[3].Height=(160+36*(Math.Max(1,Math.Min(3,groups.Length))-1))*scale;
+    string space=format.SelectedIndex==2?"srgb":color.SelectedIndex==1?"adobe-rgb":"srgb";
+    foreach(var group in groups){
+     CameraFilmRow row=filmControls[group.Key];var allowed=new HashSet<string>(FilmSimulation.Keys.Concat(RfcEx.Keys));
+     foreach(var photo in group)allowed.IntersectWith(photo.Backend=="rfcex"?RfcEx.Films(photo.Model):FilmSimulation.Available(FilmSimulation.EngineDirectory,photo.NativeModule,space));
+     string[] next=FilmSimulation.Keys.Concat(RfcEx.Keys).Distinct().Where(allowed.Contains).ToArray();string selected;
+     if(!cameraFilms.TryGetValue(group.Key,out selected)||!next.Contains(selected))selected="standard";
+     cameraFilms[group.Key]=selected;row.Choice.Enabled=group.Any(p=>p.Item.Checked);
+     row.Choice.AccessibleName=group.Key+" "+L.T("胶片模拟");
+     string[] labels=next.Select(k=>L.T(k=="standard"?RfcEx.Label(k):FilmSimulation.Keys.Contains(k)?FilmSimulation.Labels[Array.IndexOf(FilmSimulation.Keys,k)]:RfcEx.Label(k))).ToArray();
+     if(!next.SequenceEqual(row.Keys)||!labels.SequenceEqual(row.Choice.Items.Cast<string>())){row.Keys=next;row.Choice.BeginUpdate();row.Choice.Items.Clear();row.Choice.Items.AddRange(labels);row.Choice.SelectedIndex=Array.IndexOf(next,selected);row.Choice.EndUpdate();}
     }
    }finally{refreshingFilms=false;}
   }
-  void UpdateSelection(){int count=inputs.CheckedItems.Count;selection.Text=L.F("共 {0} 张，已勾选 {1} 张",inputs.Items.Count,count);start.Text=L.F("转换选中项 ({0})",count);RefreshFilms();}
+  void UpdateSelection(){int count=inputs.CheckedItems.Count;selection.Text=L.F("共 {0} 张，已勾选 {1} 张",inputs.Items.Count,count);start.Text=L.F("转换选中项 ({0})",count);UpdateFormat();}
   IEnumerable<string> Scan(string dir){foreach(var f in Directory.GetFiles(dir).OrderBy(x=>x,StringComparer.OrdinalIgnoreCase))if(Path.GetExtension(f).Equals(".raf",StringComparison.OrdinalIgnoreCase))yield return f;if(recursive.Checked)foreach(var sub in Directory.GetDirectories(dir).OrderBy(x=>x,StringComparer.OrdinalIgnoreCase))if((File.GetAttributes(sub)&FileAttributes.ReparsePoint)==0)foreach(var f in Scan(sub))yield return f;}
   public void AddInputs(string[] paths){
    int added=0,rejected=0;
@@ -86,7 +119,7 @@ namespace S5Raw {
     if(directory||File.Exists(full))Preferences.Set("OpenFolder",directory?full:Path.GetDirectoryName(full));
     foreach(string f in directory?Scan(full):new[]{full}){if(!File.Exists(f)||!Path.GetExtension(f).Equals(".raf",StringComparison.OrdinalIgnoreCase)||!known.Add(f))continue;
      string reason;if(!RafHeader.Accept(f,out reason)){rejected++;Line(L.T("跳过 ")+Path.GetFileName(f)+"："+L.Error(reason));continue;}
-     var photo=new Photo{Input=f,NativeModule=(string)RafHeader.Read(f)["nativeModule"],Relative=directory?f.Substring(root.Length):Path.GetFileName(f)};var item=new ListViewItem(Path.GetFileName(f),"pending"){Tag=photo,Checked=true,ToolTipText=f};photo.Item=item;inputs.Items.Add(item);QueueThumbnail(photo);
+     var meta=RafHeader.Read(f);var photo=new Photo{Input=f,Model=(string)meta["model"],Backend=(string)meta["backend"],NativeModule=(string)meta["nativeModule"],Relative=directory?f.Substring(root.Length):Path.GetFileName(f)};var item=new ListViewItem(Path.GetFileName(f),"pending"){Tag=photo,Checked=true,ToolTipText=f};photo.Item=item;inputs.Items.Add(item);QueueThumbnail(photo);
      added++;
     }
    }}catch(Exception e){MessageBox.Show(this,L.Error(e.Message),L.T("添加照片"));}finally{inputs.EndUpdate();UpdateSelection();if(rejected>0)status.Text=L.F("已添加 {0} 张，跳过 {1} 张不支持或无效的 RAW",added,rejected);}
@@ -112,11 +145,10 @@ namespace S5Raw {
    SaveOutput();
    string exe=Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"s5raw.exe");
    controlFolder=Path.Combine(Path.GetTempPath(),"s5raw-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(controlFolder);cancelPath=Path.Combine(controlFolder,"cancel");string jobs=Path.Combine(controlFolder,"jobs.json");
-   var rows=selected.Select(p=>new {input=p.Input,relative=p.Relative}).ToArray();File.WriteAllText(jobs,new JavaScriptSerializer{MaxJsonLength=int.MaxValue}.Serialize(rows),new UTF8Encoding(false));
+   var rows=selected.Select(p=>new {input=p.Input,relative=p.Relative,film=FilmFor(p),colorSpace=UsesColorSpace(p)?(color.SelectedIndex==0?"srgb":"adobe-rgb"):null}).ToArray();File.WriteAllText(jobs,new JavaScriptSerializer{MaxJsonLength=int.MaxValue}.Serialize(rows),new UTF8Encoding(false));
    var args=new List<string>{"convert","--json","--job-list",jobs,"--existing",new[]{"rename","skip","error","overwrite"}[existing.SelectedIndex],"--cancel-file",cancelPath,"--jobs",parallel.Value.ToString()};
    if(!sameFolder.Checked)args.AddRange(new[]{"--output-dir",output.Text});
-   if(format.SelectedIndex==2){args.AddRange(new[]{"--format","jpeg","--quality",quality.Value.ToString()});}else{args.AddRange(new[]{"--bits",format.SelectedIndex==0?"16":"8"});if(format.SelectedIndex==0||SelectedFilm!="standard")args.AddRange(new[]{"--color-space",color.SelectedIndex==0?"srgb":"adobe-rgb"});}
-   args.AddRange(new[]{"--film",SelectedFilm});
+   if(format.SelectedIndex==2){args.AddRange(new[]{"--format","jpeg","--quality",quality.Value.ToString()});}else{args.AddRange(new[]{"--bits",format.SelectedIndex==0?"16":"8"});}
    fileProgress=new int[selected.Count];finishedFiles=0;log.Clear();Line(L.F("转换 {0} 张，并行 {1}",selected.Count,Math.Min(selected.Count,(int)parallel.Value)));progress.Value=0;Busy(true);status.Text=L.T("准备转换…");
    var psi=new ProcessStartInfo(exe,Shared.Arguments(args.ToArray())){UseShellExecute=false,CreateNoWindow=true,RedirectStandardOutput=true,RedirectStandardError=true,StandardOutputEncoding=Encoding.UTF8,StandardErrorEncoding=Encoding.UTF8};process=new Process{StartInfo=psi};var current=process;
    current.OutputDataReceived+=delegate(object s,DataReceivedEventArgs e){if(e.Data!=null)OnUi(delegate{HandleEvent(e.Data);});};current.ErrorDataReceived+=delegate(object s,DataReceivedEventArgs e){if(e.Data!=null)OnUi(delegate{Line(e.Data);});};

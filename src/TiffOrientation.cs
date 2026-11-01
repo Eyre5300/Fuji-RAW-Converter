@@ -22,6 +22,22 @@ namespace S5Raw {
   static void Set(BinaryWriter writer,Tag tag,uint value,ushort type=4){
    writer.BaseStream.Position=tag.Position+2;writer.Write(type);writer.Write((uint)1);writer.Write(value);
   }
+  internal static void ValidateRgb(string path,int expectedBits,string profile){
+   using(var stream=File.OpenRead(path))using(var reader=new BinaryReader(stream)){
+    if(reader.ReadUInt16()!=0x4949||reader.ReadUInt16()!=42)throw new IOException("RFC EX 未产生有效 TIFF");
+    uint next;var tags=ReadDirectory(reader,reader.ReadUInt32(),out next);
+    uint[] bits=Values(reader,tags[258]);
+    if(bits.Length!=3||bits[0]!=expectedBits||bits[1]!=expectedBits||bits[2]!=expectedBits||Values(reader,tags[277])[0]!=3||Values(reader,tags[262])[0]!=2)
+     throw new IOException("RFC EX TIFF 实际位深或颜色通道与所选设置不符");
+    if(Values(reader,tags[256])[0]==0||Values(reader,tags[257])[0]==0)throw new IOException("RFC EX TIFF 尺寸无效");
+    if(!tags.ContainsKey(34675))throw new IOException("RFC EX TIFF 缺少 ICC 色彩配置");
+    byte[] expected=File.ReadAllBytes(profile);Tag icc=tags[34675];
+    if(icc.Count!=expected.Length)throw new IOException("RFC EX TIFF 色彩空间与所选设置不符");
+    stream.Position=icc.Value;byte[] actual=reader.ReadBytes(expected.Length);
+    if(actual.Length!=expected.Length)throw new IOException("RFC EX TIFF ICC 不完整");
+    for(int i=0;i<expected.Length;i++)if(actual[i]!=expected[i])throw new IOException("RFC EX TIFF 色彩空间与所选设置不符");
+   }
+  }
   internal static void Normalize(string path){
    using(var stream=new FileStream(path,FileMode.Open,FileAccess.ReadWrite)){
     var reader=new BinaryReader(stream);var writer=new BinaryWriter(stream);

@@ -50,6 +50,7 @@ namespace S5Raw {
   }
   static PreviewImage Decode(string path,string key){
    if(!Path.GetExtension(path).Equals(".raf",StringComparison.OrdinalIgnoreCase))return PreviewReader.Read(path);
+   if(!(bool)RafHeader.Read(path)["legacySupported"])return PreviewReader.Read(path);
    string name;using(var sha=SHA256.Create())name=BitConverter.ToString(sha.ComputeHash(Encoding.UTF8.GetBytes(key))).Replace("-","");
    string saved=Path.Combine(disk,name+".bmp");
    if(File.Exists(saved)){try{var hit=PreviewReader.Read(saved,true);File.SetLastWriteTimeUtc(saved,DateTime.UtcNow);return hit;}catch(IOException){}catch(NotSupportedException){}}

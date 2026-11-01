@@ -1,0 +1,2077 @@
+[
+  {
+    "file": "fsenable.inf",
+    "bytes": 786,
+    "sha256": "94f233a037e1f28be36129daa63f9958df52b2119044ef25bca8d77bb4ef62ea"
+  },
+  {
+    "file": "MakerTaste.ini",
+    "bytes": 11216,
+    "sha256": "d641d653edbd03291bfb0e38e5c01aed90be203dad3ca0838bd5e7a90d664bbd"
+  },
+  {
+    "file": "models.txt",
+    "bytes": 945,
+    "sha256": "ee54ae242744deebb066744890bb8ce47aad783acfe122beedda6f299e15d641"
+  },
+  {
+    "file": "SILKYPIXStr.dat",
+    "bytes": 380888,
+    "sha256": "fd8a20e53d4afd5dfba674958d45ecbd52b12a666f8c5896bc2d885e63138ec9"
+  },
+  {
+    "file": "SPD50.ini",
+    "bytes": 2306,
+    "sha256": "32b3de0e09d736d6e57c2f987354e5c6b0b797ea5242eb9200f2b53bed6554f3"
+  },
+  {
+    "file": "ColorModeData/CAM_CANON_40D_D.s3d",
+    "bytes": 525637,
+    "sha256": "bcae110240280a87b3bdbf0b0a07728b7098c4622dfa2833af93577dec15d558"
+  },
+  {
+    "file": "ColorModeData/CAM_DP1_D.s3d",
+    "bytes": 511042,
+    "sha256": "129a263c91ae2126f2b725ff28c42d17fbd47fff2f5b524ced61b01a949845dd"
+  },
+  {
+    "file": "ColorModeData/CAM_DP1S_D.s3d",
+    "bytes": 548277,
+    "sha256": "472d420ffd439154cda26c2308449f0521e6c83bba8132fa101200db9ad50656"
+  },
+  {
+    "file": "ColorModeData/CAM_DP2_D.s3d",
+    "bytes": 525815,
+    "sha256": "8948edfc6f8b01847d1e9b16a0e78209a90e1c412e35000d3b5e1b9af6e8f320"
+  },
+  {
+    "file": "ColorModeData/CAM_DP2S_D.s3d",
+    "bytes": 521306,
+    "sha256": "be43d54546ba9089733b797b059af54eb12e3ed1c125bfe837d1417cdd3c183b"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_ASTIA_ISLRGB.s3d",
+    "bytes": 577225,
+    "sha256": "0158327f3c776696c32344ba3df622c020013b55f45900053713af867b1f684c"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_BW_ISLRGB.s3d",
+    "bytes": 545264,
+    "sha256": "a32f6839f723150f679f5a645dda101d6d72e8efd1ec08efdeb37341617bfd3b"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 557118,
+    "sha256": "4c3ef534f5f14d548e19a36d9f5ff3fec08034d88a97a2a5f6cbd889b7b115e1"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 519507,
+    "sha256": "19847a842bd1903a12961bbe12c9facb158077f9d5ade647294aacda8602fb59"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 569705,
+    "sha256": "47c0c92d0635df89fbb8c0459c183c6d8c8c6821170b75a345dfae698a5f1df5"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 547565,
+    "sha256": "3135962354f66d2c8426febb39dfdd13cb348a5347cef1550bac863273758e7b"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 569591,
+    "sha256": "e1412bd151022b25913747c9b11d5ab3f699558533660ca02a51df685d55acbd"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 563108,
+    "sha256": "f86db6986ff1e02854538a1b583edf4c21e4c9256f64dcb0eb05243826856f6c"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_PROVIA_ISLRGB.s3d",
+    "bytes": 573643,
+    "sha256": "67d775db19e5e80575f84a34cb3f502671160be2246676a5f7098da7ace2864c"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_SEPIA_ISLRGB.s3d",
+    "bytes": 544664,
+    "sha256": "d0d4a0d4e88ebdbfa3efc5c240d59cf181318742a9ba450d2d9f22daf2b3d2a3"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XA3_VELVIA_ISLRGB.s3d",
+    "bytes": 582110,
+    "sha256": "6357c041ee93a748eff54a8b84a8023d9a7a7c9548f80d4c43406cf1a497cd0d"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_ACROS_G_FILTER_ISLRGB.s3d",
+    "bytes": 1017021,
+    "sha256": "f3fd926c19a77b71d174502f3916759d4b96eca9569eb289d280e0e23c84217a"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_ACROS_ISLRGB.s3d",
+    "bytes": 954704,
+    "sha256": "e3270d057ef3351765faf0e1984adb867998e50c17d29b1ae5003ae816fdda39"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_ACROS_R_FILTER_ISLRGB.s3d",
+    "bytes": 1071048,
+    "sha256": "9383523bb2b330f3fac957ab78579dea011c635af294a0d9ef9658050c98f5bd"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_ACROS_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1000271,
+    "sha256": "81c82ac5e6cbfb27d20915080607db594d9ef134c84f3a5b19df3917048ebcb1"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_ASTIA_ISLRGB.s3d",
+    "bytes": 1141719,
+    "sha256": "7e7c46d632cd4e11f90080eb91a54a6933aff0fb90caf64357e03b6745c12d2c"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_BLEACH_BYPASS_ISLRGB.s3d",
+    "bytes": 1038346,
+    "sha256": "87f82be581bc632eb5b18b8893801635751bb2a41f605c94f02c2ffed7ab6204"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_BW_ISLRGB.s3d",
+    "bytes": 929304,
+    "sha256": "da44bf1d2455bd232269bc5d4a6a9595334f9d9dd8affeb957da6fd453713c6e"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 1053930,
+    "sha256": "bcdd4b4552c5f309428d5e3ceae0c49c30d46d2b6e7d53e48646b76ee080f3ac"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_CLASSIC_NEG_ISLRGB.s3d",
+    "bytes": 1069179,
+    "sha256": "6e3ffbaccae1f7ce69ebfe62ee89310dbdd2713e2c83889118a6a0ca62ae9997"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_ETERNA_ISLRGB.s3d",
+    "bytes": 1049472,
+    "sha256": "7265016b3dfc415308c6b2605a255a6258649848dd740f807a8181d0b10d9d4e"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1025204,
+    "sha256": "427897c75e2c686f22decad773b2ab60221bb95059347bd30d2de2ef6d6e52f5"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1076450,
+    "sha256": "af36bcccbf8120e51243834d9e3d734d863a08ff278e1c6b2139772972b18290"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1005261,
+    "sha256": "bd66f323c49d9403bc49df78585184e8ae0dd0973999d76f77dc415cb8d9621f"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_NOSTALGIC_NEG_ISLRGB.s3d",
+    "bytes": 1062175,
+    "sha256": "580d17e14de26dad7ad04820bec0c610b4333f1868ffa28c96b4f90cdb11c71a"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1106561,
+    "sha256": "b6187d71682e2ea13787350d5e0741201646fe444810567029fd5eb04a46dc0b"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1090415,
+    "sha256": "c640fe8d52a6675aa042ddb833b7bcafc12c392b4ebce5145f0de183ff51af0d"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_PROVIA_ISLRGB.s3d",
+    "bytes": 1810734,
+    "sha256": "3cbb811bb0e55e9aa1d2c65646bc05bf1ada322c2c04bf457c33322450768d9f"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_SEPIA_ISLRGB.s3d",
+    "bytes": 940913,
+    "sha256": "636a9262d0dd91971176e10d09decaea790f76aff6d1ffa9e14e33d6cf2c71a0"
+  },
+  {
+    "file": "ColorModeData/CAM_FUJI_XH2S_VELVIA_ISLRGB.s3d",
+    "bytes": 1172268,
+    "sha256": "d3ac5d4c735efaa1293f0e4244ec5803c0e4cf9c4bec3f13bc7ef78d44203fda"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_ACROS_G_FILTER_ISLRGB.s3d",
+    "bytes": 812957,
+    "sha256": "fbaa812e77d7a723903dd356545e1150e784ea56c3d3a040b2f0faf6e9762b24"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_ACROS_ISLRGB.s3d",
+    "bytes": 750015,
+    "sha256": "042f6621b03f20112fe830e439ffa3aaa0c03ecbc398fac28cbf3b836126192d"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_ACROS_R_FILTER_ISLRGB.s3d",
+    "bytes": 801053,
+    "sha256": "0b9a7936f018f9848decd8f8aeafb249e7756fb9b67e5c5c61c96824e6022824"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_ACROS_YE_FILTER_ISLRGB.s3d",
+    "bytes": 767040,
+    "sha256": "cfd661e6e469478825cccc36989b7e2144b3ba3864ee825b0c3ab4ac09aec852"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_ASTIA_ISLRGB.s3d",
+    "bytes": 774278,
+    "sha256": "491faae2f09033efc8fc4e4e0cb27eb61e62b6f73ce65e96f8b22611bbd8b718"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_BLEACH_BYPASS_ISLRGB.s3d",
+    "bytes": 1033234,
+    "sha256": "f7dc43e300ae166ba655d99048e61020b4dd771481ed8fcbc4fff06cacd543b5"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_BW_ISLRGB.s3d",
+    "bytes": 743209,
+    "sha256": "6bf1b0659ca1cd8931836b9af169f8e4259032e0253ef8c4f0f34ef590d9aabc"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 730804,
+    "sha256": "6b624f7221f6112530e30e00ea5d630e3f4a720d0decc31be27d60093b34b00b"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_CLASSIC_NEG_ISLRGB.s3d",
+    "bytes": 1079750,
+    "sha256": "293b38b8245e5cf5276e6f042460306669bddbec0272320e0dcd35232bf1bd25"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_ETERNA_ISLRGB.s3d",
+    "bytes": 734357,
+    "sha256": "551db88b976d540cfbe7e678f31b364d475e0b198e8a35e6d8b161a984dcb489"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 831035,
+    "sha256": "445c2def6d2147df0c0da41a0e86456ba9bf8fcdf42f2cbbe00a714cd8f66060"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 828633,
+    "sha256": "49b1db2423853217efff1024479b2548600809eca114c02178f25e67483f1f1c"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 767929,
+    "sha256": "49425eed299cc9b94cc3c34ce12456205db4db15cc512b534a01d4556e20fdb2"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 756621,
+    "sha256": "97a0a984bda6d84ec9d4b303f6a9a21102cb2bfbd248959827d1d0662b485857"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 750542,
+    "sha256": "3b00522d9065345d6f3dcad697ba6de220d1acdbf986fff9293308c636a778a9"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_PROVIA_ISLRGB.s3d",
+    "bytes": 762449,
+    "sha256": "ee909bca681e9c9460a7ad2e72a4ad400bce1e5f0c079e1a1b6cfd23539aca23"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_SEPIA_ISLRGB.s3d",
+    "bytes": 749135,
+    "sha256": "6eb1ece55e3e17240947da1754959d1508ed6bf9d0add4ab819f7a9430bb8faf"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_100_VELVIA_ISLRGB.s3d",
+    "bytes": 800342,
+    "sha256": "5a713a07499dc0d0af650a380b9499e9a3fb69dd4848bc37adbfdff855a61b1b"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_ACROS_G_FILTER_ISLRGB.s3d",
+    "bytes": 868183,
+    "sha256": "cbed38e575a50554d6bf69b7f7d1a37c2f8c3a4e82c92afc80096690102e0ae2"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_ACROS_ISLRGB.s3d",
+    "bytes": 1057126,
+    "sha256": "d2d2ae325c3312e755bae57aca41b8185c949c8a5e905315a6c6ef54a80243e4"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_ACROS_R_FILTER_ISLRGB.s3d",
+    "bytes": 971673,
+    "sha256": "e3155a376d82c5c8c51bfa47ae1fb92ca987ee0cb208b2f7d106f6260258fab7"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_ACROS_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1050026,
+    "sha256": "12144e5cc0b330caa28917f1787e2f1912d7f549b2548d7755b2d7ad1ce5830e"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_ASTIA_ISLRGB.s3d",
+    "bytes": 1078676,
+    "sha256": "7b4dbab763ef24a678b014bd47fe3f3084939a1263d38bf3fc9f0346622e7050"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_BW_ISLRGB.s3d",
+    "bytes": 1028349,
+    "sha256": "d6a1c65e9082bed3ebbe4d2eea7d452e28037b659142de16c3a354baa6c0bba5"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 1048086,
+    "sha256": "7c3955f1957f7838721ad8fc416420eb60188492820e8a0b021de5673568b652"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_CLASSIC_NEG_ISLRGB.s3d",
+    "bytes": 1147867,
+    "sha256": "057c2c3f4a3d65351837c4e39abffc37bd980f7e4997c464ac925196d27c6646"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_ETERNA_ISLRGB.s3d",
+    "bytes": 1164305,
+    "sha256": "b90b658a4e6b842d0fe767374e344017bab0d8c0eea37241a0f9581b230e5c6a"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 853149,
+    "sha256": "9d162eba99088786bafd710cccbfbaf9e4ea7c9d37295a7b759515b838e43caa"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1118681,
+    "sha256": "1077fd8d1ee8d6a9f2ac3ec0441e73605c1b79c7801cdc2f35b248eef9c211f4"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1003689,
+    "sha256": "b9b9acd2295c3a2bb1190416a16dc2b2ffae20b3292b8e4536f4547c8b6197c5"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1067840,
+    "sha256": "5bc4aff9f0ace6487a15c2465ebb3c0c7c3565faca840d865320f76e2ed7bcda"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1058822,
+    "sha256": "0ea1971e0a226f497fb0192405bbea14e7ab98913de0cd1b67a68888d4d4e09e"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_PROVIA_ISLRGB.s3d",
+    "bytes": 1073423,
+    "sha256": "59a70b7a16cc48985806a810e69a9da4580e4e8b88d381a91ad455555e1a3aae"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_SEPIA_ISLRGB.s3d",
+    "bytes": 1031851,
+    "sha256": "479b518e5244e646a590905accb3afdbe4ede277be4516775cf36cccdc8e5e01"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX_50S_VELVIA_ISLRGB.s3d",
+    "bytes": 1096579,
+    "sha256": "8b827c7d3961974dbe62f46f33293996b45b355662dafbd8f3d5fa6563965c92"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX100_II_REALA_ACE_ISLRGB.s3d",
+    "bytes": 1150684,
+    "sha256": "aae55d2e212ee3a53ae51b7b35da2231c155e9e352582db8164e20c4c491436b"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX100S_NOSTALGIC_NEG_ISLRGB.s3d",
+    "bytes": 1059635,
+    "sha256": "2cc0c69c3c772afd3fbeafeb8e064ade136620271504cc7a795b7beb7ea8b32c"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX50S2_BLEACH_BYPASS_ISLRGB.s3d",
+    "bytes": 1027042,
+    "sha256": "76e0889d97e7481c39e1e0548b89d42abd1dcff291b0b5c6d89ea45b14ea005c"
+  },
+  {
+    "file": "ColorModeData/CAM_GFX50S2_NOSTALGIC_NEG_ISLRGB.s3d",
+    "bytes": 1078341,
+    "sha256": "48affc354d41c36cdbb4dc01358cc3c58fdfc74a258f2b34e47087aedd9c64c6"
+  },
+  {
+    "file": "ColorModeData/CAM_SD14_D.s3d",
+    "bytes": 532315,
+    "sha256": "54d760cf8427ca2df7b1de51b97babc799ecafdf146d6174c01954e6c48fd939"
+  },
+  {
+    "file": "ColorModeData/CAM_SD15_D.s3d",
+    "bytes": 550985,
+    "sha256": "881a689985e6550b9dcc57923885630537d4643df9e99ddbb8f8f776d1e13157"
+  },
+  {
+    "file": "ColorModeData/CAM_X10_ASTIA_ISLRGB.s3d",
+    "bytes": 1281374,
+    "sha256": "3195939ebcd6b089f3638afab725155f83677af9df97de259c3d6370b78f7a03"
+  },
+  {
+    "file": "ColorModeData/CAM_X10_BW_ISLRGB.s3d",
+    "bytes": 1407653,
+    "sha256": "12178374a654c6a38d57e402ea271a21818a20dc62c48f183c3904907e4a376a"
+  },
+  {
+    "file": "ColorModeData/CAM_X10_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1444612,
+    "sha256": "478a4a808c87459744d110e086964107836fe60e938c46acdb0d6310da8d2f7a"
+  },
+  {
+    "file": "ColorModeData/CAM_X10_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1485562,
+    "sha256": "4e990f41610d048d3a6b67ea1d2dec2237eca1d722079ad73f1602792b207352"
+  },
+  {
+    "file": "ColorModeData/CAM_X10_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1289504,
+    "sha256": "9e6f0d5d10d18fb6585d52527009484873b99f5ab686731222f9159470309d6e"
+  },
+  {
+    "file": "ColorModeData/CAM_X10_PROVIA_ISLRGB.s3d",
+    "bytes": 1267248,
+    "sha256": "7a288ba644f3611bd60675ab18b6b66c4f9e6ee719a0ca416172eeee79269791"
+  },
+  {
+    "file": "ColorModeData/CAM_X10_SEPIA_ISLRGB.s3d",
+    "bytes": 1411351,
+    "sha256": "bf2244e20705ab6f43d0c0fd6a70f2f317f0aef47250e7c1c6fa240c5f93df64"
+  },
+  {
+    "file": "ColorModeData/CAM_X10_VELVIA_ISLRGB.s3d",
+    "bytes": 1338859,
+    "sha256": "5082f7589ac89a7edba69394244101c22bf2fa908d0266e61a3016df1ec34616"
+  },
+  {
+    "file": "ColorModeData/CAM_X100_ASTIA_ISLRGB.s3d",
+    "bytes": 1310480,
+    "sha256": "f8f9f2225be6d9fe98642efbdd865842a1c7e64ebe896dfa47a17bfc439fcb56"
+  },
+  {
+    "file": "ColorModeData/CAM_X100_BW_ISLRGB.s3d",
+    "bytes": 1389596,
+    "sha256": "c569a4bc74b70d820086345b60af6563c9a2f233716d9c40af4d32382d218d8e"
+  },
+  {
+    "file": "ColorModeData/CAM_X100_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1412370,
+    "sha256": "f3a5bd2f02a3d4b95585a9f571d5aab5767f6e461f1c4635687ad0fab6c5166f"
+  },
+  {
+    "file": "ColorModeData/CAM_X100_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1094957,
+    "sha256": "2b424e1c96a32256ad26582cf54001dba7b2df724f0711c8192ec3671fc8e015"
+  },
+  {
+    "file": "ColorModeData/CAM_X100_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1253467,
+    "sha256": "7f5d9253b6a08c6cd978e74ba2a4f7231e192cdf2c92cc3dd8b1a751ea3d75be"
+  },
+  {
+    "file": "ColorModeData/CAM_X100_PROVIA_ISLRGB.s3d",
+    "bytes": 1280535,
+    "sha256": "3cb0f7babc080ae8ec06d9505403870add748a7aff6f1fcb68560b6f287dc82f"
+  },
+  {
+    "file": "ColorModeData/CAM_X100_SEPIA_ISLRGB.s3d",
+    "bytes": 1370626,
+    "sha256": "d4e18205abe2e87f9274ba73015a7c0f6a6103021cab0265fc85268d5e51ee6f"
+  },
+  {
+    "file": "ColorModeData/CAM_X100_VELVIA_ISLRGB.s3d",
+    "bytes": 1280575,
+    "sha256": "eefe6f8e8aa7a9fccb385d19a643f591a66a40e015687551d28354f7b2ef7f56"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_ACROS_G_FILTER_ISLRGB.s3d",
+    "bytes": 846151,
+    "sha256": "34bd58a9737d622fb4b732d122f63cf966548f56a7dcb50a3d3b4b5091d53fcc"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_ACROS_ISLRGB.s3d",
+    "bytes": 819166,
+    "sha256": "34b56833fa4a06561306f7f3144f58915e129a38a9a1c4ddacb13f87bc39e0de"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_ACROS_R_FILTER_ISLRGB.s3d",
+    "bytes": 860465,
+    "sha256": "07113e519c3d807c4b0b2a199118a9643abfe3491a97be282160613d8f34b20e"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_ACROS_YE_FILTER_ISLRGB.s3d",
+    "bytes": 834085,
+    "sha256": "ee37395799e567fa60a374e97e06551d937b56265c4597306442c7bb67934ef2"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_ASTIA_ISLRGB.s3d",
+    "bytes": 714052,
+    "sha256": "b13243a34c46ff28c3e686b24b6c056b08d3a0d7a9f59ab193e0625cd6ed8254"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_BW_ISLRGB.s3d",
+    "bytes": 890129,
+    "sha256": "cb8acb1ba04c6c2040784c73e288ce3ac8467e0a01cddcfdb1ddd34c01786fd9"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 687870,
+    "sha256": "fbf2174dd4a4a3814ceae3901f86383d4d329bd74994106d9366c297f55c925e"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 928521,
+    "sha256": "ad84874bc72b3b8e4c91b1154aeca14b20258ad81846c10398f2ff21efbaba53"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 936745,
+    "sha256": "2b713693bb0173b933d2058d07b03b3f404c2385a3352ed9be50e012eda4049b"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 879340,
+    "sha256": "d1756e334bf07e5093155711bf58f41b0c4cef4ac9d062c4403827ddbc46b2a5"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 698292,
+    "sha256": "55ee0a9d741d5f25bb6e66be146ad66186b1304425e8c0134db49092a79b81a1"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 693709,
+    "sha256": "e12c0cb5825445b7b1e0bc440f9ffbe3077bf5de018684199b38419c264c2e3b"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_PROVIA_ISLRGB.s3d",
+    "bytes": 696310,
+    "sha256": "44d41afdc1aae0eca8119aeb0c82aeae4c8bbbfc3ecbc430b8d7224c6f9bb042"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_SEPIA_ISLRGB.s3d",
+    "bytes": 887816,
+    "sha256": "e5496bab4ab9c585f79d45c65cc6b3096176cda6c195bc8f6b437f67db3b01cb"
+  },
+  {
+    "file": "ColorModeData/CAM_X100F_VELVIA_ISLRGB.s3d",
+    "bytes": 1008815,
+    "sha256": "132821fcc1eaf8481dd6145ecf7ac35ca7719aa32176187f68fb9f07ccb71df9"
+  },
+  {
+    "file": "ColorModeData/CAM_X100S_ASTIA_ISLRGB.s3d",
+    "bytes": 1145900,
+    "sha256": "3e36491f286b0117e7070c18d2b4448c9ff8b2e24d2ca915e599780acde6b932"
+  },
+  {
+    "file": "ColorModeData/CAM_X100S_BW_ISLRGB.s3d",
+    "bytes": 1326497,
+    "sha256": "dedacd21e6fe18eab8513716865aa34d339df6665699a42ce3b7363bcb47affb"
+  },
+  {
+    "file": "ColorModeData/CAM_X100S_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1443044,
+    "sha256": "d67ae449a9f4f0a4125ea288e565f0d040e33b2aa694e44d624a10cc31c5242c"
+  },
+  {
+    "file": "ColorModeData/CAM_X100S_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1396631,
+    "sha256": "2b19905b48ef5cf6b2992e841aea8c840f41599858c150815460a21afee7514d"
+  },
+  {
+    "file": "ColorModeData/CAM_X100S_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1371656,
+    "sha256": "e658733780eca2f44f6bc3a3d28258c2d1116b59e2cbe544d12cd245ebf067bc"
+  },
+  {
+    "file": "ColorModeData/CAM_X100S_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1119172,
+    "sha256": "4a843a86f7282533defca6ee1133d180e930be0f178808f8046a1aad47ab4594"
+  },
+  {
+    "file": "ColorModeData/CAM_X100S_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1105449,
+    "sha256": "db93c9cc436d4f292e8fa3c03bfc30e18a3b6b7e0b35f1cde3f4e53f441b0464"
+  },
+  {
+    "file": "ColorModeData/CAM_X100S_PROVIA_ISLRGB.s3d",
+    "bytes": 1115961,
+    "sha256": "4ce8c3eb94864f42b3336dfc7c143ffd825402bb121a6f3801c3832d2d7c3cf7"
+  },
+  {
+    "file": "ColorModeData/CAM_X100S_SEPIA_ISLRGB.s3d",
+    "bytes": 1340416,
+    "sha256": "c698127037fcecac955812322839c9ae592a8d33131555b5f387a3840b699dcc"
+  },
+  {
+    "file": "ColorModeData/CAM_X100S_VELVIA_ISLRGB.s3d",
+    "bytes": 1148121,
+    "sha256": "9a00bafa0677d2b66578c0a9a245f88bbfddb174887ecc09f804a5f694a7837e"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_ASTIA_ISLRGB.s3d",
+    "bytes": 1111467,
+    "sha256": "db21901bd780505f4ad056280107b26016d022fcc78d01b0be0b3895eff312b8"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_BW_ISLRGB.s3d",
+    "bytes": 1296900,
+    "sha256": "9c1b064a5880ba55bcc2a9f109264509c3322f1afdbc8a611bad30ae3ee341b2"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 1201407,
+    "sha256": "73f5d9d50b9bceb5f33163fb0dfe70e2b0024e3b0cf40ac870ba0c603243d378"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1400875,
+    "sha256": "f461543ae5412cc84fa387320593de216d52f96cb1696dc9be41006752cdcfa1"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1276032,
+    "sha256": "9875a2b2a64d6067ec8bda867dbc4dfb3f339c2c311846e49095f38072dddeda"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1310054,
+    "sha256": "8622883caee6cc45113d445f50e1e4274b0990e75553bb163204793347ea2b47"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1082884,
+    "sha256": "33ce535bc2750f3f4eea498d5ca059e0890ad1cfc1e18b629be178bda6a199f3"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1067387,
+    "sha256": "3f6efed6752e57975f4348078db037aa7c5b72e67b37ade54b2de4671bb208b8"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_PROVIA_ISLRGB.s3d",
+    "bytes": 1065689,
+    "sha256": "b45fdc7af3c3133464dd236a780d8f964bf4abbaeb9006f6a87919b3fc1feb15"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_SEPIA_ISLRGB.s3d",
+    "bytes": 1307742,
+    "sha256": "0f9d58efd8f391c1722c618f33fbcd5785492022bbb956df19cee47ab568c04c"
+  },
+  {
+    "file": "ColorModeData/CAM_X100T_VELVIA_ISLRGB.s3d",
+    "bytes": 1100902,
+    "sha256": "eb3b8dcda58cdd4da83581e51fc19c3bd8db7983bf3c73cd31d127e0eb8f6438"
+  },
+  {
+    "file": "ColorModeData/CAM_X20_ASTIA_ISLRGB.s3d",
+    "bytes": 1217075,
+    "sha256": "01fb2f1387ec93c525481fd417107a212886f7ff69f3229189e1bdc93424bf4e"
+  },
+  {
+    "file": "ColorModeData/CAM_X20_BW_ISLRGB.s3d",
+    "bytes": 1340718,
+    "sha256": "83218c0596d0683cf7deb8787a8a6109c4f64acd1451bccbf819da06d193349c"
+  },
+  {
+    "file": "ColorModeData/CAM_X20_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1448747,
+    "sha256": "1c69cb82d2d27dd384724d93a774fd097ca150bda77d7ff87015c0c53eb3ce5a"
+  },
+  {
+    "file": "ColorModeData/CAM_X20_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1495275,
+    "sha256": "9f40c4676aba08e8e474f1271d524ab28983df699f70d652da629a5e0108687d"
+  },
+  {
+    "file": "ColorModeData/CAM_X20_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1376574,
+    "sha256": "9be12b40abb1371acd3dbde4aff62cf11b2dd729239657a226e64891626d2b85"
+  },
+  {
+    "file": "ColorModeData/CAM_X20_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1209323,
+    "sha256": "09d42fb920c3e4aa93fde6c0aa35e1ea943a1e409e91e7976a10531e32ee0f4c"
+  },
+  {
+    "file": "ColorModeData/CAM_X20_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1234031,
+    "sha256": "b93df0174a9cb8b9d33a2d130a4ccc3c9797a6f51cdd55feafc456f3de5b9eca"
+  },
+  {
+    "file": "ColorModeData/CAM_X20_PROVIA_ISLRGB.s3d",
+    "bytes": 1205986,
+    "sha256": "6c1feac8d9a4966a7ce3d6b018623bcc53e37fd5632db95c8475b17475407a01"
+  },
+  {
+    "file": "ColorModeData/CAM_X20_SEPIA_ISLRGB.s3d",
+    "bytes": 1350985,
+    "sha256": "3f3b0965d5fe1fd17fadb1652ad7f04df9320ce05d71eef2d29a538422775dff"
+  },
+  {
+    "file": "ColorModeData/CAM_X20_VELVIA_ISLRGB.s3d",
+    "bytes": 1239147,
+    "sha256": "4371b82151bc74b0a44a0ff835805d48ae2c35fead111488082f852541d3be54"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_ASTIA_ISLRGB.s3d",
+    "bytes": 1292376,
+    "sha256": "29cc34e10d87881aae5c01691b5253eb7d714a855701459e28ba568878bf9212"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_BW_ISLRGB.s3d",
+    "bytes": 1295937,
+    "sha256": "c1e8618b56349c8266f8eaa1aa84fc33abe40a14bee8ecbe0fb94391401461e6"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 1304045,
+    "sha256": "9089143d0101fcc08b6a6140d66f7f31652c55946eedab454aaedede97eeb936"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1378309,
+    "sha256": "baa5aac7cfba8f2bd1ba8efaa62e0ac5d202ded80d76acd83644103ad9193c95"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1399317,
+    "sha256": "5d8c1f0d1796e546c2fd05e2bbca3e334ff759ca4d54c9a3e31e67ed1f39b2bf"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1355428,
+    "sha256": "44a272d35cfdd5b278e26ff0bcaa040d77fa7aedbcbc7d61d5b08287555336a7"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1292086,
+    "sha256": "6aab3673702aec63b695f276aa15f892493dbc4b82be408394f7693c1aaf3179"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1282898,
+    "sha256": "b02a901074319f02814c3fa6d3c999d4a2c855a6955e2c5adc3e702eb7ba1bd3"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_PROVIA_ISLRGB.s3d",
+    "bytes": 1300227,
+    "sha256": "8af848cf071a8e492e3b6889e429a4dbcf22513126d009d6aee92483f21af5cf"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_SEPIA_ISLRGB.s3d",
+    "bytes": 1292019,
+    "sha256": "0e9f3701b6b769b266ac4f40be72e2efb03f3d59d3ca7b7742ac9899ca77b32a"
+  },
+  {
+    "file": "ColorModeData/CAM_X30_VELVIA_ISLRGB.s3d",
+    "bytes": 1312560,
+    "sha256": "a8e686f3589619408952dbed8238f062f0751a82e26efb386f0dd06421fdf7a5"
+  },
+  {
+    "file": "ColorModeData/CAM_XA2_ASTIA_ISLRGB.s3d",
+    "bytes": 1157191,
+    "sha256": "fb24c3095c29fc16571d6489c39e5ba9eeecc629f8dabf48315f36e811ec18d2"
+  },
+  {
+    "file": "ColorModeData/CAM_XA2_BW_ISLRGB.s3d",
+    "bytes": 1422824,
+    "sha256": "bdfd4830a9bc32ed6b001c7829d58c572c08ded497476bce897e7c80fa765c1a"
+  },
+  {
+    "file": "ColorModeData/CAM_XA2_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 1211191,
+    "sha256": "1c2b7baef95c8dd3032bf4710c4daa9af603958d70700a0217295f0274467138"
+  },
+  {
+    "file": "ColorModeData/CAM_XA2_PROVIA_ISLRGB.s3d",
+    "bytes": 1104731,
+    "sha256": "b161f97abfce90670472467891f12bea2bb73617e337ceeb97b0dcc55a8f45c9"
+  },
+  {
+    "file": "ColorModeData/CAM_XA2_SEPIA_ISLRGB.s3d",
+    "bytes": 1418372,
+    "sha256": "0f4e4ab0ba8f825f9f3c3bec0f24127c731a1ed68b9c7e4d11ec3cffb1f4378e"
+  },
+  {
+    "file": "ColorModeData/CAM_XA2_VELVIA_ISLRGB.s3d",
+    "bytes": 1153747,
+    "sha256": "fefa795689f3165f26a6d90827169b3ec7b20e56986f2a40f64c03a23f0bbf3f"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_ASTIA_ISLRGB.s3d",
+    "bytes": 918375,
+    "sha256": "8f54602f76e6a0a967e1ae7156ac41609c02f8ee7677bfa8a5c120c2100dfc94"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_BW_ISLRGB.s3d",
+    "bytes": 552621,
+    "sha256": "91e331928d5199d40056bc41bc560c1ea0fbd3f1d85df043302fafb55334fa0c"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 882667,
+    "sha256": "a7084856961061bdb15ea57182aa67f8ce5efa53db48b99eab5c3185e5a2610a"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 537386,
+    "sha256": "ac13a2f46d7d990264e50a4b9b611efa1607e7177cdb4aa6e21e7893f1054ebe"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 581527,
+    "sha256": "d27c4e07cd749881e9b5ee0e6d00f6f45d48b596e01eced26baae6d74519980d"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 540198,
+    "sha256": "fd17de8fe0640820cfb9ea94cb82e46ec9ff7f02cba96732cd3ab6453a09a34d"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 887208,
+    "sha256": "cd99d8bebf97c9016ca0b82773862640d9fb9d9cb99c4ff01a99590fe42daaee"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 881503,
+    "sha256": "dc1740f5f3f5d25baf5d22fe795b0ed6b3b01f327e3e197892c7a0de9505e65d"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_PROVIA_ISLRGB.s3d",
+    "bytes": 906196,
+    "sha256": "7098e65a0515500862315f4c343f9104de2caf53a1b649cab7b84740b8058e17"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_SEPIA_ISLRGB.s3d",
+    "bytes": 554406,
+    "sha256": "c28d56467449e666789a7626b5cf2d83eabcf4207437991caaefb1aad6468b19"
+  },
+  {
+    "file": "ColorModeData/CAM_XA5_VELVIA_ISLRGB.s3d",
+    "bytes": 921606,
+    "sha256": "02c420dc11ea7d674066805c534e0a50406246801308c57de666ef00e5532ec1"
+  },
+  {
+    "file": "ColorModeData/CAM_XE1_ASTIA_ISLRGB.s3d",
+    "bytes": 1067972,
+    "sha256": "651523068dae9d64a356b0a661275651429198d207b6d8bea588e148f2507c3b"
+  },
+  {
+    "file": "ColorModeData/CAM_XE1_BW_ISLRGB.s3d",
+    "bytes": 1375189,
+    "sha256": "4968edba54d4badd90477e7a92f15d8d3ee050254c597a2f1e3060d58ece84f4"
+  },
+  {
+    "file": "ColorModeData/CAM_XE1_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1537983,
+    "sha256": "467e650334adc3a2a03aa3401f6ecaf51a9bb91647900ef1749ae5e465c75f13"
+  },
+  {
+    "file": "ColorModeData/CAM_XE1_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1527819,
+    "sha256": "9292d18c0e5e6ac64fe9d34f8ae1aad6065219dee73b64b9e90d6285b3f91e56"
+  },
+  {
+    "file": "ColorModeData/CAM_XE1_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1426776,
+    "sha256": "2fc177349bd63747d9f315d59f5da514d48a397daf5be065cf9b190d1c1497a2"
+  },
+  {
+    "file": "ColorModeData/CAM_XE1_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1350171,
+    "sha256": "a2840d9626317d16bc115669496c730016eefda0dacd67db0a9ddf3e34a02909"
+  },
+  {
+    "file": "ColorModeData/CAM_XE1_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1281089,
+    "sha256": "ee829ddf99660f3bfd53eca79b3974d531b57787af2227bc18f1de0f73a3d084"
+  },
+  {
+    "file": "ColorModeData/CAM_XE1_PROVIA_ISLRGB.s3d",
+    "bytes": 1260201,
+    "sha256": "21ad4b35d4d816f07003345cb1b55a4e7028acb1ce41af5f40340b756be02385"
+  },
+  {
+    "file": "ColorModeData/CAM_XE1_SEPIA_ISLRGB.s3d",
+    "bytes": 1387818,
+    "sha256": "fb1a4c058bec3d490a47610c0992e9e8c194675faf5d928e0dc47833b4e9d200"
+  },
+  {
+    "file": "ColorModeData/CAM_XE1_VELVIA_ISLRGB.s3d",
+    "bytes": 1173187,
+    "sha256": "f8a7b1a5fb33d1b209aeab150dccdc8baf6a2afcaf90f193707e898b5901cad8"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_ASTIA_ISLRGB.s3d",
+    "bytes": 1149562,
+    "sha256": "3f8c57e2c02454ff5da6bf81f8a9186cad772e949883efa98f3906377a148708"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_BW_ISLRGB.s3d",
+    "bytes": 1329432,
+    "sha256": "ff7fd62a51ee37a4d4c3faa07abeb54eb6310737742be6e94ba46b1cd5f5c106"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 1114194,
+    "sha256": "58c4a5ad308ccf099507b931e1b91e5feff7a02a236ebe3060aeb63f8a2272bf"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1449863,
+    "sha256": "a872faef5ae2b8c0a7b051b6c0be9f61cf6c43463d42cdbc0e5e0a1bb11cdf49"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1401035,
+    "sha256": "a356d6cd8bd2a47ec6bd6a2401990d28cbd813216da7f1251c2424c1637d3f89"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1379151,
+    "sha256": "51ec0b1bf9ad63e0e1dc605ffe6bff98580a2bd4bddedad548fba53f2e18d9e2"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1119993,
+    "sha256": "0d154b569682eab60b46d9e624fe9ac210c2779b75026b1ad4965e8d249a98c7"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1107455,
+    "sha256": "a773491ad55ad8995010d62b3ccd83d48c5a1430d7b8f97342963d0fe8984d38"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_PROVIA_ISLRGB.s3d",
+    "bytes": 1117553,
+    "sha256": "0eb1c3e9dd196229e1f3655b162a8c6743881c5cdd68934449090fee3f1d3a77"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_SEPIA_ISLRGB.s3d",
+    "bytes": 1344579,
+    "sha256": "3157fa37c8abc0d2b2e6d1b9cbf3c056e695be0a960d1550726a22894c469bda"
+  },
+  {
+    "file": "ColorModeData/CAM_XE2_VELVIA_ISLRGB.s3d",
+    "bytes": 1150874,
+    "sha256": "4b497cb4c99ba7f93e19297671d97b020a21d2ad2d8cacae20a120839538eb52"
+  },
+  {
+    "file": "ColorModeData/CAM_XF1_ASTIA_ISLRGB.s3d",
+    "bytes": 1294443,
+    "sha256": "e20e044971d4d0d8fcb817bb53146a8766d153d0e1dc2f5aaf67b10a50f312bd"
+  },
+  {
+    "file": "ColorModeData/CAM_XF1_BW_ISLRGB.s3d",
+    "bytes": 1414786,
+    "sha256": "51b58f3cc45dc3029ec101951728126eba4cef0a4efb39c356c3724faff8c2b9"
+  },
+  {
+    "file": "ColorModeData/CAM_XF1_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1445941,
+    "sha256": "b60317baafff4242e59710aff60d9600026253f5c2a137446b35a72bc47f63bd"
+  },
+  {
+    "file": "ColorModeData/CAM_XF1_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1513356,
+    "sha256": "de1ba55f2310915082c599d8491fb597000ddee98fce1d8c792fc1c4489975be"
+  },
+  {
+    "file": "ColorModeData/CAM_XF1_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1362859,
+    "sha256": "ddfa7eb957d2f36c91c620777a5414c3ee59b1c2e7bcf6196918112578ef67d0"
+  },
+  {
+    "file": "ColorModeData/CAM_XF1_PROVIA_ISLRGB.s3d",
+    "bytes": 1270751,
+    "sha256": "a28303466918a0f5213349667816ff76ab0ac82a361a9e421adfef756dd2df88"
+  },
+  {
+    "file": "ColorModeData/CAM_XF1_SEPIA_ISLRGB.s3d",
+    "bytes": 1413181,
+    "sha256": "8f559bd27072e241ba0a372774d89218ec95e22fd8fbca7c262e0689a0a6af33"
+  },
+  {
+    "file": "ColorModeData/CAM_XF1_VELVIA_ISLRGB.s3d",
+    "bytes": 1299862,
+    "sha256": "9c090e09295f3904570a556639454d14b66576ebd1665b5f5551c88f4c00cd67"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_ASTIA_ISLRGB.s3d",
+    "bytes": 818099,
+    "sha256": "e7efa7329a97ca618224ff56faae18b8036ee3d86281a77bbf125d0fab4781b9"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_BW_ISLRGB.s3d",
+    "bytes": 925274,
+    "sha256": "51fd521613a14b10b1c6452693c0247417a0c8391ae951d692a81730d17b514d"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 797351,
+    "sha256": "6d8e8bbcabae6ac55e1a71b725419cf0d6f8d13a4d0a539e8df7a99675e79e5f"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 893537,
+    "sha256": "9b65498bd6d246f40a1b43b10f3372c7fe982b5a226205aafe30258e022b92ae"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 873017,
+    "sha256": "c2aa5814d1c4ca168e5cc9a8f4969f62feb3b6290723ceb1d56db0b37480efd8"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 886080,
+    "sha256": "1b678f6ad5cf8a8a45e782107f32fc2e4730183500d9c162d844a41eb0c62193"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 790548,
+    "sha256": "713eeb2ac0ceddad9386f1914fa75b50cbdbb7cd4201ca8ee627c3cb59e95b0e"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 790426,
+    "sha256": "971388a28a9ece7a82bb1eaad7b2b62e3454413509ba66ea87a083c88691c815"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_PROVIA_ISLRGB.s3d",
+    "bytes": 800461,
+    "sha256": "fc926b368c4f08cb3b8dd171e00d73ca1fced67b77e43678087e026d1e43155d"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_SEPIA_ISLRGB.s3d",
+    "bytes": 921430,
+    "sha256": "a7b6afaa95f811d426d88081796e9a19cd7263c954e7c00c73f2fa555616fa2f"
+  },
+  {
+    "file": "ColorModeData/CAM_XF10_VELVIA_ISLRGB.s3d",
+    "bytes": 817843,
+    "sha256": "a9f315aca1ae24d8a7c20b10a09b5e649d4ab65fe550834d22180a60cbf2376a"
+  },
+  {
+    "file": "ColorModeData/CAM_XH1_ASTIA_ISLRGB.s3d",
+    "bytes": 1264619,
+    "sha256": "0bcd3dc56ae7624146fd501e0a9885d6167bc8d99d0c3ad1e42ed83b50cbcc9b"
+  },
+  {
+    "file": "ColorModeData/CAM_XH1_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 1231962,
+    "sha256": "912f184e9b226fbc06d474cf011aa228bf7e9e02af5c5445fe4c6364124e116e"
+  },
+  {
+    "file": "ColorModeData/CAM_XH1_ETERNA_ISLRGB.s3d",
+    "bytes": 1215115,
+    "sha256": "ce386fd56db751053b2dc97bf93e065b9306557602b1c40745776d9b69e9b4e8"
+  },
+  {
+    "file": "ColorModeData/CAM_XH1_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1245413,
+    "sha256": "6f7d654b16cc0f296034cd13619a4dcbce8ae930ee83798380573ecf61f90fd1"
+  },
+  {
+    "file": "ColorModeData/CAM_XH1_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1236019,
+    "sha256": "100507f8041e78511de8c05421542d30e6e421f9810d12f86d962691c466ede7"
+  },
+  {
+    "file": "ColorModeData/CAM_XH1_PROVIA_ISLRGB.s3d",
+    "bytes": 1240335,
+    "sha256": "78ea9bbdf22daf6911838ba886cedb83a3c08a9bed8a6ec33ff0a89943d48c75"
+  },
+  {
+    "file": "ColorModeData/CAM_XH1_VELVIA_ISLRGB.s3d",
+    "bytes": 1273151,
+    "sha256": "0e8a62837ae5d8244c8167d1622de98b2fab3e3a85962552c973924e9052e9e8"
+  },
+  {
+    "file": "ColorModeData/CAM_XM1_ASTIA_ISLRGB.s3d",
+    "bytes": 1066237,
+    "sha256": "f4477ddf39c81ad05cc4df0a61ef4ce8d8306b85a5555787608d9b1baa4fc282"
+  },
+  {
+    "file": "ColorModeData/CAM_XM1_BW_ISLRGB.s3d",
+    "bytes": 1317920,
+    "sha256": "18d2b1764d470e933ce6b287993e93d088a4583ca0551f81e9b6f4d45a4ddeea"
+  },
+  {
+    "file": "ColorModeData/CAM_XM1_PROVIA_ISLRGB.s3d",
+    "bytes": 1229867,
+    "sha256": "f1f04a2d89151b8a73f6b28463c4ae5befa0e63c0ea03158cc8032cbd508df19"
+  },
+  {
+    "file": "ColorModeData/CAM_XM1_SEPIA_ISLRGB.s3d",
+    "bytes": 1332658,
+    "sha256": "33a5831a5c01afd87f4ac4d17f26b79b7b916f8e01372cffa5dc48b2e608620b"
+  },
+  {
+    "file": "ColorModeData/CAM_XM1_VELVIA_ISLRGB.s3d",
+    "bytes": 1173360,
+    "sha256": "7dbc57fead8eb6efefb7642e44065a55f0fb55faf7fd93e31502a1fdc931e9d4"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO1_ASTIA_ISLRGB.s3d",
+    "bytes": 1068348,
+    "sha256": "f91b054c64770b29da39bf3ec79b1738a87f52be90809f2f8b9ebe6cfa6cdfe6"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO1_BW_ISLRGB.s3d",
+    "bytes": 1375748,
+    "sha256": "ec07cd094972e7db237208a18f00c66e5ab3ba416813e469cb84442fced2233f"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO1_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1528054,
+    "sha256": "3814df3b9ab0ede31503b5308b9a1abf89c52a25a02bdbb60053c0f342cdb658"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO1_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1481847,
+    "sha256": "178bc6f433fb15a0e41ed96cb98ef3b2a7be608e2412b527728bd0dbb60946b8"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO1_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1351840,
+    "sha256": "b0781d844d316438e3575d2f047b159cb736fbd04219fc5275d8cc28a547f9ed"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO1_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1349962,
+    "sha256": "c4350aad4284e9477c14fb4235b8f78e05470806e2b2b0030361600126f1b0fd"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO1_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1280897,
+    "sha256": "34144abbe5d9764005b17921c28b1abfcdaa8d7e02b0ebb88fd84dae0ed48ff2"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO1_PROVIA_ISLRGB.s3d",
+    "bytes": 1259970,
+    "sha256": "2f1044cda187db2ddfa2b7bba3a9653be08c16a467fa015e31ede519757bd17f"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO1_SEPIA_ISLRGB.s3d",
+    "bytes": 1396528,
+    "sha256": "8294c8c3c8c88ddc5e6e36f65ad363924b165f77b09c84c8774f7cc0b21e46ce"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO1_VELVIA_ISLRGB.s3d",
+    "bytes": 1175379,
+    "sha256": "e177d04f1b057d2ac9eb2fc1fae300e7c99cb18f7b144959085e1b6a5824b916"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_ACROS_G_FILTER_ISLRGB.s3d",
+    "bytes": 929537,
+    "sha256": "0a4aa17628da8190770a55b2f251c4bb6e37c4d03f86eb798fc369d251c4aaaf"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_ACROS_ISLRGB.s3d",
+    "bytes": 898205,
+    "sha256": "625a926636d7e3f90f0850e7563b797a6b5ffcc9d140e5f72fac343383ba36fc"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_ACROS_R_FILTER_ISLRGB.s3d",
+    "bytes": 960887,
+    "sha256": "97b007d63059a0b316fc8c286ec4f75bcfda41a258c168ac14c2a6fb885ceb64"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_ACROS_YE_FILTER_ISLRGB.s3d",
+    "bytes": 887654,
+    "sha256": "b19958aef1e2ff02a42f0d50de1df372354c387f54eb96cc6c2f43c60f86b643"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_ASTIA_ISLRGB.s3d",
+    "bytes": 840224,
+    "sha256": "b5d86ab0e383473810d60b070e96ec0dfd5fdb3575b8e9707fb4efadf6804e6d"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_BW_ISLRGB.s3d",
+    "bytes": 938043,
+    "sha256": "464c452ea4f44fc3e13ceb3db3734380dbc333afd0d0ab0b68d2687c43350edd"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 801887,
+    "sha256": "575e102d8b0dd063b078539ceae5357240229541583e55474a5be7a76a889383"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 903643,
+    "sha256": "d42496dab26b3cfb5a458236f7d1f46902f27daccbc3e1dcb2317167b05ced27"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 989962,
+    "sha256": "9ae86521c2dab22aa5922fb79cccb0537e86733aea713e09bd09df860453a53f"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 889317,
+    "sha256": "c9c382058237c67be2bd95483a1c5433f39d5e71aab8d8f66dc3f5b161066c32"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 827208,
+    "sha256": "56afeb11cd3fb6a16afa298f5b741d6646dd1c5fc807ddc256b4c07565e62a7c"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 819856,
+    "sha256": "3362b0c7635d3828910c473b4dfc378f3cd6d67f0065fec918da85a0c29a3723"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_PROVIA_ISLRGB.s3d",
+    "bytes": 826820,
+    "sha256": "0d672d4c5634fcbec28b535eab79b1959c7a6dfeb3c5be331a8a4be2b1a980bf"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_SEPIA_ISLRGB.s3d",
+    "bytes": 938929,
+    "sha256": "32bc1b404e04307101504297d1c21e929451ef6441c224d50e80fdfa0d52aa24"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO2_VELVIA_ISLRGB.s3d",
+    "bytes": 851004,
+    "sha256": "69df6c009ab801e34642630af4df86a2505bca8bd224965a7bbc84292cb5a765"
+  },
+  {
+    "file": "ColorModeData/CAM_XPRO3_CLASSIC_NEG_ISLRGB.s3d",
+    "bytes": 1065932,
+    "sha256": "fe70adb5fcf1c17fb30c144c13dec27ba16838db075c673852ac643ada915524"
+  },
+  {
+    "file": "ColorModeData/CAM_XQ2_ASTIA_ISLRGB.s3d",
+    "bytes": 1301821,
+    "sha256": "006f02b6c3d36385dff6711f3040a37fa252ea3f1085bc878e5305f70529499d"
+  },
+  {
+    "file": "ColorModeData/CAM_XQ2_BW_ISLRGB.s3d",
+    "bytes": 1423638,
+    "sha256": "a454150107f17e92551777caa1f9ef3d64470aaee5fce6a237666189f4080a08"
+  },
+  {
+    "file": "ColorModeData/CAM_XQ2_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 1206171,
+    "sha256": "604741f1813b1c6b226a67a281c56c79aa62484150063232c3367cd0dd2de22a"
+  },
+  {
+    "file": "ColorModeData/CAM_XQ2_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1477009,
+    "sha256": "3c36abb324833ac7b4432e0c148f90ffa81e06712ca59d05878ecf10bf326009"
+  },
+  {
+    "file": "ColorModeData/CAM_XQ2_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1494100,
+    "sha256": "f07186297e4afd3567db1713844808c4a59efd15473b3ed19af28a23c173aa38"
+  },
+  {
+    "file": "ColorModeData/CAM_XQ2_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1465532,
+    "sha256": "560f1b67ccf486b909d2b3aa0924441594072409883aa590077802ff34fa0f72"
+  },
+  {
+    "file": "ColorModeData/CAM_XQ2_PROVIA_ISLRGB.s3d",
+    "bytes": 1278518,
+    "sha256": "023d085292fb35e920e26e7922b75b6ad80fe45393496f4471004a686de98e56"
+  },
+  {
+    "file": "ColorModeData/CAM_XQ2_SEPIA_ISLRGB.s3d",
+    "bytes": 1407262,
+    "sha256": "b23a738221c6779fedb7df5e27216338debc739f759955b7ae588c215f2d1032"
+  },
+  {
+    "file": "ColorModeData/CAM_XQ2_VELVIA_ISLRGB.s3d",
+    "bytes": 1291698,
+    "sha256": "e068fdd6b37d3357d30746a78afb47e95b390847e3f865e531ed69bb10612489"
+  },
+  {
+    "file": "ColorModeData/CAM_XS1_ASTIA_ISLRGB.s3d",
+    "bytes": 1313565,
+    "sha256": "7241921df8507bb473592736bd90d94813346003d1d0c262ba80261b51912a6e"
+  },
+  {
+    "file": "ColorModeData/CAM_XS1_BW_ISLRGB.s3d",
+    "bytes": 1411661,
+    "sha256": "a953ae4e7ec52a522adc7deeb813b9be811dee57ec412b1e81339ddc0ee00153"
+  },
+  {
+    "file": "ColorModeData/CAM_XS1_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1414364,
+    "sha256": "3bc1651ab8abb1451aa7e003f6b000ad9ed2267f24fa4c347c7378c588b7222d"
+  },
+  {
+    "file": "ColorModeData/CAM_XS1_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1455403,
+    "sha256": "196a788bd64e925e94ac8bd52ee52c19f4b2a4cf81cf808e51efcf44d576edce"
+  },
+  {
+    "file": "ColorModeData/CAM_XS1_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1324494,
+    "sha256": "6be092bfce1e3da6836fe9ab7abc3e6014bf7fd6a7b627b429d98cbe5e5bd223"
+  },
+  {
+    "file": "ColorModeData/CAM_XS1_PROVIA_ISLRGB.s3d",
+    "bytes": 1296181,
+    "sha256": "7605fe54b7d4aa4320c7d385fb60a53ac9feb2d589b06c316783cc8dbafa76f3"
+  },
+  {
+    "file": "ColorModeData/CAM_XS1_SEPIA_ISLRGB.s3d",
+    "bytes": 1411267,
+    "sha256": "8db9791016e582d541409d62d7c1cf4e48cb1fc0d61a7621c2dbef43daedc2e4"
+  },
+  {
+    "file": "ColorModeData/CAM_XS1_VELVIA_ISLRGB.s3d",
+    "bytes": 1333832,
+    "sha256": "dc703c7f5a988374e2c6da14d510dbb0340f7addb8ab2535bf216e12cf066863"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_ASTIA_ISLRGB.s3d",
+    "bytes": 1138461,
+    "sha256": "b86b0d43cec9641c1bd4dbf863b879ab8b16b2cc9034ee3b8b5c5cd570cbe93d"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_BW_ISLRGB.s3d",
+    "bytes": 1332981,
+    "sha256": "2307b9602dc622467ad85b824bc82800b9a8cb3bc7507962d80a5245f0c617e9"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 1199410,
+    "sha256": "965820a13ffdaf2cce3d21a8b269fbe7e4d076bcb283114dd1d80aaef3473f02"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1422963,
+    "sha256": "5adf8579d47af5f10b0a0257286c9b5e812354ebdc1b6f6609c3c8fb41558fc6"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 1337191,
+    "sha256": "87f10113f4faf20c717d24db05170d101436bf03f13bbf20e3fb94da22d93434"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1361649,
+    "sha256": "52991afc653c68faad020ebd60423dc65e6272aa84300d445e8349f0b543d02c"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1104566,
+    "sha256": "f6ae4586f4efae29f3371a84759c216a0e36570114cde39e2f40aac1f05b1b38"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1122287,
+    "sha256": "1472fe1aca9dc502a0c70708e1e277fe71e25a248f94d76efd8e7feecc163192"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_PROVIA_ISLRGB.s3d",
+    "bytes": 1085132,
+    "sha256": "4b98cb9e571db957d9b0f479b58bac5dcf3ff8d154b9aca2b90dcfce134ceee3"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_SEPIA_ISLRGB.s3d",
+    "bytes": 1347841,
+    "sha256": "596f6f633d5f621295341ec8aff8a6c808691aa0c0e48805d177d2dc2fbf33df"
+  },
+  {
+    "file": "ColorModeData/CAM_XT1_VELVIA_ISLRGB.s3d",
+    "bytes": 1116650,
+    "sha256": "9a5fc477d6a8e29a9fdcf5e7afe7da28315d55d1be20bfb6a2048c5962f6434e"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_ACROS_G_FILTER_ISLRGB.s3d",
+    "bytes": 1003034,
+    "sha256": "27f6d61d064b90db3184b1226633f7d3ab6f3817e89879048bf7656432611a87"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_ACROS_ISLRGB.s3d",
+    "bytes": 951807,
+    "sha256": "4f74804dad3652d79f7193742ed39fd28566176077e316def0aa631877fd303d"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_ACROS_R_FILTER_ISLRGB.s3d",
+    "bytes": 1073859,
+    "sha256": "10ec7f6d7308788c74d835ee1f832748cad98c32c7d9a750dfff507bde236352"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_ACROS_YE_FILTER_ISLRGB.s3d",
+    "bytes": 999992,
+    "sha256": "3bc7416341e34a6d5ca24c04da240b90d74671fe34a0c55ae2e8d0e7e139637d"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_ASTIA_ISLRGB.s3d",
+    "bytes": 1048059,
+    "sha256": "ed50a2f89060bb24fe8dd94d297e06b00de77a2fef1f7b3f08fbc51f5db3cb60"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_BW_ISLRGB.s3d",
+    "bytes": 932364,
+    "sha256": "d3c9b8fdd6b0fc4d6f15cbe1a5c31a9bc933c6edcb1658058e055b6472b01d15"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_CLASSIC_CHROME_ISLRGB.s3d",
+    "bytes": 994728,
+    "sha256": "d6f65a9f27b75f3dac11d7b27d8dd1dc0510b845cd49ffebfcd09f184a613efd"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_ETERNA_ISLRGB.s3d",
+    "bytes": 989462,
+    "sha256": "e9f44a092a6df5ed113964b8566d4e72809dd1866906b82acc352212b1c6aafa"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_MONO_G_FILTER_ISLRGB.s3d",
+    "bytes": 1021280,
+    "sha256": "0355556ca7390d0e1e70658932be60762073bffcd3a2d7e9694c2c576b0ac5fe"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_MONO_R_FILTER_ISLRGB.s3d",
+    "bytes": 797426,
+    "sha256": "61e868474c9b70090346f058de15bd3208eee931dd5540d9da21d522dfac309a"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_MONO_YE_FILTER_ISLRGB.s3d",
+    "bytes": 1011164,
+    "sha256": "0491db6200e42ad5e8372c59e2ffd4e9b51e0e7d1b76494c4cb0bd22488d2bb1"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_PRO_NEG_HI_ISLRGB.s3d",
+    "bytes": 1011647,
+    "sha256": "f82c9fe7d43f72257e7d8ec25657cf6b45313e9392869bd0d9e684d47e05eae3"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_PRO_NEG_STD_ISLRGB.s3d",
+    "bytes": 1000847,
+    "sha256": "e9826ae24167ee5f821dff46c904a271ed43b339c63a2c5952c9f11dc00d590a"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_PROVIA_ISLRGB.s3d",
+    "bytes": 1021972,
+    "sha256": "43a1ad268b21b70b2b6724971dc27bcf7cfdacc101fac92887dfe710348f35c6"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_SEPIA_ISLRGB.s3d",
+    "bytes": 936642,
+    "sha256": "20c2d9e827a83f112ea223aa98d1ec535625652a98aa79c1f3c17f4543ba754e"
+  },
+  {
+    "file": "ColorModeData/CAM_XT3_VELVIA_ISLRGB.s3d",
+    "bytes": 1068631,
+    "sha256": "5b746de1769ff09e21d21ecdd61223ed23dad7f7141571d12613ddd7c297ef5a"
+  },
+  {
+    "file": "ColorModeData/CAM_XT4_BLEACH_BYPASS_ISLRGB.s3d",
+    "bytes": 1691757,
+    "sha256": "0032d528edd292ddc30de35da638776f3d75e45f75d3277d3d064422780c4870"
+  },
+  {
+    "file": "ColorModeData/FC2_ISLRGB.s3d",
+    "bytes": 497510,
+    "sha256": "c9f2064f1edc9f714bb50fa0e67e40430b12e193bec75395902faa1a87ff98fd"
+  },
+  {
+    "file": "ColorModeData/FilmMode(A)_ISLRGB.s3d",
+    "bytes": 522628,
+    "sha256": "c159a81686cd5577a838b9c5a7ecae4becbb763e648e7a71908fb06ed3a6111a"
+  },
+  {
+    "file": "ColorModeData/FilmMode(K)_ISLRGB.s3d",
+    "bytes": 587228,
+    "sha256": "997159a10abfa40da437bbe7c1fa8af90ebb638bde5ed53a6c36cf685d630081"
+  },
+  {
+    "file": "ColorModeData/FilmMode(P)_ISLRGB.s3d",
+    "bytes": 522350,
+    "sha256": "79735ff2299230c58eadfc7ed58af303c6697a0fa526784b19a2270e9327583b"
+  },
+  {
+    "file": "ColorModeData/FilmMode(V1)_ISLRGB.s3d",
+    "bytes": 563914,
+    "sha256": "c48d5896cf4059b464a43796ba701473d9ae91459590a0477c273045704d9a29"
+  },
+  {
+    "file": "ColorModeData/FilmMode(V2)_ISLRGB.s3d",
+    "bytes": 530376,
+    "sha256": "cdb40e31c29bf829fa50e0c74cf5180abd2d9cd5c6387fc7635fe7796fdb3fdf"
+  },
+  {
+    "file": "ColorModeData/Index.ini",
+    "bytes": 17806,
+    "sha256": "36a92d5705da014e665177083d08883ac41fad1a98a2227cbbbd882fc290c1de"
+  },
+  {
+    "file": "ColorModeData/SK2_ISLRGB.s3d",
+    "bytes": 425042,
+    "sha256": "78273631644efbfe21b2fbb8eb3372f02e5c236afe3f3b8950ffe57e683942d8"
+  },
+  {
+    "file": "ColorModeData/SKFC1_ISLRGB.s3d",
+    "bytes": 463548,
+    "sha256": "2b94dde19a72888aa95e23bab052f1a723c2e1c21542f6dd072352f5000af3b8"
+  },
+  {
+    "file": "DefaultDevelopPresets/DEV_0000.spq",
+    "bytes": 269880,
+    "sha256": "cd2cded52b675cbbd83164fc55751e89766bc05d438e0d0fe9441d851d361add"
+  },
+  {
+    "file": "DefaultDevelopPresets/DEV_0001.spq",
+    "bytes": 269094,
+    "sha256": "3cfdc944070d9c5e69994680bf05539d69d476c1611f9b3b3b2a5b495cc25bd0"
+  },
+  {
+    "file": "DefaultDevelopPresets/DEV_0002.spq",
+    "bytes": 269652,
+    "sha256": "48db09cb4961c184b1065edf8f7700bc2c9e0eec64a5ef14de482e0c2e7f5eca"
+  },
+  {
+    "file": "DefaultDevelopPresets/DEV_0003.spq",
+    "bytes": 270861,
+    "sha256": "c597928117be93bd37e63bc22f179d451735ed26c9370e672763184cce228570"
+  },
+  {
+    "file": "DefaultDevelopPresets/DEV_0004.spq",
+    "bytes": 299481,
+    "sha256": "108b007e611d5fa89d1aca631efe1eddc7ef24b07225128003dc766f68e7d281"
+  },
+  {
+    "file": "DefaultDevelopPresets/DEV_0005.spq",
+    "bytes": 265928,
+    "sha256": "e6c3851ddf2789748924def1c2480d76c01edfbe3115c96cf0a45db003114b2d"
+  },
+  {
+    "file": "DefaultDevelopPresets/DEV_0006.spq",
+    "bytes": 582156,
+    "sha256": "42ed64c3b32e535544aacc3687a2344d5adfb69ad2a41f89f616fa7020170428"
+  },
+  {
+    "file": "DefaultDevelopPresets/DEV_0007.spq",
+    "bytes": 582747,
+    "sha256": "6c1c49e4f7f87a1b3efbc2df2fb5196a40133b8306b1edab4a986c89bb476b7d"
+  },
+  {
+    "file": "DefaultDevelopPresets/DEV_0008.spq",
+    "bytes": 649808,
+    "sha256": "ffc2f2cc585c02dc343a615dc26096fa2f757b763e349c8747c91a10a5384e7f"
+  },
+  {
+    "file": "DefaultDevelopPresets/DEV_0009.spq",
+    "bytes": 403643,
+    "sha256": "adfe3755db3e5a24059e165b9d081e40a117584d818ca7e24af703b7ce625cfa"
+  },
+  {
+    "file": "DefaultPresets/JPT_ALL000.ST6",
+    "bytes": 2276,
+    "sha256": "0d8610604d50f8d7a2ff47075029dae0586d29f4fbad2a91b168d3d51c746cf2"
+  },
+  {
+    "file": "DefaultPresets/JPT_ALL001.ST6",
+    "bytes": 1211,
+    "sha256": "c41152b293180bc981bae662ae766148c94d7ef45c959d8647ae6743035855bd"
+  },
+  {
+    "file": "DefaultPresets/JPT_ALL002.ST6",
+    "bytes": 1599,
+    "sha256": "f2bea5630ee365e4f02a49465a678dda4bbfc10be25a6a081533ee23da922c81"
+  },
+  {
+    "file": "DefaultPresets/JPT_ALL003.ST6",
+    "bytes": 298,
+    "sha256": "8ee578491600d2ec1ecc9d8880b3dee891c1dbaea89e075cf7d87dd48e439607"
+  },
+  {
+    "file": "DefaultPresets/JPT_ALL004.ST6",
+    "bytes": 1569,
+    "sha256": "cdc08699838d96e3110a5eef9a01818676e19f4b7f0e2d124563f408a252432e"
+  },
+  {
+    "file": "DefaultPresets/JPT_ALL005.ST6",
+    "bytes": 1536,
+    "sha256": "254ff85c360fcf8dfa7c22ebe53b902bf336b662ac65ce561a46cf33bb2d006b"
+  },
+  {
+    "file": "DefaultPresets/JPT_ALL006.ST6",
+    "bytes": 466,
+    "sha256": "acd5ace7239ce91497b2f0806716911b6dcfbda49657b4ab7c9cfc62dec62686"
+  },
+  {
+    "file": "DefaultPresets/JPT_ALL007.ST6",
+    "bytes": 1253,
+    "sha256": "02e9560a0f0dac511da0878cbe9258903521514360276cc5a980bdcffdfe7d2c"
+  },
+  {
+    "file": "DefaultPresets/JPT_ALL008.ST6",
+    "bytes": 1909,
+    "sha256": "1b6c702a63ae2d20ce70746a7ce60f70468f3b7140c328b8fcb8bb4e187bcd67"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR000.ST6",
+    "bytes": 253,
+    "sha256": "18e42a4bf8382d5a5244efcb1bbef1d005734401edd06d8b8cabb3ffd95f2bb2"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR001.ST6",
+    "bytes": 248,
+    "sha256": "ef574eea218bcc92245302c9174af0ddc4df8ed1972b146b3d7e688880643984"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR002.ST6",
+    "bytes": 251,
+    "sha256": "123883940aae40916ab478ef2088848f258dc17bba49be11396c87c85dfa82ae"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR003.ST6",
+    "bytes": 248,
+    "sha256": "a3297e54cefa0212eac1e5834e9755e008e1c7a804240ea21cdb39bbfc5caf56"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR004.ST6",
+    "bytes": 251,
+    "sha256": "ea9c678c2d7532198521a1c18c31938ea04b83f64ed6096009d0dfdc51a3d06f"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR005.ST6",
+    "bytes": 251,
+    "sha256": "3bc11910eb1166a655f6b0c9d4239d4ec8b8555684bcc5778c6a20893598916e"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR006.ST6",
+    "bytes": 252,
+    "sha256": "314d9b8d2d21291b836fd7eb7e9e29139d68dcb2e214ee61e43107d99837ef52"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR007.ST6",
+    "bytes": 252,
+    "sha256": "cf1e9362f0dc8eaa43fb4e9126a4ab1c6daf6845739cb38a541df870550dea64"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR008.ST6",
+    "bytes": 251,
+    "sha256": "a528369390e2b76941df84591cdd96ee176f8395d0cc348de32e5815d5a6955e"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR009.ST6",
+    "bytes": 251,
+    "sha256": "fcfd11bf21a51a2af5d8fe5393b5de4c4cfd31111beca1d462edf120766d0576"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR010.ST6",
+    "bytes": 251,
+    "sha256": "785320ee2e20fd8d479d071ad8ce6cdd6d858b591f35d2bd50fe65bc01a4874d"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR011.ST6",
+    "bytes": 236,
+    "sha256": "4a00c8efd635d35a8db876ee334b15e3029ac8e41d4633d445dcc1648f4016e6"
+  },
+  {
+    "file": "DefaultPresets/JPT_COLOR012.ST6",
+    "bytes": 237,
+    "sha256": "c9d689a3e31ad32d4d96664779826a01e6793a58558c1b9fdf4376aa05dde0e2"
+  },
+  {
+    "file": "DefaultPresets/JPT_SHARP000.ST6",
+    "bytes": 482,
+    "sha256": "39f2db215b27916f03ff82d0f432810cc0393ff923502f23090cfca8bf7edec3"
+  },
+  {
+    "file": "DefaultPresets/JPT_SHARP001.ST6",
+    "bytes": 486,
+    "sha256": "ba3bf3408ab49397054d06616cfb62576ae3f18e50d6fa3343a1a488509db72d"
+  },
+  {
+    "file": "DefaultPresets/JPT_SHARP002.ST6",
+    "bytes": 487,
+    "sha256": "9ef5f05aac36059d8b855d1c2fd0f7eda965a6db6bf091a40726009ff608c9a6"
+  },
+  {
+    "file": "DefaultPresets/JPT_SHARP003.ST6",
+    "bytes": 485,
+    "sha256": "13fabc66460f113c8ce3c175b936999b1b4f0325955d65529dc464f00a9a012c"
+  },
+  {
+    "file": "DefaultPresets/JPT_SHARP004.ST6",
+    "bytes": 486,
+    "sha256": "5a80a52cb3bc917d8916307242d7c70783b802d39353a2594e1a4668c81ee804"
+  },
+  {
+    "file": "DefaultPresets/JPT_SHARP005.ST6",
+    "bytes": 493,
+    "sha256": "2897a20f21292c441da1bbb49cdaffd7b982584749f31450b97e84fb79a3d6c8"
+  },
+  {
+    "file": "DefaultPresets/JPT_SHARP006.ST6",
+    "bytes": 493,
+    "sha256": "58fc04d74a7f88e44e80825705cb8b402d9f20e3717f0fed4d56370bdfbb16ab"
+  },
+  {
+    "file": "DefaultPresets/JPT_TC000.ST6",
+    "bytes": 657,
+    "sha256": "408850aced4a02520645175398143b9fd1f7f2a0a769e84d3b7aa8c3c7e6edc9"
+  },
+  {
+    "file": "DefaultPresets/JPT_TC001.ST6",
+    "bytes": 658,
+    "sha256": "b4e0397721eaf02c0dc9efe48e6c9529f47b342d0844b8172462d2079dfed148"
+  },
+  {
+    "file": "DefaultPresets/RPT_ALL000.ST6",
+    "bytes": 2227,
+    "sha256": "150fd2db37fba4c84bbd5c9afca2f6ed19c211ed25691eef904e3d4e7f886559"
+  },
+  {
+    "file": "DefaultPresets/RPT_ALL001.ST6",
+    "bytes": 2304,
+    "sha256": "dc2ad50e80bf36c879555f05f5fa08005e09210bb6632583c0aa00a5a9b9f1d5"
+  },
+  {
+    "file": "DefaultPresets/RPT_ALL002.ST6",
+    "bytes": 1162,
+    "sha256": "9aeacda314786963e0637c6060095bfd14a80b83c5044c737323779b269f7c0c"
+  },
+  {
+    "file": "DefaultPresets/RPT_ALL003.ST6",
+    "bytes": 1555,
+    "sha256": "b5f439e321c84f7e3fe6294e684a1baf48bcc593e8b9cc0e676805f64340d8be"
+  },
+  {
+    "file": "DefaultPresets/RPT_ALL004.ST6",
+    "bytes": 290,
+    "sha256": "58c2e97eb110cb2ab9e227d73fa231f3f96341f8085b18fa677de431a6d58a37"
+  },
+  {
+    "file": "DefaultPresets/RPT_ALL005.ST6",
+    "bytes": 1573,
+    "sha256": "dcf5cce824bb7594c24156b92bf851465bb179c1c83277618621a9fce980761d"
+  },
+  {
+    "file": "DefaultPresets/RPT_ALL006.ST6",
+    "bytes": 1524,
+    "sha256": "bdfdf23aaea82b4681d81fabe60197b294ede8523d13e0d9d2ac49d1e2740cc1"
+  },
+  {
+    "file": "DefaultPresets/RPT_ALL007.ST6",
+    "bytes": 564,
+    "sha256": "39073da23967d3351a5fd2ef9a0ca90719f8def60af98b3d24d6c112aa17377d"
+  },
+  {
+    "file": "DefaultPresets/RPT_ALL008.ST6",
+    "bytes": 1222,
+    "sha256": "87470027d7ea107082af9fa10a551210b48117155b3eccddaab7ef3e99485b90"
+  },
+  {
+    "file": "DefaultPresets/RPT_ALL009.ST6",
+    "bytes": 1959,
+    "sha256": "a7f541ca431cfe13a704645ea3ffbbe02e347c9400ecec669d73d40266170ecd"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR000.ST6",
+    "bytes": 221,
+    "sha256": "28be08dabae3e9fe3d83e9e27af811368cae7b84ced7be4e41bffc25c28121b4"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR001.ST6",
+    "bytes": 216,
+    "sha256": "4c58f8a37043b4c89741db7020f7d5562fa18c0888b3aa448e4921fefcf60843"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR002.ST6",
+    "bytes": 219,
+    "sha256": "0a924a6ae8c10207bf78393f89bfd86172aa5ea7c4132b2c500b6fab4f8e955e"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR003.ST6",
+    "bytes": 216,
+    "sha256": "c592081b8a5122ecc66ea1fcbf274f283e6c77103d240dafde73211f29c39ec4"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR004.ST6",
+    "bytes": 219,
+    "sha256": "2987e1da1103f0731369292aa7de49c2b9d655fa95ed05e0644b94e18f5e7044"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR005.ST6",
+    "bytes": 219,
+    "sha256": "2acf366fca15cfedd259c79bd6d7632fbdd60eb86389ec98b449ce2b1f17d2e3"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR006.ST6",
+    "bytes": 220,
+    "sha256": "9656c3268798f23a185bedf3cc7b2cfb476720115a75bfa754fd4a6b8ced2914"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR007.ST6",
+    "bytes": 220,
+    "sha256": "53c50f043b2fcd97b6f9ff5e0f2f5eca9295272413e6a623b5aa269c44070d62"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR008.ST6",
+    "bytes": 219,
+    "sha256": "971c15f2db924d2ab32163f4e6e298903b51c23ef7a7dcdcfef295b9e7e2ac73"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR009.ST6",
+    "bytes": 219,
+    "sha256": "d89e02ad8cebc67cd8916d44cd1da053b82e79471a2e36cb72de55a342f33938"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR010.ST6",
+    "bytes": 219,
+    "sha256": "9d50ed828aedf30466c0d75387f33d1ae5fee19fe547e135650a29186746042f"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR011.ST6",
+    "bytes": 222,
+    "sha256": "0127d63102ccedba51baf78e4231b57bbb247d58e55403d9c6de2c05a40a6d8b"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR012.ST6",
+    "bytes": 217,
+    "sha256": "63a067f77e20bd71f5aa0fc5b21cff2fb8239ee4b02b4cab9fb7ddceb931d419"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR013.ST6",
+    "bytes": 214,
+    "sha256": "2b3e18b3223c0d25aaf4690de8bdf9dab168f34de5af0638a07e5f0903425275"
+  },
+  {
+    "file": "DefaultPresets/RPT_COLOR014.ST6",
+    "bytes": 361,
+    "sha256": "799626978d85f795bb74757cfb3c278144dd6862f80cbaa7738935815703ba01"
+  },
+  {
+    "file": "DefaultPresets/RPT_FCC000.ST6",
+    "bytes": 397,
+    "sha256": "e3a395a4e01efe3ecfba96e2f8f4d6765f1aee97446996d3d73561802995ceac"
+  },
+  {
+    "file": "DefaultPresets/RPT_FCC001.ST6",
+    "bytes": 384,
+    "sha256": "5e2dbe096dcd258ef99c574f538b4a7f8259fbb7cc10bcc862a517b167e85ee6"
+  },
+  {
+    "file": "DefaultPresets/RPT_FCC002.ST6",
+    "bytes": 385,
+    "sha256": "5d2fbec1ea5e232edf9a252dea73eb3750db9ed3a6de80c04193516c94a8f893"
+  },
+  {
+    "file": "DefaultPresets/RPT_FCC003.ST6",
+    "bytes": 357,
+    "sha256": "f7e87f067fdfc0578d67a59df1ae4aaf12a917f33e12444da111344238eaf47d"
+  },
+  {
+    "file": "DefaultPresets/RPT_HIGHLIGHT000.ST6",
+    "bytes": 203,
+    "sha256": "b0e21b4e18305f2240d67fd877cd7de72afa089a59e40dc208541529802bbeee"
+  },
+  {
+    "file": "DefaultPresets/RPT_HIGHLIGHT001.ST6",
+    "bytes": 204,
+    "sha256": "36d6e5b4e5d082d56d7c404037d5025ebca638f54dfdf2606561610b05a35aee"
+  },
+  {
+    "file": "DefaultPresets/RPT_HIGHLIGHT002.ST6",
+    "bytes": 202,
+    "sha256": "7032733d33df1d933e3937904156e3f06e85c6679304411cc97d8b893777316c"
+  },
+  {
+    "file": "DefaultPresets/RPT_HIGHLIGHT003.ST6",
+    "bytes": 205,
+    "sha256": "3725a146da01e845afb0418a80437c4c03e1add584149a33ac47967248eb20a6"
+  },
+  {
+    "file": "DefaultPresets/RPT_SHARP_NR000.ST6",
+    "bytes": 366,
+    "sha256": "ae86527c2fbd53c213add8e35a118bc55a3d29ab21d06c07b5d2920b5fbbbdce"
+  },
+  {
+    "file": "DefaultPresets/RPT_TC000.ST6",
+    "bytes": 636,
+    "sha256": "f934429e7cf4a6a298766dcb1be266ad229be27f582ac171a2932ebea12c49b1"
+  },
+  {
+    "file": "DefaultPresets/RPT_TC001.ST6",
+    "bytes": 637,
+    "sha256": "be60b82017631ac84c322ee37b528be63c45ba8c1cb7d264096dd534ae629717"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE000.ST6",
+    "bytes": 221,
+    "sha256": "48f5ab2ab20c1c9c47fe281ee8b80de56c5c27f24d9ecb5e64867197ddc8910a"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE001.ST6",
+    "bytes": 221,
+    "sha256": "dfe1173dd327fc8cd3f2a03c6d2158e3ef23e5df9950d653e1c93d24731201c3"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE002.ST6",
+    "bytes": 221,
+    "sha256": "1063804b255d5cde58245762c8e15533f54159c1336997c0d98445b514fb86b3"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE003.ST6",
+    "bytes": 221,
+    "sha256": "afa1b7492c95db58b26d2aa3e8420cd5f405bdd947e1c32d07cbbd3a58279a8e"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE004.ST6",
+    "bytes": 221,
+    "sha256": "58345eeae85fe741a68b8ccb9889ac99e4686dcc38467620950620df2b80d3b3"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE005.ST6",
+    "bytes": 221,
+    "sha256": "11eed486dcc5f38860e4848f2569d74d961eca077fe92ee8a2dcbb492834f32d"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE006.ST6",
+    "bytes": 222,
+    "sha256": "b622cab2cb4e1827afd2d2da79e834ed690e467faa0ef1540f6f7933d0035adf"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE007.ST6",
+    "bytes": 222,
+    "sha256": "a5a024c63c0f5411b25daf2412d1d6ac99e928473ceceb500d35ee7078bf949f"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE008.ST6",
+    "bytes": 222,
+    "sha256": "eb9bbae047ad916849857a60bff7bccec94e8c7e4da6f203da67d16f90f53cf3"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE009.ST6",
+    "bytes": 222,
+    "sha256": "2c81ff28c3667d0e37268ad3f98ca77eea311039d7df499e01d50445fa3b8146"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE010.ST6",
+    "bytes": 222,
+    "sha256": "d60712524966852f782960fc79958f666b830991bf19dd1c6ff0bc6ba1d88ff3"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE011.ST6",
+    "bytes": 221,
+    "sha256": "e296fa30611922cebe4c9009360cc8f4dbba5af7bb4edc656381fcb04070d48a"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE012.ST6",
+    "bytes": 248,
+    "sha256": "edfc5d34e2a13cf795acce853cd8bf8ad1b3bef1807fc86a7fe345afe8aa0f08"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE013.ST6",
+    "bytes": 248,
+    "sha256": "912240757617b5ee138943fae5e0fc2cb0b8f3fd127619b6423ef36929f06330"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE014.ST6",
+    "bytes": 248,
+    "sha256": "cd200ba813e606404b7acf24cdd24cc927add8c88d9279216b3c36747c63cd4d"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE015.ST6",
+    "bytes": 248,
+    "sha256": "89064ff0ef1d97b300977aa78ab8237484bff5acf64e7294e307fd3c7c26ba6d"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE016.ST6",
+    "bytes": 248,
+    "sha256": "2b7a6c1d219fa23f371ff60991da8f136b42ed3b480d55af7ba17b465ade9913"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE017.ST6",
+    "bytes": 248,
+    "sha256": "4ae9bab1ac382a04426b7b36d7fb761398eeef8a20a787e9c682c700649276fd"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE018.ST6",
+    "bytes": 248,
+    "sha256": "81ee27eff1568e4cf7b0e6eeb03e4fae2a6157d1f01c4c273ef0e892e2afef06"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE019.ST6",
+    "bytes": 221,
+    "sha256": "d75d23d3c963394108f4f5450907a02825029a139bad571ea80e06d1c9261e7f"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE020.ST6",
+    "bytes": 221,
+    "sha256": "c5906adcb581c0c13e6ef4c63913d5c39a31f0362a24f882f942eaa7d4b078df"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE021.ST6",
+    "bytes": 221,
+    "sha256": "3a67451efe72c59550b0dd5c5aaaaf3af23c1e839cc9d1b13135d060383e24c3"
+  },
+  {
+    "file": "DefaultPresets/RPT_WHITEBALANCE022.ST6",
+    "bytes": 221,
+    "sha256": "a99160a6deb07601ceaebab587373a651297f4fffa581cc3dcd5fa3877c4dbe5"
+  },
+  {
+    "file": "DefaultPresets/TasteIdx.ini",
+    "bytes": 2482,
+    "sha256": "be2703acc704ec5bc5939ca62d41d491324c89169f9ab80c15551f536603e8dd"
+  },
+  {
+    "file": "ICCProfiles/ISL-ARGB1998.icc",
+    "bytes": 588,
+    "sha256": "ac1bcf9aa29b4459f33919e07fdd584b70781a5b4205898e8eb99117dcebc34a"
+  },
+  {
+    "file": "ICCProfiles/ISL-sRGB.icc",
+    "bytes": 3140,
+    "sha256": "5ac017f2137114bc2fdb7046371c33725ea6b3829096a084b90f5aea47323ee9"
+  },
+  {
+    "file": "Library/DefaultLensInfo.spd",
+    "bytes": 118691,
+    "sha256": "e17bc8dc11decf87473cc8dff3f4c94b890a787b3d58d5050692f4ab3d5c00fe"
+  },
+  {
+    "file": "Library/DefaultLensInfo.spx",
+    "bytes": 970,
+    "sha256": "3485af5f5f032b423acc4906d246a295c7fdce14c449b1415661423232c26c45"
+  },
+  {
+    "file": "Library/DefaultParameters.spd",
+    "bytes": 21536188,
+    "sha256": "1d4d08fbdb69e3cf98f39f167f4a1ff6259d56d6008dc0da0010d6d5d1963384"
+  },
+  {
+    "file": "Library/DefaultParameters.spx",
+    "bytes": 12534,
+    "sha256": "3661055646f35a91e11cec0b7c4ab20a985db5814172128d8d9920cda2f7620d"
+  },
+  {
+    "file": "Library/SILKYPIX64.dll",
+    "bytes": 29456112,
+    "sha256": "afdac23b0107aed6e5454af7c810a9d4363ac4e3e99df1b14f9d5825cdf28ad8"
+  },
+  {
+    "file": "Library/SILKYPIX64avx.dll",
+    "bytes": 30086384,
+    "sha256": "7cd5c71347b2177d00616389f053dde8e95b79c1c701183e9cba1840e1b16ac5"
+  },
+  {
+    "file": "Library/x64/IslEPIPEC.dll",
+    "bytes": 187392,
+    "sha256": "63fd6136d17f9f53f00fe0ac707779dc7cf6a15cc3b1953427e7981bfe0fe3fa"
+  },
+  {
+    "file": "Library/x64/IslXSdkXMPDLL.dll",
+    "bytes": 2953728,
+    "sha256": "a6b8dac362c812ced32d08fe13a944ac1ae49dac6b1f30c1f52e0bef51de6db8"
+  },
+  {
+    "file": "Library/x64/TMCNLLDec.dll",
+    "bytes": 102912,
+    "sha256": "3d50ddf96cbefbd8716817af92a441eb2509dbf4a4a21b5942d6e2a5fb8c30d4"
+  }
+]

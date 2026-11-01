@@ -14,6 +14,17 @@ film-simulation configurations. They are not unused application assets.
 browser: PIR030RAF RAW reader and its companion imaging libraries.
 Legacy Microsoft runtime DLLs are included where required by these components.
 
+RFCEX: RAW FILE CONVERTER EX 3.0 powered by SILKYPIX, extracted from the
+locally installed SILKYPIX Developer Studio 8.0 RFCEX. SILKYPIX64.dll is
+version 8.1.20.0, Adwaa Co.,Ltd. The worker uses this exact private ABI;
+replacing the DLL with another version is not supported.
+SHA256: afdac23b0107aed6e5454af7c810a9d4363ac4e3e99df1b14f9d5825cdf28ad8
+Source: https://www.fujifilm-x.com/en-us/products/software/raw-file-converter-ex-powered-by-silkypix/
+The bundled subset contains development libraries, camera/color/lens data,
+ICC profiles and settings. It does not include the official GUI executable.
+extract-rfcex.ps1 reproduces extraction and generates a per-file manifest.
+SILKYPIX and its resources remain subject to their owners' license terms.
+
 All third-party files retain their respective owners' rights and license terms.
 The project's MIT license does not cover these files or grant redistribution
 rights for them. This project is not affiliated with or endorsed by Fujifilm.

@@ -17,12 +17,12 @@ namespace S5Raw {
   sealed class Options {
    public List<string> Inputs=new List<string>();
    public string Output,OutputDir,TempDir,EngineDir,Existing="error";
-   public bool Recursive;
+   public bool Recursive,ExplicitColor;
    public int Timeout=180, Bits=8, Quality=92, Jobs=Environment.ProcessorCount;
    public string Format,JobList;
    public string ColorSpace="srgb",Film="standard";
   }
-  sealed class Job {public string Input,Relative,Output;}
+  sealed class Job {public string Input,Relative,Output,Film,ColorSpace,Backend,Engine;public bool ExplicitColor;}
   sealed class UserError:Exception {public int Code;public UserError(string s,int c):base(s){Code=c;}}
   [STAThread] static int Main(string[] args) {
    Console.OutputEncoding=new UTF8Encoding(false);
@@ -41,7 +41,7 @@ namespace S5Raw {
    }catch(UserError e){Emit(new {type="error",code=e.Code,message=e.Message},e.Message);return e.Code;}
    catch(Exception e){Emit(new {type="error",code=5,message=e.Message},e.Message);return 5;}
   }
-  static void Help(){Console.WriteLine(@"Fuji S3/S5 Pro RAW Converter 1.6.2 — FUJIFILM 原厂 RAW 转换命令行
+  static void Help(){Console.WriteLine(@"Fuji S3/S5 Pro RAW Converter 1.7.2 — FUJIFILM 原厂 RAW 转换命令行
 
 s5raw convert -i photo.RAF -o photo.tif --bits 16
 s5raw convert -i folder --output-dir output --recursive --json
@@ -54,10 +54,12 @@ s5raw doctor --json
 选项：--format tiff|jpeg       默认 TIFF；单文件也可由 .jpg 扩展名识别
       --quality 1–100          JPEG 质量，默认 92，全尺寸 sRGB
       --jobs / -j 数量         并行数，默认 CPU 可用逻辑核心数
-      --job-list 文件          JSON 数组，每项含 input、relative（用于选片批次）
+      --job-list 文件          JSON 数组，每项含 input、relative，可单独指定 film、colorSpace
       --bits 8|16              默认 8；16 为原厂原生 16 位/通道
       --color-space srgb|adobe-rgb  16 位或胶片模拟 TIFF 的输出空间，默认 srgb
-      --film standard|f1|f1a|f1b|f1c|f2  原厂胶片模拟，默认 standard
+      --film 模式名           旧机型：standard/f1/f1a/f1b/f1c/f2
+                              X-T50：standard/provia/velvia/astia/classic-chrome/
+                              reala-ace/acros/mono 等；用 info 查看完整列表
       --recursive / -r
       --existing error|skip|rename|overwrite  （默认 error）
       --json                   stdout 输出 UTF-8 JSON Lines 事件
@@ -89,7 +91,7 @@ preview 仅提取内嵌 JPEG。Ctrl+C 可取消，原始 RAF 始终只读。
      case "--jobs":case "-j":if(!int.TryParse(v,out o.Jobs)||o.Jobs<1)throw new UserError("jobs 必须为正整数",2);break;
      case "--job-list":o.JobList=Path.GetFullPath(v);break;
      case "--bits":if(!int.TryParse(v,out o.Bits)||(o.Bits!=8&&o.Bits!=16))throw new UserError("bits 必须为 8 或 16",2);break;
-     case "--color-space":o.ColorSpace=v;break;
+     case "--color-space":o.ColorSpace=v;o.ExplicitColor=true;break;
      case "--film":o.Film=v.ToLowerInvariant();break;
      case "--timeout":if(!int.TryParse(v,out o.Timeout)||o.Timeout<1||o.Timeout>86400)throw new UserError("timeout 必须为 1–86400 秒",2);break;
      case "--cancel-file":cancelFile=Path.GetFullPath(v);break;
@@ -99,19 +101,19 @@ preview 仅提取内嵌 JPEG。Ctrl+C 可取消，原始 RAF 始终只读。
    if(!new[]{"error","skip","rename","overwrite"}.Contains(o.Existing))throw new UserError("无效 existing 策略",2);
    if(o.Format==null)o.Format=o.Output!=null&&new[]{".jpg",".jpeg"}.Contains(Path.GetExtension(o.Output).ToLowerInvariant())?"jpeg":"tiff";
    if(o.Format!="tiff"&&o.Format!="jpeg")throw new UserError("format 必须为 tiff 或 jpeg",2);
-   if(!FilmSimulation.Keys.Contains(o.Film))throw new UserError("film 必须为 standard、f1、f1a、f1b、f1c 或 f2",2);
+   if(!FilmSimulation.Keys.Concat(RfcEx.Keys).Contains(o.Film))throw new UserError("不支持此胶片名称；请用 info 查看该相机可用模式",2);
    if(o.Format=="jpeg"&&o.ColorSpace!="srgb")throw new UserError("JPEG 输出使用 sRGB；Adobe RGB 请选 TIFF",2);
    if(o.ColorSpace!="srgb"&&o.ColorSpace!="adobe-rgb")throw new UserError("color-space 必须为 srgb 或 adobe-rgb",2);
-   if(o.Format=="tiff"&&o.Bits==8&&o.Film=="standard"&&Array.IndexOf(args,"--color-space")>=0)throw new UserError("标准 8 位 TIFF 使用 LE 相机色彩空间；指定色彩空间请选 16 位或胶片模拟",2);
    if(o.Output!=null&&o.OutputDir!=null)throw new UserError("-o 与 --output-dir 不能同时使用",2);
    return o;
   }
   static void Emit(object value,string human){if(json)Console.WriteLine(Shared.Json(value));else if(human!=null)Console.Error.WriteLine(human);}
   static bool Cancelled(){return cancelled||(cancelFile!=null&&File.Exists(cancelFile));}
   static string Hash(string file){using(var f=File.OpenRead(file))using(var h=SHA256.Create())return BitConverter.ToString(h.ComputeHash(f)).Replace("-","").ToLowerInvariant();}
-  static string VerifyEngine(Options o){
-   string dir=o.EngineDir??(o.Film=="standard"?RafHeader.EngineDirectory:FilmSimulation.EngineDirectory);
-   if(!Directory.Exists(dir)||(o.Film=="standard"&&!File.Exists(Path.Combine(dir,"RAFCNVX.dll"))))throw new UserError("缺少原厂内核："+dir,4);
+  static string VerifyEngine(Options o,string film=null){
+   film=film??o.Film;
+   string dir=o.EngineDir??(film=="standard"?RafHeader.EngineDirectory:FilmSimulation.EngineDirectory);
+   if(!Directory.Exists(dir)||(film=="standard"&&!File.Exists(Path.Combine(dir,"RAFCNVX.dll"))))throw new UserError("缺少原厂内核："+dir,4);
    return dir;
   }
   static void CheckManifest(string dir){
@@ -123,13 +125,17 @@ preview 仅提取内嵌 JPEG。Ctrl+C 可取消，原始 RAF 始终只读。
    foreach(var f in Directory.GetFiles(dir,"*.dll"))if(!allowed.Contains(Path.GetFileName(f)))throw new UserError("内核目录存在清单外 DLL："+Path.GetFileName(f),4);
    if(!allowed.Contains("RAFCNVX.dll"))throw new UserError("缺少 RAFCNVX.dll",4);
   }
-  static int Doctor(Options o){string dir=VerifyEngine(o);CheckManifest(dir);Emit(new {type="doctor",ok=true,version=Shared.Version,engine=dir,processBits=IntPtr.Size*8,formats=new[]{"tiff8","tiff16","jpeg"},cleanMachineValidated=false},"内核检查通过。支持原厂 8 位及原生 16 位 TIFF；32 位工作进程。尚未进行全新 Windows 系统验证。");return 0;}
+  static int Doctor(Options o){
+   string dir=VerifyEngine(o);CheckManifest(dir);RfcEx.Verify(RfcEx.EngineDirectory);
+   if(!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"s5raw-rfcex.exe")))throw new UserError("缺少 RFC EX 工作进程",4);
+   Emit(new {type="doctor",ok=true,version=Shared.Version,engine=dir,rfcex=RfcEx.EngineDirectory,rfcexAvailable=Environment.Is64BitOperatingSystem,processBits=IntPtr.Size*8,formats=new[]{"tiff8","tiff16","jpeg"},cleanMachineValidated=false},"内核检查通过。旧机型使用 32 位内核，RFC EX 使用 64 位内核。尚未进行全新 Windows 系统验证。");return 0;
+  }
   static uint BE(byte[] b,int n){return ((uint)b[n]<<24)|((uint)b[n+1]<<16)|((uint)b[n+2]<<8)|b[n+3];}
   static Dictionary<string,object> ReadRaf(string file,string engine=null){
    try{return RafHeader.Read(file,engine);}catch(IOException e){throw new UserError(e.Message+"："+file,3);}
   }
   static string Single(Options o){if(o.Inputs.Count!=1||Directory.Exists(o.Inputs[0]))throw new UserError("此命令需要一个 -i 文件",2);return o.Inputs[0];}
-  static int Info(Options o){var r=ReadRaf(Single(o),o.EngineDir);r["type"]="info";if((bool)r["supported"])r["filmSimulations"]=FilmSimulation.Available(o.EngineDir??FilmSimulation.EngineDirectory,(string)r["nativeModule"],o.ColorSpace);if(json)Console.WriteLine(Shared.Json(r));else foreach(var kv in r)Console.WriteLine(kv.Key+": "+kv.Value);return 0;}
+  static int Info(Options o){var r=ReadRaf(Single(o),o.EngineDir);r["type"]="info";if((bool)r["supported"])r["filmSimulations"]=(string)r["backend"]=="rfcex"?RfcEx.Films((string)r["model"]):FilmSimulation.Available(o.EngineDir??FilmSimulation.EngineDirectory,(string)r["nativeModule"],o.ColorSpace);if(json)Console.WriteLine(Shared.Json(r));else foreach(var kv in r)Console.WriteLine(kv.Key+": "+kv.Value);return 0;}
   static string SelectTarget(string requested,string policy,HashSet<string> reserved){
    if(Directory.Exists(requested))throw new IOException("输出路径是文件夹："+requested);
    bool exists=File.Exists(requested)||(reserved!=null&&reserved.Contains(requested));
@@ -176,8 +182,17 @@ preview 仅提取内嵌 JPEG。Ctrl+C 可取消，原始 RAF 始终只读。
     foreach(var row in rows){string input=Path.GetFullPath(row["input"]),relative=row.ContainsKey("relative")?row["relative"]:Path.GetFileName(input);
      if(Path.IsPathRooted(relative)||relative.Split('\\','/').Contains(".."))throw new UserError("job-list 的 relative 必须为输出目录内的相对路径",2);
      if(!File.Exists(input))throw new UserError("输入不存在："+input,3);
-     if(seen.Add(input))jobs.Add(new Job{Input=input,Relative=relative});
+     if(seen.Add(input))jobs.Add(new Job{Input=input,Relative=relative,
+      Film=row.ContainsKey("film")&&row["film"]!=null?row["film"].ToLowerInvariant():null,
+      ColorSpace=row.ContainsKey("colorSpace")?row["colorSpace"]:null,
+      ExplicitColor=row.ContainsKey("colorSpace")&&row["colorSpace"]!=null});
     }
+   }
+   foreach(var j in jobs){
+    j.Film=j.Film??o.Film;j.ColorSpace=j.ColorSpace??o.ColorSpace;j.ExplicitColor=j.ExplicitColor||o.ExplicitColor;
+    if(!FilmSimulation.Keys.Concat(RfcEx.Keys).Contains(j.Film))throw new UserError("job-list 中的胶片名称无效："+j.Film,2);
+    if(j.ColorSpace!="srgb"&&j.ColorSpace!="adobe-rgb")throw new UserError("job-list 中的 colorSpace 无效",2);
+    if(o.Format=="jpeg"&&j.ColorSpace!="srgb")throw new UserError("JPEG 输出使用 sRGB",2);
    }
    if(jobs.Count==0)throw new UserError("没有找到 RAF 文件",3);
    if(o.Output!=null&&jobs.Count!=1)throw new UserError("多个输入请使用 --output-dir",2);
@@ -185,33 +200,45 @@ preview 仅提取内嵌 JPEG。Ctrl+C 可取消，原始 RAF 始终只读。
    return jobs;
   }
   static int Batch(Options o){
-   var jobs=Plan(o);string engine=VerifyEngine(o);
+   var jobs=Plan(o);
+   foreach(var j in jobs){try{j.Backend=(string)RafHeader.Read(j.Input,o.EngineDir)["backend"];}catch(IOException){}
+    if(j.Backend=="rafcnv")j.Engine=VerifyEngine(o,j.Film);
+   }
+   bool hasModern=jobs.Any(j=>j.Backend=="rfcex");if(hasModern)RfcEx.Verify(RfcEx.EngineDirectory);
+   var engineDirs=new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase);
    string parent=o.TempDir??Path.GetTempPath();Directory.CreateDirectory(parent);
    string work=Path.Combine(parent,"s5raw-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(work);
    int completed=0,failed=0,skipped=0,next=-1;var used=new HashSet<string>(StringComparer.OrdinalIgnoreCase);
    try{
-    string nativeWork=Shared.NativePath(work),eDir=Path.Combine(nativeWork,"engine");Directory.CreateDirectory(eDir);
-    // A private copy makes all dynamically loaded model libraries local and keeps ANSI paths short.
-    foreach(var file in Directory.GetFiles(engine))File.Copy(file,Path.Combine(eDir,Path.GetFileName(file)));
-    int lanes=Math.Min(o.Jobs,jobs.Count);
+    string nativeWork=Shared.NativePath(work);
+    // A batch can contain different legacy films as well as RFC EX files.
+    foreach(string source in jobs.Where(j=>j.Engine!=null).Select(j=>j.Engine).Distinct(StringComparer.OrdinalIgnoreCase)){
+     string dest=Path.Combine(nativeWork,"engine"+engineDirs.Count);Directory.CreateDirectory(dest);
+     foreach(var file in Directory.GetFiles(source))File.Copy(file,Path.Combine(dest,Path.GetFileName(file)));
+     engineDirs.Add(source,dest);
+    }
+    int lanes=Math.Min(o.Jobs,jobs.Count);if(hasModern)lanes=Math.Min(lanes,2);
     Emit(new {type="batch_started",total=jobs.Count,parallel=lanes,version=Shared.Version},"开始转换 "+jobs.Count+" 个文件");
     var threads=new List<Thread>();
     for(int lane=0;lane<lanes;lane++){var thread=new Thread(delegate(){while(!Cancelled()){
      int i=Interlocked.Increment(ref next);if(i>=jobs.Count)break;Job j=jobs[i];string actual=null;
      try{
-      var info=ReadRaf(j.Input,engine);if(!(bool)info["supported"])throw new IOException("当前原厂内核不支持："+info["model"]+"（"+info["processorCode"]+"）");
+      var info=ReadRaf(j.Input,o.EngineDir);if(!(bool)info["supported"])throw new IOException("当前原厂内核不支持："+info["model"]+"（"+info["processorCode"]+"）");
+      bool modern=(string)info["backend"]=="rfcex";if(modern&&!RfcEx.Films((string)info["model"]).Contains(j.Film))throw new IOException("此相机不支持所选胶片模式："+j.Film);
+      if(!modern&&!FilmSimulation.Available(j.Engine,(string)info["nativeModule"],j.ColorSpace).Contains(j.Film))throw new IOException("此相机不支持所选胶片模式："+j.Film);
+      if(!modern&&o.Format=="tiff"&&o.Bits==8&&j.Film=="standard"&&j.ExplicitColor)throw new IOException("标准 8 位 TIFF 使用 LE 相机色彩空间；指定色彩空间请选 16 位或胶片模拟");
       lock(used){actual=SelectTarget(j.Output,o.Existing,used);if(actual!=null)used.Add(actual);}
       if(actual==null){Interlocked.Increment(ref skipped);Emit(new {type="skipped",index=i+1,total=jobs.Count,input=j.Input,output=j.Output},"跳过："+j.Output);continue;}
       string one=Path.Combine(nativeWork,"f"+i.ToString("D6"));Directory.CreateDirectory(one);
       string input=Path.Combine(one,"input.RAF"),outdir=Path.Combine(one,"out");Directory.CreateDirectory(outdir);File.Copy(j.Input,input,false);
       Emit(new {type="file_started",index=i+1,total=jobs.Count,input=j.Input,output=actual},"["+(i+1)+"/"+jobs.Count+"] "+j.Input);
-      var result=RunWorker(eDir,input,outdir,Path.Combine(one,"cancel"),o.Timeout,o.Format=="jpeg"?16:o.Bits,o.ColorSpace,i+1,jobs.Count,j.Input,o.Format,o.Quality,o.Film);
+      var result=RunWorker(modern?RfcEx.EngineDirectory:engineDirs[j.Engine],input,outdir,Path.Combine(one,"cancel"),o.Timeout,o.Format=="jpeg"?16:o.Bits,j.ColorSpace,i+1,jobs.Count,j.Input,o.Format,o.Quality,j.Film,modern);
       if(Cancelled())break;
       string generated=Convert.ToString(result["output"]);
       if(!generated.StartsWith(outdir+Path.DirectorySeparatorChar,StringComparison.OrdinalIgnoreCase)||!File.Exists(generated))throw new IOException("内核未产生有效输出路径");
       if(o.Format=="tiff")ValidateTiff(generated);
       Publish(generated,actual,o.Existing);Interlocked.Increment(ref completed);
-      Emit(new {type="completed",index=i+1,total=jobs.Count,input=j.Input,output=actual,bytes=new FileInfo(actual).Length,format=o.Format,bits=o.Format=="jpeg"?8:o.Bits,colorSpace=o.Format=="jpeg"?"srgb":(o.Bits==16||o.Film!="standard")?o.ColorSpace:"camera",film=o.Film,modules=result.ContainsKey("modules")?result["modules"]:null},"完成："+actual);
+      Emit(new {type="completed",index=i+1,total=jobs.Count,input=j.Input,output=actual,bytes=new FileInfo(actual).Length,format=o.Format,bits=o.Format=="jpeg"?8:o.Bits,colorSpace=o.Format=="jpeg"?"srgb":(modern||o.Bits==16||j.Film!="standard")?j.ColorSpace:"camera",film=j.Film,backend=modern?"rfcex":"rafcnv",modules=result.ContainsKey("modules")?result["modules"]:null},"完成："+actual);
       if(!json)Console.WriteLine(actual);
       Directory.Delete(one,true);
      }catch(OperationCanceledException){cancelled=true;break;}
@@ -222,8 +249,8 @@ preview 仅提取内嵌 JPEG。Ctrl+C 可取消，原始 RAF 始终只读。
     return stop?130:failed>0?5:0;
    }finally{try{Shared.DeleteOwnedDirectory(work);}catch(Exception ex){Emit(new {type="cleanup_warning",path=work,message=ex.Message},"临时文件清理失败："+work);}}
   }
-  static Dictionary<string,object> RunWorker(string engine,string input,string output,string localCancel,int timeout,int bits,string colorSpace,int index,int total,string original,string format,int quality,string film){
-   var psi=new ProcessStartInfo(System.Reflection.Assembly.GetExecutingAssembly().Location,Shared.Arguments("--worker",engine,input,output,localCancel,bits.ToString(),colorSpace,format,quality.ToString(),film));
+  static Dictionary<string,object> RunWorker(string engine,string input,string output,string localCancel,int timeout,int bits,string colorSpace,int index,int total,string original,string format,int quality,string film,bool modern){
+   var psi=new ProcessStartInfo(modern?Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"s5raw-rfcex.exe"):System.Reflection.Assembly.GetExecutingAssembly().Location,Shared.Arguments("--worker",engine,input,output,localCancel,bits.ToString(),colorSpace,format,quality.ToString(),film));
    psi.UseShellExecute=false;psi.CreateNoWindow=true;psi.RedirectStandardOutput=true;psi.RedirectStandardError=true;psi.StandardOutputEncoding=Encoding.UTF8;psi.StandardErrorEncoding=Encoding.UTF8;psi.WorkingDirectory=engine;
    Dictionary<string,object> result=null;string error=null;object sync=new object();
    using(var p=new Process()){p.StartInfo=psi;

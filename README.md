@@ -1,112 +1,55 @@
-# Fuji S3/S5 Pro RAW Converter
+﻿# Fuji S3/S5 Pro RAW Converter
 
-富士 S3 Pro / S5 Pro RAF 照片转换工具，使用富士原厂内核，提供 Windows 图形界面和命令行。
+富士 RAF 转换工具：集成 S3/S5 Pro 原厂内核与 RAW FILE CONVERTER EX（SILKYPIX）内核，提供 Windows 界面和命令行。
 
-[English](README.en.md) · [下载 Windows 便携版](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/latest)
+[English](README.en.md) · [下载 1.7.2 Windows 便携版](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.2)
 
-## 下载后怎么用
+## 使用
 
-1. 打开[下载页面](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/latest)，下载 **`Fuji-S3-S5-RAW-Converter-1.6.2-Windows.zip`**。
-2. **完整解压 ZIP**，双击主目录的 **`Fuji-S3-S5-RAW-Converter.exe`**。
-3. 点击「添加照片」或「添加文件夹」，勾选照片，选择输出格式和胶片模拟，点击「转换选中项」。
+完整解压 `Fuji-S3-S5-RAW-Converter-1.7.2-Windows.zip`，双击根目录 `Fuji-S3-S5-RAW-Converter.exe`，保留旁边的 `data` 文件夹。需要 64 位 Windows 和 .NET Framework 4.8；无需启动官方转换软件或 USB 连接相机。
 
-无需下载 Source code、编译源码或运行官方更新包。请把 `data` 文件夹与启动程序放在一起。
+1. 添加 RAF 照片或文件夹，勾选需要导出的照片。
+2. 选择 JPEG、8 位或原生 16 位 TIFF，以及输出位置。
+3. 每种机型各有一个胶片选框，可以分别设置。例如 X-T50 选 PROVIA、S5 Pro 选 F1b，在同一批次各自生效。
+4. 点击选框后的「帮助」，查看该机型全部可选模式的说明；会定位到当前选择，查看说明不会改变导出设置。
+5. 点击「转换选中项」。默认同名文件自动加序号，原始 RAF 只读。
 
-```text
-Fuji-S3-S5-RAW-Converter/
-├─ Fuji-S3-S5-RAW-Converter.exe  ← 双击这个
-├─ 使用说明.txt
-└─ data/                       ← 程序运行所需文件
-```
+机型文字、选框和帮助按钮保持垂直居中。取消勾选某机型会禁用其选框，但保留选择；多于三行时可滚动。顶栏支持中英文切换。「对照」可匹配并浏览导出的 TIFF/JPEG。
 
-运行环境：Windows、.NET Framework 4.8。目前在 Windows 11 上验证，尚未在全新系统上验证所有依赖。
+## 输出和胶片
 
-## 功能
+- X-T50：完整尺寸导出，拍摄设置及 20 个胶片选项，含 PROVIA、Velvia、ASTIA、Classic Chrome、REALA ACE、ACROS 等。
+- S3/S5 Pro：保留原有内核、标准及实际配置支持的 F1/F2 系列。
+- **ACROS 和普通黑白模式会导出黑白照片**，Sepia 为棕褐单色；需要彩色可明确选 PROVIA 等。默认模式可能跟随拍摄时的黑白设置。
+- TIFF 可选 sRGB / Adobe RGB（旧内核标准 8 位 TIFF 使用相机色彩）。RFC EX 输出前检查实际位深与 ICC。JPEG 从完整 16 位 sRGB 图像编码，质量默认 92。
+- RAW 浏览使用内嵌相机预览，胶片设置不会即时重绘预览；请查看导出结果。不导入官方软件另存的编辑旁车文件。
+- 40MP 未压缩 16 位 RGB TIFF 约 239 MB，适合后期处理；日常分享可用 JPEG。
+- 含 RFC EX 的批次最多并行处理两张以限制内存，旧机型批次可使用设置的并行数。
 
-- RAF 缩略图选片、图片浏览、照片参数显示；只转换勾选项。
-- 原厂 **8 位 / 原生 16 位 TIFF**、**完整尺寸 JPEG**。
-- 原厂胶片模拟：标准、F1、F1a、F1b、F1c、F2；按所选照片和色彩空间显示可用模式，JPEG 与 TIFF 均可选择。
-- 双击照片浏览；「对照」按文件夹和文件名自动匹配，右侧可切换 TIFF / JPEG 结果。
-- 批量并行数默认使用 CPU 逻辑核心数，可调整。
-- 默认输出到源文件夹，同名文件自动加序号；记住打开与输出位置。
-- 顶栏切换简体中文 / English；适配高 DPI 屏幕。
-- 修正竖拍 TIFF 的像素与缩略图方向。
+其他富士机型按附带固定版本内核的机型表尝试默认转换，尚未逐台实拍验证，现代机型的胶片覆盖参数目前仅开放给 X-T50；其他品牌 RAW 不支持。本机 Windows 11 已验证，未进行全新系统依赖验收。
 
-16 位 TIFF 支持 sRGB / Adobe RGB；JPEG 使用完整 16 位 sRGB 渲染后编码，质量默认 92。胶片模拟会写入输出像素，不改变 RAW 浏览图，也不承诺与相机直出 JPEG 完全一致。
-
-RAW 浏览调用富士原厂插件。S5 Pro 样片显示的是内嵌相机 JPEG（1440×960），完整导出为 4256×2848；左侧预览不是同分辨率的完整 RAW 解码。界面显示为 8 位，带 ICC 的结果映射到 sRGB。
-
-## 适用机型
-
-主要面向 **S3 Pro / S5 Pro**。按 RAF 处理器代码匹配原厂模块，没有写死只支持这两款。
-
-已核对文件头与模块的其他机型包括 S2 Pro、F700、E550、E900、S5000、S5500、S5200/S5600、S6000fd/S6500fd、S9500、S9600。模块匹配不代表全部机型均已完成实拍转换验收。S3 Pro 曾完成单张 16 位 TIFF 检查，当前主要用 S5 Pro 验证。
-
-## 命令行与其他软件调用
-
-命令行程序位于 `data/s5raw.exe`，保留原 S5Raw 接口。在解压目录打开 PowerShell：
+## 命令行
 
 ```powershell
-# 16 位 TIFF
-.\data\s5raw.exe convert -i "D:\Photos\photo.RAF" -o "D:\Output\photo.tif" --bits 16
-
-# JPEG 与 F1b 胶片模拟
-.\data\s5raw.exe convert -i "D:\Photos\photo.RAF" -o "D:\Output\photo.jpg" --film f1b
-
-# 批量转换
-.\data\s5raw.exe convert -i "D:\Photos" --output-dir "D:\Output" --recursive --format jpeg --existing rename --json
-
-.\data\s5raw.exe --help
+.\data\s5raw.exe convert -i photo.RAF -o photo.tif --bits 16 --film provia
+.\data\s5raw.exe convert -i s5pro.RAF -o photo.jpg --film f1b
+.\data\s5raw.exe convert --job-list jobs.json --output-dir output --format jpeg --json
+.\data\s5raw.exe info -i photo.RAF --json
+.\data\s5raw.exe doctor --json
 ```
 
-`--film`：`standard|f1|f1a|f1b|f1c|f2`；`--jobs N`：并行数。16 位或胶片模拟 TIFF 可用 `--color-space adobe-rgb`。
+`--job-list` 是 JSON 数组，每项含 `input`、`relative`，可单独指定 `film`、`colorSpace`。省略时使用全局选项。`--json` 输出 UTF-8 JSON Lines，以 `completed` 事件确认单张成功。完整参数见 `--help`。
 
-其他程序启动上述进程并传 `--json`，读取 UTF-8 JSON Lines，以 `completed` 事件确认单张输出完成。CLI 默认标准 8 位 TIFF、同名报错；GUI 初始为 16 位 TIFF、同名加序号。
+## 构建与内核
 
-## 源码构建
+Windows 上运行 `powershell -ExecutionPolicy Bypass -File .\package.ps1`。使用 .NET Framework 自带编译器，无需 NuGet。输出在 `dist/Fuji-S3-S5-RAW-Converter` 及同目录的版本 ZIP。`build.ps1 -DestinationPath <目录>` 仅构建；`package.ps1 -OutputDirectory <目录>` 可使用独立交付目录。
 
-`src` 是我们自己的 C# 源码，可以修改并重新编译：
+`src` 为本项目 C# 源码，`resources/engine` 为已提取的依赖，构建时自动复制。五个程序均从源码编译；不需要旧发布包或官方完整安装程序。内核资源合计约 558 MiB，ZIP 约 513 MiB。
 
-| 文件 | 用途 |
-| --- | --- |
-| `Gui.cs`、`UiLanguage.cs`、`Preferences.cs` | 主界面、中英文、设置保存 |
-| `Viewer.cs`、`Compare.cs`、`Canvas.cs`、`FullPreview.cs` | 图片浏览、对照、显示与缓存 |
-| `PhotoFiles.cs`、`PhotoInfo.cs` | 文件匹配与照片信息 |
-| `Cli.cs`、`Common.cs` | 命令行、批量任务、机型判断与公共代码 |
-| `NativeWorker.cs`、`Native16.cs`、`NativeBrowser.cs` | 调用富士转换和浏览内核 |
-| `FilmSimulation.cs`、`JpegExport.cs`、`TiffOrientation.cs` | 胶片模拟、JPEG 导出、方向修正 |
-| `Launcher.cs`、清单与配置文件 | 根目录启动程序、DPI 与运行配置 |
+`RfcExWorker.cs` 使用独立 x64 进程及固定私有接口；SILKYPIX64.dll 8.1.20.0 的 SHA-256 被锁定，不能直接替换 DLL 版本。`extract-rfcex.ps1` 从匹配的本地安装提取依赖并生成文件校验清单。旧机型使用独立 x86 工作进程。界面依赖 WinForms/WPF，不支持 Linux/macOS 原生运行，未验证 Wine。
 
-**下载本仓库 main 分支即可构建完整 Windows 便携版，不需要再下载旧发布包或安装 Hyper-Utility。** 所需的已提取 DLL 和色彩资源放在 `resources/engine`，构建时自动复制；富士内核本身是预编译文件，不是可重新编译的源码。Windows 需有 .NET Framework 4.8，使用其自带 C# 编译器，无需 NuGet。
+GitHub Actions 可构建 Windows ZIP。源码及第三方组件的许可范围见 [LICENSE](LICENSE) 和 [NOTICE](resources/NOTICE.txt)。MIT 仅适用于本项目自有代码，不改变第三方文件许可。本项目不是富士官方产品。
 
-在源码目录运行：
+## 说明来源
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\package.ps1
-```
-
-生成 `dist/Fuji-S3-S5-RAW-Converter/` 和 `dist/Fuji-S3-S5-RAW-Converter-1.6.2-Windows.zip`。只编译、不压缩时运行 `build.ps1`。四个项目程序都会由源码重新编译，包括 RAW 浏览辅助程序。修改版本号时同步更新 `src/Common.cs`、`src/Cli.cs` 与使用说明。
-
-仓库中的内核依赖约 **170 MiB**：已去掉约 23 MiB 的重复副本，构建时恢复两个内核需要的目录结构。其中约 **145 MiB** 是 S3/S5 胶片模拟配置引用的 24 个 FF1/FF2 色彩数据文件。没有包含完整官方安装程序、帮助文件或样片。
-
-### Ubuntu / macOS 用户
-
-可以修改源码并通过 GitHub 的 Windows 构建环境生成修改版：Fork 仓库 → 提交修改 → 打开 **Actions → Build Windows package → Run workflow** → 完成后下载 **Artifacts** 中的 ZIP。首次使用 Fork 的 Actions 时，如页面提示则先启用工作流。生成的是 Windows 程序。
-
-当前项目不能原生在 Ubuntu/macOS 上构建和运行：界面依赖 WinForms/WPF，富士内核是 32 位 Windows DLL。附带 DLL 不会消除这些平台依赖；本项目未验证 Wine 兼容性。
-
-### 修改与发布许可
-
-我们自己的源码、脚本与文档采用 [MIT 许可](LICENSE)，允许修改和发布自己的版本，保留版权与许可文本即可。`resources/engine` 内的第三方组件不适用 MIT，其原许可不因本项目公开而改变，详见 [组件来源与许可范围](resources/NOTICE.txt)。
-
-旧版 `v1.6.2` 标签下的自动生成 Source code 附件保留原状；上述完整构建入口请使用 main 分支。
-
-## 官方软件更新包
-
-下载页另外提供 **`V3UP11B.EXE`**，是目前查到的 HS-V3 Windows **1.1b 历史更新包**，不是完整安装盘，可能需要原版安装或介质。**使用本工具不需要运行它。**
-
-来自[历史镜像](https://www.touslesdrivers.com/index.php?v_code=27749&v_page=23)。来源和内核检查记录在下载页的 `HS-V3-1.1b-source-and-checksum.txt`，附件校验值在 `SHA256SUMS.txt`。
-
-1.6.2 已将两个转换模块更新至 **6.2.0.27**，并修正语言框对齐。一张复制的 S5 Pro 样片通过 8 位 TIFF、16 位 TIFF 和 JPEG 检查；F1b 像素与旧内核一致，不据此宣称画质提升。
-
-本项目不是富士官方产品。富士内核、浏览组件及配置仍归原权利人，源码公开不改变它们的许可。
+帮助内容概括自 [X-T50 官方手册](https://fujifilm-dsc.com/en/manual/x-t50/menu_shooting/image_quality_setting/#film_simulation) 与 [S5 Pro 官方手册第 111 页](https://dl.fujifilm-x.com/support/manual/s/finepix_s5pro_manual_01.pdf)。软件导出效果不承诺与相机直出 JPEG 完全一致。
