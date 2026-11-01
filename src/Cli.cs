@@ -41,7 +41,7 @@ namespace S5Raw {
    }catch(UserError e){Emit(new {type="error",code=e.Code,message=e.Message},e.Message);return e.Code;}
    catch(Exception e){Emit(new {type="error",code=5,message=e.Message},e.Message);return 5;}
   }
-  static void Help(){Console.WriteLine(@"Fuji S3/S5 Pro RAW Converter 1.7.5 — FUJIFILM 原厂 RAW 转换命令行
+  static void Help(){Console.WriteLine(@"Fuji S3/S5 Pro RAW Converter 1.7.6 — FUJIFILM 原厂 RAW 转换命令行
 
 s5raw convert -i photo.RAF -o photo.tif --bits 16
 s5raw convert -i folder --output-dir output --recursive --json
@@ -54,7 +54,7 @@ s5raw doctor --json
 选项：--format tiff|jpeg       默认 TIFF；单文件也可由 .jpg 扩展名识别
       --quality 1–100          JPEG 质量，默认 92，全尺寸 sRGB
       --jobs / -j 数量         并行数，默认 CPU 可用逻辑核心数；无机型隐藏上限
-                              按 90% 内存预算与任务峰值确定稳定并行数
+                              先测首张内存；按 90% 预算和实际占用增减并行数
       --job-list 文件          JSON 数组，每项含 input、relative，可单独指定 film、colorSpace
       --bits 8|16              默认 8；16 为原厂原生 16 位/通道
       --color-space srgb|adobe-rgb  16 位或胶片模拟 TIFF 的输出空间，默认 srgb
@@ -219,8 +219,8 @@ preview 仅提取内嵌 JPEG。Ctrl+C 可取消，原始 RAF 始终只读。
      engineDirs.Add(source,dest);
     }
     int lanes=Math.Min(o.Jobs,jobs.Count);
-    var scheduler=new AdaptiveParallelism(o.Jobs,jobs.Count,(hasModern?1024L:256L)*1024*1024,MemoryPressure.Read,delegate(ParallelState state){Emit(state,"并行：设置 "+state.requested+"，运行 "+state.active+"，内存预算并行数 "+state.target+"，状态 "+state.reason+"；内存预算：90%，按任务峰值确定稳定并行数");});
-    Emit(new {type="batch_started",total=jobs.Count,parallel=lanes,requestedParallel=o.Jobs,version=Shared.Version},"开始转换 "+jobs.Count+" 个文件");
+    var scheduler=new AdaptiveParallelism(o.Jobs,jobs.Count,MemoryPressure.Read,delegate(ParallelState state){Emit(state,"并行：设置 "+state.requested+"，运行 "+state.active+"，内存预算并行数 "+state.target+"，状态 "+state.reason+"；内存预算：90%，先测首张占用，再双向调整并行数");});
+    Emit(new {type="batch_started",total=jobs.Count,parallel=1,requestedParallel=o.Jobs,version=Shared.Version},"开始转换 "+jobs.Count+" 个文件");
     scheduler.Tick();var threads=new List<Thread>();
     for(int lane=0;lane<lanes;lane++){var thread=new Thread(delegate(){while(!Cancelled()){
      int i=scheduler.Take(Cancelled);if(i<0)break;Job j=jobs[i];string actual=null;

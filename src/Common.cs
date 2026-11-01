@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace S5Raw {
  public static class Shared {
-  public const string Version = "1.7.5";
+  public const string Version = "1.7.6";
   public static string Json(object value) { return new JavaScriptSerializer().Serialize(value); }
   public static string Quote(string value) {
    var b=new StringBuilder("\"");int slashes=0;
