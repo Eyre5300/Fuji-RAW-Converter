@@ -1,61 +1,77 @@
 ﻿# Fuji S3/S5 Pro RAW Converter
 
-富士 RAF 转换工具：集成 S3/S5 Pro 原厂内核与 RAW FILE CONVERTER EX（SILKYPIX）内核，提供 Windows 界面和命令行。
+将受支持的富士 RAF 照片批量转换为 JPEG 或 TIFF，按机型选择胶片模拟，并浏览、对照转换结果。
 
-[English](README.en.md) · [下载 1.7.7 Windows 便携版](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.7)
+[下载 1.7.7 Windows 完整便携包](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.7) · [English](README.en.md)
 
-## 使用
+## 开始使用
 
-完整解压 `Fuji-S3-S5-RAW-Converter-1.7.7-Windows.zip`，双击根目录 `Fuji-S3-S5-RAW-Converter.exe`，保留旁边的 `data` 文件夹。需要 64 位 Windows 和 .NET Framework 4.8；无需启动官方转换软件或 USB 连接相机。
+需要 64 位 Windows 和 .NET Framework 4.8。完整解压便携包，双击根目录的 `Fuji-S3-S5-RAW-Converter.exe`，保留旁边的 `data` 文件夹。无需另行安装官方转换软件，也无需连接相机。
 
-1. 添加 RAF 照片或文件夹，勾选需要导出的照片。
-2. 选择 JPEG、8 位或原生 16 位 TIFF，以及输出位置。
-3. 每种机型各有一个胶片选框，可以分别设置。例如 X-T50 选 PROVIA、S5 Pro 选 F1b，在同一批次各自生效。
-4. 点击选框后的「帮助」，查看该机型全部可选模式的说明；会定位到当前选择，查看说明不会改变导出设置。
-5. 点击「转换选中项」。默认同名文件自动加序号，原始 RAF 只读。
+1. 添加 RAF 照片或文件夹，勾选要转换的照片。
+2. 选择输出位置、JPEG 或 TIFF，以及适用的色彩空间。
+3. 在各机型对应的选框中选择胶片。不同机型可以分别设置；“帮助”可查看当前机型每种模式的说明。
+4. 点击“转换选中项”。完成后可浏览结果，或使用“对照”比较原片与输出。
 
-机型文字、选框和帮助按钮保持垂直居中。取消勾选某机型会禁用其选框，但保留选择；多于三行时可滚动。顶栏支持中英文切换。「对照」可匹配并浏览导出的 TIFF/JPEG。
+默认输出到源文件夹，同名文件自动加序号；也可选择跳过、报错或覆盖。原始 RAF 不会被修改。界面支持简体中文和 English。
 
-## 输出和胶片
+## 支持的机型与胶片
 
-- X-T50：完整尺寸导出，拍摄设置及 20 个胶片选项，含 PROVIA、Velvia、ASTIA、Classic Chrome、REALA ACE、ACROS 等。
-- S3/S5 Pro：保留原有内核、标准及实际配置支持的 F1/F2 系列。
-- **ACROS 和普通黑白模式会导出黑白照片**，Sepia 为棕褐单色；需要彩色可明确选 PROVIA 等。默认模式可能跟随拍摄时的黑白设置。
-- TIFF 可选 sRGB / Adobe RGB（旧内核标准 8 位 TIFF 使用相机色彩）。RFC EX 输出前检查实际位深与 ICC。JPEG 从完整 16 位 sRGB 图像编码，质量默认 92。
-- RAW 浏览使用内嵌相机预览，胶片设置不会即时重绘预览；请查看导出结果。不导入官方软件另存的编辑旁车文件。
-- 40MP 未压缩 16 位 RGB TIFF 约 239 MB，适合后期处理；日常分享可用 JPEG。
-- 所有机型均按设置的并行数调度，不再为 X-T50 / RFC EX 设置固定两张上限。正常时不显示额外说明；只有内存降载时显示当前并行任务数，恢复正常后隐藏。
-- 每批先单独完成一个转换任务，测量其实际内存占用，再结合系统剩余内存和约 90% 的物理内存/提交量预算估算并行数；不使用固定的每任务内存默认值。进入并行后持续采样实际占用，内存偏低可增加、偏高可减少，均不超过用户设置。首张测量和估算均在后台进行，不增加提示；仅内存预算导致并行数下调时显示当前任务数。
-- 1.7.7 已由用户测试通过，发布原有完整便携包；未重新编译或追加运行测试。
+机型范围按 **1.7.7 内置官方转换内核的支持清单**列出；胶片栏说明本软件当前可选择的模式及色彩空间条件。
 
-其他富士机型按附带固定版本内核的机型表尝试默认转换，尚未逐台实拍验证，现代机型的胶片覆盖参数目前仅开放给 X-T50；其他品牌 RAW 不支持。本机 Windows 11 已验证，未进行全新系统依赖验收。
+| 机型 | 可选胶片 | 使用条件 |
+|---|---|---|
+| FinePix S5 Pro | 标准、F1、F1a、F1b、F1c、F2 | 胶片模式支持 sRGB 和 Adobe RGB |
+| FinePix S3 Pro | 标准、F1、F2 | F1、F2 仅用于 sRGB；Adobe RGB 下仅提供标准 |
+| X-T50 | 默认 / 拍摄设置，以及下列 20 种胶片模拟 | 支持 sRGB 和 Adobe RGB；JPEG 使用 sRGB |
 
-## 命令行
+**X-T50 的 20 种胶片模拟：**
 
-```powershell
-.\data\s5raw.exe convert -i photo.RAF -o photo.tif --bits 16 --film provia
-.\data\s5raw.exe convert -i s5pro.RAF -o photo.jpg --film f1b
-.\data\s5raw.exe convert --job-list jobs.json --output-dir output --format jpeg --json
-.\data\s5raw.exe info -i photo.RAF --json
-.\data\s5raw.exe doctor --json
-```
+- 彩色：PROVIA / 标准、Velvia / 鲜艳、ASTIA / 柔和、Classic Chrome、PRO Neg. Hi、PRO Neg. Std、Classic Neg.、ETERNA、ETERNA Bleach Bypass、Nostalgic Neg.、REALA ACE。
+- 黑白：ACROS、ACROS + Ye、ACROS + R、ACROS + G、黑白、黑白 + Ye、黑白 + R、黑白 + G。
+- 棕褐单色：棕褐色（Sepia）。
 
-`--job-list` 是 JSON 数组，每项含 `input`、`relative`，可单独指定 `film`、`colorSpace`。省略时使用全局选项。`--json` 输出 UTF-8 JSON Lines，以 `completed` 事件确认单张成功。完整参数见 `--help`。
+**以下各机型均提供默认转换，目前没有额外胶片选项：**
 
-## 构建与内核
+| 系列 | 支持机型 | 可选胶片 |
+|---|---|---|
+| X-T | X-T1、X-T2、X-T3、X-T4、X-T5、X-T10、X-T20、X-T30、X-T30 II、X-T100、X-T200 | 默认转换；无额外胶片选项 |
+| X-H / X-Pro | X-H1、X-H2、X-H2S、X-Pro1、X-Pro2、X-Pro3 | 默认转换；无额外胶片选项 |
+| X-E / X-M / X-S | X-E1、X-E2、X-E2S、X-E3、X-E4、X-E5、X-M1、X-M5、X-S1、X-S10、X-S20 | 默认转换；无额外胶片选项 |
+| X-A | X-A1、X-A2、X-A3、X-A5、X-A7、X-A10、X-A20 | 默认转换；无额外胶片选项 |
+| X100 | FinePix X100、X100S、X100T、X100F、X100V、X100VI | 默认转换；无额外胶片选项 |
+| X 紧凑型 | X10、X20、X30、X70、XF1、XF10 | 默认转换；无额外胶片选项 |
+| GFX | GFX 50R、GFX 50S、GFX50S II、GFX 100、GFX100S、GFX100 II、GFX100S II、GFX100RF | 默认转换；无额外胶片选项 |
+| FinePix E / F | E550、E900、F700、F710、F505EXR、F550EXR、F600EXR、F605EXR、F770EXR、F775EXR、F800EXR、F805EXR、F900EXR | 默认转换；无额外胶片选项 |
+| FinePix HS | HS10、HS11、HS20EXR、HS22EXR、HS30EXR、HS33EXR、HS35EXR、HS50EXR、HS55EXR | 默认转换；无额外胶片选项 |
+| FinePix S / SL | S1、S2 Pro、S20 Pro、S100FS、S200EXR、S5000、S5100、S5200、S5500、S5600、S6000fd、S6500fd、S7000、S9000、S9500、S9600、SL1000、SL1010 | 默认转换；无额外胶片选项 |
 
-Windows 上运行 `powershell -ExecutionPolicy Bypass -File .\package.ps1`。使用 .NET Framework 自带编译器，无需 NuGet。输出在 `dist/Fuji-S3-S5-RAW-Converter` 及同目录的版本 ZIP。`build.ps1 -DestinationPath <目录>` 仅构建；`package.ps1 -OutputDirectory <目录>` 可使用独立交付目录。
+支持范围以本版本列表为准；其他品牌 RAW 不支持。导入后显示的胶片选项会随识别到的文件及色彩空间匹配，不提供跨机型套用其他相机胶片的功能。
 
-`src` 为本项目 C# 源码，`resources/engine` 为已提取的依赖，构建时自动复制。五个程序均从源码编译；不需要旧发布包或官方完整安装程序。内核资源合计约 558 MiB，ZIP 约 513 MiB。
+## 输出格式与色彩
 
-`RfcExWorker.cs` 使用独立 x64 进程及固定私有接口；SILKYPIX64.dll 8.1.20.0 的 SHA-256 被锁定，不能直接替换 DLL 版本。`extract-rfcex.ps1` 从匹配的本地安装提取依赖并生成文件校验清单。旧机型使用独立 x86 工作进程。界面依赖 WinForms/WPF，不支持 Linux/macOS 原生运行，未验证 Wine。
+| 输出 | 位深与色彩 | 适用场景 |
+|---|---|---|
+| JPEG | 8 位，sRGB；质量可调，默认 92 | 分享、查看和一般成片 |
+| TIFF · 8 位 | 8 位/通道 RGB；可用时选择 sRGB 或 Adobe RGB | 兼顾文件大小和后期编辑 |
+| TIFF · 16 位 | 原生 16 位/通道 RGB；sRGB 或 Adobe RGB | 需要较大色调调整空间的后期处理 |
 
-GitHub Actions 可构建 Windows ZIP。源码及第三方组件的许可范围见 [LICENSE](LICENSE) 和 [NOTICE](resources/NOTICE.txt)。MIT 仅适用于本项目自有代码，不改变第三方文件许可。本项目不是富士官方产品。
+部分早期 FinePix 机型在“标准 + 8 位 TIFF”组合下使用照片的相机色彩空间，不能另行指定。不可用的色彩选项会在界面中禁用。输出采用相应机型支持的完整图像尺寸。
 
-## 说明来源
+- ACROS 和“黑白”系列输出黑白照片；Sepia 输出棕褐单色。希望得到彩色照片时，请选择支持的彩色模式。
+- “默认 / 拍摄设置”可能保留拍摄时的黑白风格。
+- 16 位 RGB TIFF 通常明显大于 RAF：每像素需要 6 字节保存 RGB 数据，另有文件元数据；这属于正常现象。
 
-帮助内容概括自 [X-T50 官方手册](https://fujifilm-dsc.com/en/manual/x-t50/menu_shooting/image_quality_setting/#film_simulation) 与 [S5 Pro 官方手册第 111 页](https://dl.fujifilm-x.com/support/manual/s/finepix_s5pro_manual_01.pdf)。软件导出效果不承诺与相机直出 JPEG 完全一致。
+## 浏览、对照与批量处理
 
-1.7.7 调度细节：首个成功任务的实测峰值用于初次估算，随后由 5 秒平滑的实时单任务占用替代。实际占用低于 88% 持续 5 秒且有排队任务时，按可用预算增加并行数，每次最多增加当前数量的 25%（至少 1 个）；高于 92% 持续 3 秒时按预算减少，达到 95% 时缩短为 1 秒。通常调整间隔至少 5 秒，下调后等待已有任务释放内存再调整。90% 是预算目标，并非强制硬限制；用户设置值不改写，也不额外按 CPU 占用限制并行数。
+- 双击照片可浏览；“对照”可匹配导出的 TIFF/JPEG，并切换结果。
+- 主界面 RAW 缩略图使用照片内嵌预览，不会随着胶片选择即时更新；胶片效果请看导出文件。
+- 批量转换以你设置的并行数为上限，根据实际内存占用自动增减任务。内存预算约为 90%，并非强制占满内存；不会改写设置值。
+- 只有因内存预算下调并行数时，才显示内存压力与当前任务数。首张测量和估算在后台进行。
+- 不读取官方转换软件另存的编辑旁车文件；软件输出不保证与相机直出 JPEG 完全一致。
 
-1.7.7 仅调整主界面和胶片帮助窗口的布局、对齐及间距；转换功能、参数默认值、机型胶片选项、并行调度算法保持 1.7.6 行为。已由用户自行测试通过后发布；本次发布未重新编译或追加运行测试。
+## 下载与许可
+
+[1.7.7 发布页与 SHA-256 校验文件](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.7)。下载完整 Windows ZIP 即可使用，无需下载源码或自行编译。
+
+本软件不是富士官方产品。第三方组件保留其原有许可，详见包内 `data/NOTICE.txt`。开发、命令行和技术资料见 [开发者文档](docs/DEVELOPMENT.md)。
