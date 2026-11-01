@@ -1,0 +1,9 @@
+/dist/
+/analysis/
+/tests/
+/third_party/
+/publish/
+/.vs/
+*.user
+*.suo
+*.log
