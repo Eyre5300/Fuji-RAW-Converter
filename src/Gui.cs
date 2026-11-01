@@ -157,17 +157,16 @@ namespace S5Raw {
    try{current.Start();current.BeginOutputReadLine();current.BeginErrorReadLine();System.Threading.ThreadPool.QueueUserWorkItem(delegate{current.WaitForExit();int code=current.ExitCode;OnUi(delegate{current.Dispose();process=null;Busy(false);CleanupControls();if(code!=0&&code!=130)status.Text=L.T("转换结束，存在错误，请查看记录。");else if(code==130)status.Text=L.T("已取消");if(closeWhenDone)Close();});});}catch(Exception e){current.Dispose();process=null;Busy(false);CleanupControls();Line(L.Error(e.Message));status.Text=L.T("启动失败");}
   }
   void RenderParallel(){
-   string rule=L.English?"Memory protection: RAM or commit >=90% pauses new tasks; both <=80% restores parallelism gradually.":"内存保护：物理内存或提交量 ≥90% 暂停新任务；两者 ≤80% 后逐步恢复。";
-   if(parallelState==null){parallelStatus.Text=rule;return;}
-   var r=parallelState;string reason=Convert.ToString(r["reason"]);
-   string why=reason=="memory_pressure"?(L.English?"Memory pressure: waiting for active tasks to finish":"内存压力：暂停新任务，等待运行中的任务释放内存"):reason=="recovering"?(L.English?"Recovering parallelism":"内存已回落，正在恢复并行数"):reason=="memory_unavailable"?(L.English?"Memory monitoring unavailable; configured parallelism applies":"无法监测内存，按设置并行执行"):(L.English?"Following configured parallelism":"按设置执行");
-   parallelStatus.Text=(L.English?"Parallel tasks: set ":"并行任务：设置 ")+r["requested"]+(L.English?" · active ":" · 正在运行 ")+r["active"]+(L.English?" · admission limit ":" · 当前启动上限 ")+r["limit"]+" · "+why+"\n"+rule;
-   if(Convert.ToBoolean(r["memoryAvailable"]))parallelStatus.Text+=(L.English?" RAM ":" 物理内存 ")+r["physicalPercent"]+"% / "+(L.English?"commit ":"提交量 ")+r["commitPercent"]+"%";
+   if(parallelState==null){parallelStatus.Text="";parallelStatus.Visible=false;return;}
+   string reason=Convert.ToString(parallelState["reason"]);
+   bool pressure=reason=="memory_pressure"||reason=="recovering";
+   parallelStatus.Visible=pressure;
+   parallelStatus.Text=pressure?(L.English?"Memory pressure: current parallel tasks = ":"因内存压力，当前并行任务数为 ")+parallelState["active"]:"";
   }
   void CleanupControls(){try{Shared.DeleteOwnedDirectory(controlFolder);}catch(Exception e){Line(L.T("临时任务清理：")+L.Error(e.Message));}}
   void UpdateProgress(Dictionary<string,object> row,int value){if(fileProgress==null)return;int i=Convert.ToInt32(row["index"])-1;fileProgress[i]=Math.Max(fileProgress[i],value);progress.Value=fileProgress.Sum()/fileProgress.Length;}
   void HandleEvent(string line){try{var r=new JavaScriptSerializer().Deserialize<Dictionary<string,object>>(line);string type=Convert.ToString(r["type"]);
-   if(type=="parallel_status"){parallelState=r;RenderParallel();string reason=Convert.ToString(r["reason"]);if(reason!=parallelReason){parallelReason=reason;Line(parallelStatus.Text);}}
+   if(type=="parallel_status"){parallelState=r;RenderParallel();string reason=Convert.ToString(r["reason"]);if(reason!=parallelReason){parallelReason=reason;if(parallelStatus.Visible)Line(parallelStatus.Text);}}
    else if(type=="file_started"){status.Text=L.T("正在转换 · 已完成 ")+finishedFiles+" / "+r["total"];Line(L.T("转换：")+r["input"]);}
    else if(type=="progress"){UpdateProgress(r,Math.Min(99,Convert.ToInt32(r["percent"])));}
    else if(type=="completed"){UpdateProgress(r,100);finishedFiles++;status.Text=L.T("正在转换 · 已完成 ")+finishedFiles+" / "+r["total"];string source=Convert.ToString(r["input"]),target=Convert.ToString(r["output"]);var p=inputs.Items.Cast<ListViewItem>().Select(i=>(Photo)i.Tag).FirstOrDefault(x=>x.Input.Equals(source,StringComparison.OrdinalIgnoreCase));if(p!=null){p.Output=target;p.Item.ToolTipText=p.Input+L.T("\n已转换：")+target;}Line(L.T("完成：")+target);}

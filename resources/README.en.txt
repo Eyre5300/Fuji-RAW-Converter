@@ -13,7 +13,7 @@ RAW previews are embedded camera JPEGs and do not change with export film settin
 Use Compare to inspect exported pixels. Official editor sidecars are not imported.
 TIFF supports sRGB/Adobe RGB, except legacy standard 8-bit TIFF which follows camera color.
 An uncompressed 40MP 16-bit RGB TIFF is about 239 MB. JPEG uses full 16-bit sRGB development before encoding.
-All cameras follow the configured parallel task count. Requested, active and admission limits are displayed separately. RAM or system commit >=90% pauses new tasks while active tasks finish; both <=80% restores one slot every two seconds. The configured value is never rewritten.
+All cameras follow the configured parallel task count. A current-task-count notice appears only during memory throttling and disappears after recovery. RAM or system commit >=90% pauses new tasks while active tasks finish; both <=80% restores one slot every two seconds. The configured value is never rewritten.
 Version 1.7.4: compiled and packaged, not runtime-tested at the user’s request.
 Other listed Fujifilm cameras can attempt default conversion but are not individually validated.
 Modern film overrides are currently limited to X-T50. Other camera brands are not supported.
