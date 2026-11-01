@@ -2,7 +2,7 @@
 
 Windows GUI and CLI for Fujifilm RAF, with the original S3/S5 engines and RAW FILE CONVERTER EX (SILKYPIX).
 
-[简体中文](README.md) · [Download Windows 1.7.4](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/latest)
+[简体中文](README.md) · [Published Windows releases](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/latest)
 
 ## Run
 
@@ -19,8 +19,8 @@ Captions, selectors and Help buttons are vertically centered. Unchecking a camer
 - ACROS and Monochrome produce black-and-white output; Sepia produces a brown monochrome. Choose PROVIA explicitly for color. As-shot may retain a monochrome camera setting.
 - TIFF supports sRGB / Adobe RGB, except legacy standard 8-bit TIFF which follows camera color. RFC EX checks output bit depth and ICC. JPEG is encoded from full 16-bit sRGB development, default quality 92.
 - RAW browsing uses embedded previews and does not redraw when export films change. Official editor sidecars are not imported.
-- Uncompressed 40MP 16-bit RGB TIFF is approximately 239 MB. All cameras follow the configured parallel task count, with no fixed RFC EX two-worker cap. The UI shows a current-task-count notice only while memory pressure reduces parallelism; the notice disappears after recovery. RAM or system commit at 90% pauses new tasks while active tasks finish; once both fall to 80% or below, one slot is restored every two seconds. The configured value is never rewritten.
-- Version 1.7.4 is built and packaged; runtime testing was not performed at the user’s request.
+- Uncompressed 40MP 16-bit RGB TIFF is approximately 239 MB. All cameras follow the configured parallel task count, with no fixed RFC EX two-worker cap. The UI shows a current-task-count notice only while memory pressure reduces parallelism; the notice disappears after recovery. A 90% RAM and system-commit budget, after subtracting other applications, is divided by observed per-task peak memory to choose a stable parallel task count, bounded by the configured count. One successful task calibrates the estimate. Task completion and brief memory dips do not ramp concurrency back up within the batch; sustained budget shortfalls reduce it while existing tasks finish. The configured value is never rewritten.
+- Version 1.7.5 is built and packaged; runtime testing was not performed at the user’s request.
 
 Other listed Fujifilm models can attempt default conversion but are not individually validated. Modern film overrides currently support X-T50 only. Other brands are not supported. Tested on Windows 11, not on a completely clean Windows installation.
 
@@ -43,3 +43,5 @@ The isolated RFC EX x64 worker uses a private ABI pinned to SILKYPIX64.dll 8.1.2
 Project code is MIT licensed; third-party binaries retain their original terms. See [LICENSE](LICENSE) and [NOTICE](resources/NOTICE.txt). This is not an official Fujifilm product.
 
 Help summaries use the [X-T50 manual](https://fujifilm-dsc.com/en/manual/x-t50/menu_shooting/image_quality_setting/#film_simulation) and [S5 Pro manual, p.111](https://dl.fujifilm-x.com/support/manual/s/finepix_s5pro_manual_01.pdf). Software results may differ from in-camera JPEGs.
+
+Memory-estimation details: cold estimates are 1 GiB per RFC EX task and 256 MiB per legacy task. Observed batch peaks then carry 10% headroom. A lower target must persist for 3 seconds (1 second at >=95% memory pressure). The 90% budget is a target, not an OS-enforced hard limit; workload phases and other applications can still change usage.

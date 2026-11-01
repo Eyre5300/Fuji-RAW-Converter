@@ -159,7 +159,7 @@ namespace S5Raw {
   void RenderParallel(){
    if(parallelState==null){parallelStatus.Text="";parallelStatus.Visible=false;return;}
    string reason=Convert.ToString(parallelState["reason"]);
-   bool pressure=reason=="memory_pressure"||reason=="recovering";
+   bool pressure=reason=="memory_budget";
    parallelStatus.Visible=pressure;
    parallelStatus.Text=pressure?(L.English?"Memory pressure: current parallel tasks = ":"因内存压力，当前并行任务数为 ")+parallelState["active"]:"";
   }
