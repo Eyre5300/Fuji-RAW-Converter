@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Linq;
@@ -28,7 +28,7 @@ namespace S5Raw {
   Process process;string controlFolder,cancelPath;bool closeWhenDone,thumbnailRunning;Queue<Photo> thumbnailQueue=new Queue<Photo>();
   public MainForm(){
    sameFolder.Checked=Preferences.Get("OutputInSource","1")!="0";output.Text=Preferences.Get("OutputFolder");
-   SuspendLayout();Text="Fuji S3/S5 Pro RAW Converter "+Shared.Version;StartPosition=FormStartPosition.CenterScreen;ClientSize=new Size(940,716);MinimumSize=new Size(900,636);Font=new Font("Microsoft YaHei UI",10);BackColor=Color.FromArgb(246,248,250);
+   SuspendLayout();Text="Fuji RAW Converter "+Shared.Version;StartPosition=FormStartPosition.CenterScreen;ClientSize=new Size(940,716);MinimumSize=new Size(900,636);Font=new Font("Microsoft YaHei UI",10);BackColor=Color.FromArgb(246,248,250);
    layout=new TableLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(20),Margin=Padding.Empty,ColumnCount=1,RowCount=9};
    layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,28));layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));foreach(float h in new[]{192f,48f,12f,0f,32f,0f})layout.RowStyles.Add(new RowStyle(SizeType.Absolute,h));Controls.Add(layout);
    actions.Dock=DockStyle.Fill;actions.AutoSize=true;actions.AutoSizeMode=AutoSizeMode.GrowAndShrink;actions.WrapContents=true;actions.Padding=Padding.Empty;actions.Margin=Padding.Empty;var topBar=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=2,RowCount=1,Margin=Padding.Empty};topBar.RowStyles.Add(new RowStyle(SizeType.Percent,100));layout.RowStyles[0].SizeType=SizeType.Absolute;layout.RowStyles[0].Height=50;topBar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));topBar.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,144));topBar.Controls.Add(actions,0,0);language.DropDownStyle=ComboBoxStyle.DropDownList;language.Anchor=AnchorStyles.Top|AnchorStyles.Right;language.Width=136;language.MinimumSize=new Size(136,0);language.Margin=new Padding(8,4,0,8);language.AccessibleName="Language";language.Items.AddRange(new object[]{"简体中文","English"});language.SelectedIndex=L.English?1:0;language.SelectedIndexChanged+=delegate{L.SetEnglish(language.SelectedIndex==1);};topBar.Controls.Add(language,1,0);layout.Controls.Add(topBar,0,0);

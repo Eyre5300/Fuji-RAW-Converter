@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,7 +35,7 @@ namespace S5Raw {
       uint offset=BE(header,84),length=BE(header,88);if(length<4||(long)offset+length>file.Length)throw new IOException(L.T("此 RAF 没有可用的内嵌预览，请先转换 TIFF"));
       file.Position=offset;byte[] data=new BinaryReader(file).ReadBytes(checked((int)length));preview=new MemoryStream(data,false);source=preview;
      }
-     var frame=BitmapFrame.Create(source,BitmapCreateOptions.PreservePixelFormat,BitmapCacheOption.OnLoad);
+     var frame=raf?PreviewJpeg.Read(source,BitmapCreateOptions.PreservePixelFormat):BitmapFrame.Create(source,BitmapCreateOptions.PreservePixelFormat,BitmapCacheOption.OnLoad);
      return Render(frame,frame,alreadySrgb);
     }finally{if(preview!=null)preview.Dispose();}
    }
@@ -45,7 +45,7 @@ namespace S5Raw {
     var frame=BitmapFrame.Create(file,BitmapCreateOptions.PreservePixelFormat,BitmapCacheOption.OnLoad);
     var reader=new BinaryReader(raw);byte[] header=reader.ReadBytes(108);raw.Position=BE(header,84);
     using(var jpeg=new MemoryStream(reader.ReadBytes(checked((int)BE(header,88))),false)){
-     var metadataFrame=BitmapFrame.Create(jpeg,BitmapCreateOptions.PreservePixelFormat,BitmapCacheOption.OnLoad);
+     var metadataFrame=PreviewJpeg.Read(jpeg,BitmapCreateOptions.PreservePixelFormat);
      return Render(frame,metadataFrame,false);
     }
    }
@@ -73,7 +73,7 @@ namespace S5Raw {
   public ViewerForm(IEnumerable<string> paths,string selected,string title="图片浏览器"){
    caption=title;
    SuspendLayout();files=paths.Where(PreviewReader.Supported).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
-   Text=L.T("Fuji S3/S5 Pro RAW Converter · 图片浏览器");ClientSize=new Size(1120,760);MinimumSize=new Size(760,500);StartPosition=FormStartPosition.CenterParent;Font=new Font("Microsoft YaHei UI",10);KeyPreview=true;
+   Text=L.T("Fuji RAW Converter · 图片浏览器");ClientSize=new Size(1120,760);MinimumSize=new Size(760,500);StartPosition=FormStartPosition.CenterParent;Font=new Font("Microsoft YaHei UI",10);KeyPreview=true;
    var bar=new ToolStrip{GripStyle=ToolStripGripStyle.Hidden,Dock=DockStyle.Top,Padding=new Padding(6)};
    Add(bar,L.T("上一张 ←"),delegate{Navigate(-1);});Add(bar,L.T("下一张 →"),delegate{Navigate(1);});bar.Items.Add(new ToolStripSeparator());
    Add(bar,L.T("适应窗口"),delegate{canvas.Fit();});Add(bar,L.T("原始大小"),delegate{canvas.Actual();});Add(bar,"−",delegate{canvas.ScaleBy(.8f);});Add(bar,"＋",delegate{canvas.ScaleBy(1.25f);});bar.Items.Add(scale);
@@ -102,7 +102,7 @@ namespace S5Raw {
    AutoScaleDimensions=new SizeF(96,96);AutoScaleMode=AutoScaleMode.Dpi;ResumeLayout(true);ApplyLanguage();
   }
   void ApplyLanguage(){L.Apply(this);UpdateCaption();if(current==null&&list.SelectedIndex>=0)details.Text=loadError==null?L.T("加载中…"):L.T("无法预览：")+L.Error(loadError);}
-  void UpdateCaption(){int i=list.SelectedIndex;Text="Fuji S3/S5 Pro RAW Converter · "+L.T(caption)+(i<0?"":" — "+Path.GetFileName(files[i])+" ["+(i+1)+"/"+files.Count+"]");}
+  void UpdateCaption(){int i=list.SelectedIndex;Text="Fuji RAW Converter · "+L.T(caption)+(i<0?"":" — "+Path.GetFileName(files[i])+" ["+(i+1)+"/"+files.Count+"]");}
   static void Add(ToolStrip strip,string label,Action action){var b=new ToolStripButton(label);b.Click+=delegate{action();};strip.Items.Add(b);}
   void Navigate(int delta){if(files.Count>0)list.SelectedIndex=Math.Max(0,Math.Min(files.Count-1,list.SelectedIndex+delta));}
   protected override bool ProcessCmdKey(ref Message msg,Keys key){if(key==Keys.Right||key==Keys.PageDown){Navigate(1);return true;}if(key==Keys.Left||key==Keys.PageUp){Navigate(-1);return true;}if(key==Keys.Escape){Close();return true;}return base.ProcessCmdKey(ref msg,key);}

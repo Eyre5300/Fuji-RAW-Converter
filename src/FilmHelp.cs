@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Drawing;
 using System.Linq;
@@ -39,7 +39,7 @@ namespace S5Raw {
    {"sepia",new[]{"棕褐单色。不是自然彩色。","Sepia monochrome; not natural color."}}
   };
   internal static string Description(string model,string key,bool english){
-   if(key=="standard")return model=="X-T50"?(english?"Uses the RAF shooting settings; a monochrome capture may remain monochrome. Choose PROVIA explicitly for color.":"依据 RAF 拍摄设置；若拍摄时用了黑白模式，输出也可能是黑白。需要彩色可明确选择 PROVIA。"):(english?"Default rendering from the camera's conversion engine; use as a comparison baseline.":"使用该相机转换内核的默认渲染，可作为效果对比基准。");
+   if(key=="standard")return RfcEx.Films(model).Length>1?(english?"Uses the RAF shooting settings; a monochrome capture may remain monochrome. Choose PROVIA explicitly for color.":"依据 RAF 拍摄设置；若拍摄时用了黑白模式，输出也可能是黑白。需要彩色可明确选择 PROVIA。"):(english?"Default rendering from the camera's conversion engine; use as a comparison baseline.":"使用该相机转换内核的默认渲染，可作为效果对比基准。");
    string[] value;if(!descriptions.TryGetValue(key,out value))throw new ArgumentException("Missing film description: "+key);
    return value[english?1:0];
   }

@@ -20,7 +20,7 @@ foreach ($name in @('Library','ColorModeData','ICCProfiles','DefaultPresets','De
 # Names present in this exact engine; admission is not per-camera validation.
 $ascii = [Text.Encoding]::ASCII.GetString([IO.File]::ReadAllBytes($dll))
 $names = [regex]::Matches($ascii,'[\x20-\x7e]{3,}') | ForEach-Object { $_.Value.Trim() } | Where-Object {
-    $_ -cmatch '^(X-(?:[A-Z]|Pro)\d+[A-Z]?(?: II)?|X(?:10|20|30|70|100[FSTV]?|100VI)|XF(?:1|10)|GFX[ A-Za-z0-9]+|FinePix[ A-Za-z0-9/]+)$'
+    $_ -cmatch '^(X-(?:[A-Z]|Pro)\d+[A-Z]?(?: II| III)?|X(?:10|20|30|70|100[FSTV]?|100VI)|XF(?:1|10)|XQ[12]|GFX[ A-Za-z0-9]+|FinePix[ A-Za-z0-9/]+)$'
 } | Sort-Object -Unique
 [IO.File]::WriteAllLines((Join-Path $destination 'models.txt'),[string[]]$names,(New-Object Text.UTF8Encoding $false))
 $manifest = Get-ChildItem -LiteralPath $destination -Recurse -File | Where-Object Name -ne 'manifest.json' | ForEach-Object {

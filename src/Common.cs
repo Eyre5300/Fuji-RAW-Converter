@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace S5Raw {
  public static class Shared {
-  public const string Version = "1.7.7";
+  public const string Version = "1.8.0";
   public static string Json(object value) { return new JavaScriptSerializer().Serialize(value); }
   public static string Quote(string value) {
    var b=new StringBuilder("\"");int slashes=0;

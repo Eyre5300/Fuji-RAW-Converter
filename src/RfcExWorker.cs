@@ -38,7 +38,7 @@ namespace S5Raw {
    IntPtr obj=IntPtr.Zero;bool initialized=false;
    try{
     RfcEx.Verify(root);var meta=RafHeader.Read(input);string model=(string)meta["model"];
-    if(Array.IndexOf(RfcEx.Films(model),a[9])<0)throw new IOException("此相机尚未验证 RFC EX 胶片覆盖参数："+model+" / "+a[9]);
+    if(Array.IndexOf(RfcEx.Films(model),a[9])<0)throw new IOException("此机型没有所选胶片模式："+model+" / "+a[9]);
     if(File.Exists(a[4]))return 130;
     SetDllDirectory(Path.Combine(root,"Library"));h=LoadLibraryEx(Path.Combine(root,"Library","SILKYPIX64.dll"),IntPtr.Zero,8);
     if(h==IntPtr.Zero)throw new IOException("加载 RFC EX 失败，Win32="+Marshal.GetLastWin32Error());
@@ -52,11 +52,12 @@ namespace S5Raw {
     if(fd==IntPtr.Zero)throw new IOException("RFC EX 未返回 RAW 开发对象");
     // Materialize camera defaults, then use the official setters for overrides.
     // Text-sidecar import alone is insufficient: it can silently leave defaults.
-    if(model.Equals("X-T50",StringComparison.OrdinalIgnoreCase)){
+    if(a[9]!="standard"){
      IntPtr holder=Mem(0x78);Fn<Unary>(0x030910)(holder);
      Check(Fn<DevelopParam>(0xce24b0)(fd,0,IntPtr.Zero,holder,1),"读取相机参数");
      IntPtr param=Marshal.ReadIntPtr(holder,0x70);if(param==IntPtr.Zero)throw new IOException("RFC EX 参数对象为空");
-     Fn<SetInt>(0x9d3870)(param,6);Fn<SetInt>(0x9d35c0)(param,RfcEx.Modes[Array.IndexOf(RfcEx.Keys,a[9])]);
+     Check(Fn<SetInt>(0x9d3870)(param,6),"设置相机胶片色彩类别");
+     Check(Fn<SetInt>(0x9d35c0)(param,RfcEx.Modes[Array.IndexOf(RfcEx.Keys,a[9])]),"设置胶片参数");
      // SetDevelopParam returns 1 when values already match; negative is failure.
      short applied=Fn<SetParam>(0xa64810)(fd,param,0,0);if(applied<0)Check(applied,"设置胶片模拟");
      // The reference remains alive through development; the process owns its lifetime.

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 using System.Linq;
@@ -41,7 +41,7 @@ namespace S5Raw {
    }catch(UserError e){Emit(new {type="error",code=e.Code,message=e.Message},e.Message);return e.Code;}
    catch(Exception e){Emit(new {type="error",code=5,message=e.Message},e.Message);return 5;}
   }
-  static void Help(){Console.WriteLine(@"Fuji S3/S5 Pro RAW Converter 1.7.7 — FUJIFILM 原厂 RAW 转换命令行
+  static void Help(){Console.WriteLine(@"Fuji RAW Converter 1.8.0 — FUJIFILM 原厂 RAW 转换命令行
 
 s5raw convert -i photo.RAF -o photo.tif --bits 16
 s5raw convert -i folder --output-dir output --recursive --json
@@ -59,7 +59,7 @@ s5raw doctor --json
       --bits 8|16              默认 8；16 为原厂原生 16 位/通道
       --color-space srgb|adobe-rgb  16 位或胶片模拟 TIFF 的输出空间，默认 srgb
       --film 模式名           旧机型：standard/f1/f1a/f1b/f1c/f2
-                              X-T50：standard/provia/velvia/astia/classic-chrome/
+                              X / GFX：standard/provia/velvia/astia/classic-chrome/
                               reala-ace/acros/mono 等；用 info 查看完整列表
       --recursive / -r
       --existing error|skip|rename|overwrite  （默认 error）

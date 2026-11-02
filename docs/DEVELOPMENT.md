@@ -16,13 +16,21 @@
 
 ## 构建与内核
 
-Windows 上运行 `powershell -ExecutionPolicy Bypass -File .\package.ps1`。使用 .NET Framework 自带编译器，无需 NuGet。输出在 `dist/Fuji-S3-S5-RAW-Converter` 及同目录的版本 ZIP。`build.ps1 -DestinationPath <目录>` 仅构建；`package.ps1 -OutputDirectory <目录>` 可使用独立交付目录。
+Windows 上运行 `powershell -ExecutionPolicy Bypass -File .\package.ps1`。使用 .NET Framework 自带编译器，无需 NuGet。输出在 `dist/Fuji-RAW-Converter` 及同目录的版本 ZIP。`build.ps1 -DestinationPath <目录>` 仅构建；`package.ps1 -OutputDirectory <目录>` 可使用独立交付目录。
 
 `src` 为本项目 C# 源码，`resources/engine` 为已提取的依赖，构建时自动复制。五个程序均从源码编译；不需要旧发布包或官方完整安装程序。内核资源合计约 558 MiB，ZIP 约 513 MiB。
 
 `RfcExWorker.cs` 使用独立 x64 进程及固定私有接口；SILKYPIX64.dll 8.1.20.0 的 SHA-256 被锁定，不能直接替换 DLL 版本。`extract-rfcex.ps1` 从匹配的本地安装提取依赖并生成文件校验清单。旧机型使用独立 x86 工作进程。界面依赖 WinForms/WPF，不支持 Linux/macOS 原生运行，未验证 Wine。
 
-GitHub Actions 可构建 Windows ZIP。源码及第三方组件的许可范围见 [LICENSE](LICENSE) 和 [NOTICE](resources/NOTICE.txt)。MIT 仅适用于本项目自有代码，不改变第三方文件许可。本项目不是富士官方产品。
+GitHub Actions 可构建 Windows ZIP。源码及第三方组件的许可范围见 [LICENSE](../LICENSE) 和 [NOTICE](../resources/NOTICE.txt)。MIT 仅适用于本项目自有代码，不改变第三方文件许可。本项目不是富士官方产品。
+
+## 胶片适配
+
+`RfcEx.cs` 保存机型菜单与官方模式编号；界面、CLI `info`、转换参数检查和独立工作进程共用同一份定义。完整菜单见 [CAMERAS](CAMERAS.md)。添加机型时，应核对官方版本记录及随附色彩资源，不应将本项目尚未接入的选项描述为官方转换器不具备的能力。
+
+`RfcExWorker.cs` 先读取相机参数，再通过官方内核的参数方法设置胶片并显影。默认模式保留内核默认处理。项目没有自制胶片 LUT，也不对显影后的像素添加胶片滤镜。
+
+`PreviewJpeg.cs` 为 Windows 图像组件提供内嵌 JPEG 兼容读取：先尝试 WIC，必要时由 GDI+ 在内存中规范化预览副本并保留 EXIF。它用于预览、拍摄信息和 JPEG 元数据；导出图像的像素始终来自官方内核渲染的完整 TIFF。
 
 
 ## 内存调度

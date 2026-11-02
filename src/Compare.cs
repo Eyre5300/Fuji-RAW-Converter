@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace S5Raw {
   PhotoInfo rawInfo,outputInfo;string leftError,rightError;ToolTip headerTips=new ToolTip();
   Label scale=new Label{AutoSize=false,Size=new Size(105,34),TextAlign=ContentAlignment.MiddleLeft};
   public CompareForm(IEnumerable<PhotoPair> photos,string selected){
-   SuspendLayout();pairs=photos.ToList();Text=L.T("Fuji S3/S5 Pro RAW Converter · 对照");Font=new Font("Microsoft YaHei UI",10);ClientSize=new Size(1180,720);MinimumSize=new Size(800,480);StartPosition=FormStartPosition.CenterParent;
+   SuspendLayout();pairs=photos.ToList();Text=L.T("Fuji RAW Converter · 对照");Font=new Font("Microsoft YaHei UI",10);ClientSize=new Size(1180,720);MinimumSize=new Size(800,480);StartPosition=FormStartPosition.CenterParent;
    var top=new FlowLayoutPanel{Dock=DockStyle.Top,AutoSize=true,AutoSizeMode=AutoSizeMode.GrowAndShrink,Padding=new Padding(4,5,4,5),WrapContents=true};
    previous=Add(top,L.T("上一组"),80,delegate{Navigate(-1);});next=Add(top,L.T("下一组"),80,delegate{Navigate(1);});top.Controls.Add(counter);
    var selector=new TableLayoutPanel{Width=236,Height=40,ColumnCount=1,RowCount=1,Margin=Padding.Empty};choices.Anchor=AnchorStyles.Left|AnchorStyles.Right;selector.Controls.Add(choices);top.Controls.Add(selector);foreach(var pair in pairs)choices.Items.Add(pair);
@@ -33,7 +33,7 @@ namespace S5Raw {
    AutoScaleDimensions=new SizeF(96,96);AutoScaleMode=AutoScaleMode.Dpi;ResumeLayout(true);ApplyLanguage();
   }
   void ApplyLanguage(){
-   L.Apply(this);int i=choices.SelectedIndex;Text=L.T("Fuji S3/S5 Pro RAW Converter · 对照")+(i<0?"":" — "+Path.GetFileName(pairs[i].Raw)+" ["+counter.Text+"]");
+   L.Apply(this);int i=choices.SelectedIndex;Text=L.T("Fuji RAW Converter · 对照")+(i<0?"":" — "+Path.GetFileName(pairs[i].Raw)+" ["+counter.Text+"]");
    if(i<0)return;
    // Refresh display strings without changing the selected pair, zoom or loaded pixels.
    changing=true;var selected=choices.SelectedItem;for(int n=0;n<choices.Items.Count;n++)choices.Items[n]=pairs[n];choices.SelectedItem=selected;changing=false;
@@ -46,7 +46,7 @@ namespace S5Raw {
   void Navigate(int delta){if(pairs.Count>0)choices.SelectedIndex=Math.Max(0,Math.Min(pairs.Count-1,choices.SelectedIndex+delta));}
   void LoadPair(){
    int i=choices.SelectedIndex;if(i<0)return;leftError=null;var pair=pairs[i];int token=++generation;resultGeneration++;ReleaseImages();scale.Text="";
-   counter.Text=(i+1)+" / "+pairs.Count;previous.Enabled=i>0;next.Enabled=i<pairs.Count-1;Text=L.T("Fuji S3/S5 Pro RAW Converter · 对照 — ")+Path.GetFileName(pair.Raw)+" ["+counter.Text+"]";
+   counter.Text=(i+1)+" / "+pairs.Count;previous.Enabled=i>0;next.Enabled=i<pairs.Count-1;Text=L.T("Fuji RAW Converter · 对照 — ")+Path.GetFileName(pair.Raw)+" ["+counter.Text+"]";
    leftTitle.Text="RAW · "+Path.GetFileName(pair.Raw)+L.T(" · 加载中…");
    rawInfo=PhotoInfo.Read(pair.Raw);
    changing=true;results.Items.Clear();foreach(string path in pair.Results)results.Items.Add(new ResultChoice{Path=path});results.Enabled=pair.Results.Count>0;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -93,7 +93,7 @@ namespace S5Raw {
    {"不是有效的 RAF 文件","Not a valid RAF file"},
    {"此 RAF 没有可用的内嵌预览，请先转换 TIFF","This RAF has no embedded preview. Convert it to TIFF first."},
    {"图片浏览器","Image browser"},
-   {"Fuji S3/S5 Pro RAW Converter · 图片浏览器","Fuji S3/S5 Pro RAW Converter · Image browser"},
+   {"Fuji RAW Converter · 图片浏览器","Fuji RAW Converter · Image browser"},
    {"上一张 ←","Previous ←"},
    {"下一张 →","Next →"},
    {"适应窗口","Fit to window"},
@@ -103,11 +103,11 @@ namespace S5Raw {
    {"无法预览：","Cannot preview: "},
    {" · 未匹配"," · No match"},
    {"同步","Linked"},
-   {"Fuji S3/S5 Pro RAW Converter · 对照","Fuji S3/S5 Pro RAW Converter · Compare"},
+   {"Fuji RAW Converter · 对照","Fuji RAW Converter · Compare"},
    {"上一组","Previous"},
    {"下一组","Next"},
    {"缩放 ","Zoom "},
-   {"Fuji S3/S5 Pro RAW Converter · 对照 — ","Fuji S3/S5 Pro RAW Converter · Compare — "},
+   {"Fuji RAW Converter · 对照 — ","Fuji RAW Converter · Compare — "},
    {" · 加载中…"," · Loading…"},
    {"RAW 预览解码超时","RAW preview timed out"},
    {" 秒"," s"},
@@ -122,7 +122,7 @@ namespace S5Raw {
    {"输出文件已存在或批量名称冲突：","Output already exists or conflicts with another file: "},
    {"输出路径是文件夹：","Output path is a folder: "},
    {"原厂转换内核 ","Fujifilm conversion engine "},
-   {"无法启动 Fuji S3/S5 Pro RAW Converter：","Cannot start Fuji S3/S5 Pro RAW Converter: "}
+   {"无法启动 Fuji RAW Converter：","Cannot start Fuji RAW Converter: "}
   };
   internal static string T(string text){string found;return English&&words.TryGetValue(text,out found)?found:text;}
   internal static string F(string text,params object[] values){return string.Format(T(text),values);}

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Windows.Media.Imaging;
@@ -22,9 +22,9 @@ namespace S5Raw {
       Func<int,uint> be=p=>((uint)header[p]<<24)|((uint)header[p+1]<<16)|((uint)header[p+2]<<8)|header[p+3];
       file.Position=be(84);embedded=new MemoryStream(reader.ReadBytes((int)be(88)),false);source=embedded;
      }
-     var decoder=BitmapDecoder.Create(source,BitmapCreateOptions.DelayCreation,BitmapCacheOption.None);
-     var metadata=decoder.Frames[0].Metadata as BitmapMetadata;
-     string prefix=decoder is JpegBitmapDecoder?"/app1/ifd/":"/ifd/";
+     var frame=embedded!=null?PreviewJpeg.Read(source,BitmapCreateOptions.None):BitmapFrame.Create(source,BitmapCreateOptions.DelayCreation,BitmapCacheOption.None);
+     var metadata=frame.Metadata as BitmapMetadata;
+     string prefix=embedded!=null||frame.Decoder is JpegBitmapDecoder?"/app1/ifd/":"/ifd/";
      info.Camera=Convert.ToString(Query(metadata,prefix+"{ushort=272}")).Trim();
      string exif=prefix+"exif/";var parts=new List<string>();
      object iso=Query(metadata,exif+"{ushort=34855}");if(iso!=null)parts.Add("ISO "+iso);

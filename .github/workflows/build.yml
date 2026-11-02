@@ -20,11 +20,11 @@ jobs:
       - name: Check command line
         shell: powershell
         run: |
-          & .\dist\Fuji-S3-S5-RAW-Converter\data\s5raw.exe --help
+          & .\dist\Fuji-RAW-Converter\data\s5raw.exe --help
           if ($LASTEXITCODE -ne 0) { throw 'CLI startup failed' }
       - uses: actions/upload-artifact@v4
         with:
-          name: Fuji-S3-S5-RAW-Converter-Windows
+          name: Fuji-RAW-Converter-Windows
           path: dist/*-Windows.zip
           if-no-files-found: error
           compression-level: 0

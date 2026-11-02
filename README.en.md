@@ -1,75 +1,53 @@
-﻿# Fuji S3/S5 Pro RAW Converter
+# Fuji RAW Converter
 
-Batch-convert supported Fujifilm RAF photos to JPEG or TIFF, choose film simulations by camera model, and browse or compare the results.
+**A Windows batch interface for Fujifilm's official RAW conversion components.**
 
-[Download the complete Windows portable package, version 1.7.7](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.7) · [简体中文](README.md)
+Import RAF photos, choose film simulations for each camera model, export JPEG or TIFF, and browse or compare the results. Supports FinePix S3 Pro, S5 Pro, and multiple generations of X-series and GFX cameras.
 
-## Get started
+RAW decoding, development and film rendering use the conversion components supplied with Fujifilm's official software: Fujifilm's native engines for early cameras such as the S3/S5, and **RAW FILE CONVERTER EX 3.0 powered by SILKYPIX** for X/GFX. This project provides the interface, parameter integration, batch scheduling and file export. JPEG encoding uses Windows imaging components.
 
-Requires 64-bit Windows and .NET Framework 4.8. Extract the entire ZIP and run `Fuji-S3-S5-RAW-Converter.exe` from its root folder. Keep the `data` folder alongside it. No separate official converter installation or camera connection is required.
+[Download the Windows portable package](https://github.com/Eyre5300/Fuji-RAW-Converter/releases/latest) · [简体中文](README.md) · [Camera and film list](docs/CAMERAS.md)
 
-1. Add RAF photos or folders and check the photos to convert.
-2. Choose the destination, JPEG or TIFF, and the applicable color space.
-3. Select a film for each camera model. Each model can have a different setting; Help explains its available modes.
-4. Select Convert selected. Browse the exported files or use Compare to compare them with the originals.
+## Getting started
 
-Output defaults to the source folder. Existing names receive a numeric suffix by default; skip, error and overwrite options are also available. Original RAF files are not modified. The interface supports English and Simplified Chinese.
+Requires 64-bit Windows and .NET Framework 4.8.
 
-## Supported cameras and films
+1. Extract the complete Windows ZIP and launch `Fuji-RAW-Converter.exe`. Keep the adjacent `data` folder.
+2. Add RAF files or folders and select the photos to convert.
+3. Choose the output folder, JPEG or TIFF, and a film simulation for each camera model.
+4. Click **Convert selected**. Open the results in the viewer or use **Compare** to view source and output together.
 
-Camera coverage follows the support list of the **official conversion engines included with version 1.7.7**. The film columns list the choices and color-space conditions currently offered by this application.
+The complete portable package needs no separate converter installation or connected camera. Source RAF files remain read-only. Existing output names receive a numeric suffix by default; skip, error and overwrite options are also available. The interface supports English and Simplified Chinese.
 
-| Camera | Available films | Conditions |
-|---|---|---|
-| FinePix S5 Pro | Standard, F1, F1a, F1b, F1c, F2 | Film modes support sRGB and Adobe RGB |
-| FinePix S3 Pro | Standard, F1, F2 | F1/F2 require sRGB; Adobe RGB offers Standard only |
-| X-T50 | Default / As shot, plus the 20 films below | sRGB and Adobe RGB; JPEG uses sRGB |
+## Cameras and film simulations
 
-**The 20 X-T50 film choices:**
+| Camera | Film choices |
+|---|---|
+| FinePix S5 Pro | Standard, F1, F1a, F1b, F1c, F2 |
+| FinePix S3 Pro | Standard, F1, F2; F1/F2 use sRGB |
+| X-series and GFX | Model-specific PROVIA, Velvia, ASTIA, PRO Neg., Classic Chrome, ACROS, ETERNA and other modes |
+| Newer cameras with the corresponding modes | Classic Neg., ETERNA Bleach Bypass, Nostalgic Neg., REALA ACE |
 
-- Color: PROVIA / Standard, Velvia / Vivid, ASTIA / Soft, Classic Chrome, PRO Neg. Hi, PRO Neg. Std, Classic Neg., ETERNA, ETERNA Bleach Bypass, Nostalgic Neg., REALA ACE.
-- Black and white: ACROS, ACROS + Ye, ACROS + R, ACROS + G, Monochrome, Monochrome + Ye, Monochrome + R, Monochrome + G.
-- Sepia monochrome: Sepia.
+The X/GFX film menus cover 59 camera models. Choices vary by model: X-Pro1 offers 10 simulations, X-T1 offers 11, X-T3 offers 16, and X-T5 and X-T50 offer 20. Each also has **Default / As shot**. See the [complete camera and film list](docs/CAMERAS.md).
 
-**Every camera below offers default conversion only, with no additional film choices:**
+Mixed-camera batches have separate film selections for each model. **Help** describes the available films. **Default / As shot** retains the official component's default processing; choose PROVIA for explicit color rendering. ACROS and Monochrome produce black-and-white images; Sepia produces a brown monochrome image.
 
-| Series | Supported cameras | Available films |
-|---|---|---|
-| X-T | X-T1, X-T2, X-T3, X-T4, X-T5, X-T10, X-T20, X-T30, X-T30 II, X-T100, X-T200 | Default conversion only |
-| X-H / X-Pro | X-H1, X-H2, X-H2S, X-Pro1, X-Pro2, X-Pro3 | Default conversion only |
-| X-E / X-M / X-S | X-E1, X-E2, X-E2S, X-E3, X-E4, X-E5, X-M1, X-M5, X-S1, X-S10, X-S20 | Default conversion only |
-| X-A | X-A1, X-A2, X-A3, X-A5, X-A7, X-A10, X-A20 | Default conversion only |
-| X100 | FinePix X100, X100S, X100T, X100F, X100V, X100VI | Default conversion only |
-| X compact | X10, X20, X30, X70, XF1, XF10 | Default conversion only |
-| GFX | GFX 50R, GFX 50S, GFX50S II, GFX 100, GFX100S, GFX100 II, GFX100S II, GFX100RF | Default conversion only |
-| FinePix E / F | E550, E900, F700, F710, F505EXR, F550EXR, F600EXR, F605EXR, F770EXR, F775EXR, F800EXR, F805EXR, F900EXR | Default conversion only |
-| FinePix HS | HS10, HS11, HS20EXR, HS22EXR, HS30EXR, HS33EXR, HS35EXR, HS50EXR, HS55EXR | Default conversion only |
-| FinePix S / SL | S1, S2 Pro, S20 Pro, S100FS, S200EXR, S5000, S5100, S5200, S5500, S5600, S6000fd, S6500fd, S7000, S9000, S9500, S9600, SL1000, SL1010 | Default conversion only |
+## Output and batch tools
 
-Camera support is limited to this version’s list. RAW files from other brands are not supported. The film menu follows the detected file and selected color space; applying another camera model's films is not supported.
+| Format | Bit depth and color space |
+|---|---|
+| JPEG | 8-bit sRGB; adjustable quality, default 92 |
+| TIFF | 8-bit or native 16-bit per RGB channel; sRGB or Adobe RGB |
 
-## Output and color
+Exports use the camera's full development dimensions. Early FinePix cameras use the camera color space for Standard + 8-bit TIFF; available color choices follow the selected files, format and film.
 
-| Output | Bit depth and color | Intended use |
-|---|---|---|
-| JPEG | 8-bit sRGB; adjustable quality, default 92 | Sharing, viewing and finished images |
-| 8-bit TIFF | 8-bit/channel RGB; sRGB or Adobe RGB where available | Editing with a smaller file size |
-| 16-bit TIFF | Native 16-bit/channel RGB; sRGB or Adobe RGB | Editing that benefits from greater tonal precision |
+- Batch concurrency follows your configured limit and adjusts to memory usage.
+- Browse RAF, JPEG and TIFF files and compare source photos with exports.
+- RAW thumbnails use embedded camera previews. View exported images to see the selected film effect.
+- The command line supports batches, per-camera film queries and JSON results. See the [developer documentation](docs/DEVELOPMENT.md).
 
-Some early FinePix cameras use the photo's camera color space for Standard + 8-bit TIFF and do not allow a separate color-space choice. Unavailable color controls are disabled. Output uses the full image dimensions supported for that camera.
+## Conversion components and licensing
 
-ACROS and Monochrome produce black-and-white images; Sepia produces brown monochrome. Choose an available color film for color output. Default / As shot may preserve a monochrome capture style. A 16-bit RGB TIFF stores six bytes per pixel plus metadata, so it is normally much larger than the RAF.
+This is an independently developed interface, not an application published by Fujifilm. Official conversion components and color resources retain their owners' license terms. MIT applies only to this project's own code. See [LICENSE](LICENSE) and [NOTICE](resources/NOTICE.txt).
 
-## Browsing and batches
-
-Double-click a photo to browse it; Compare can match and switch between exported TIFF/JPEG files. The main RAW thumbnails use embedded previews and do not update with film selections; inspect the exported files for the film effect.
-
-The configured parallel count is the maximum. Actual tasks adapt to measured memory use around a 90% memory budget, without rewriting the setting or trying to fill RAM at all costs. Only a memory-driven reduction shows the memory-pressure notice and current task count. Initial measurement and estimation run in the background.
-
-Official-converter edit sidecars are not imported. Software output is not guaranteed to match an in-camera JPEG exactly.
-
-## Download and license
-
-[Release 1.7.7 and SHA-256 checksums](https://github.com/Eyre5300/Fuji-S3-S5-RAW-Converter/releases/tag/v1.7.7). Download the complete Windows ZIP; source code and compilation are not required.
-
-This is not an official Fujifilm product. Third-party components retain their original licenses; see `data/NOTICE.txt` inside the package. Build, command-line and implementation details are in the [developer documentation](docs/DEVELOPMENT.md).
+Official references: [RAW FILE CONVERTER EX](https://www.fujifilm-x.com/en-us/products/software/raw-file-converter-ex-powered-by-silkypix/) · [Version history](https://www.fujifilm-x.com/en-us/support/download/software/raw-file-converter-ex-powered-by-silkypix/)
