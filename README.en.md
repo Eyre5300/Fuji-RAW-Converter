@@ -6,7 +6,19 @@ Import RAF photos, choose film simulations for each camera model, export JPEG or
 
 RAW decoding, development and film rendering use the conversion components supplied with Fujifilm's official software: Fujifilm's native engines for early cameras such as the S3/S5, and **RAW FILE CONVERTER EX 3.0 powered by SILKYPIX** for X/GFX. This project provides the interface, parameter integration, batch scheduling and file export. JPEG encoding uses Windows imaging components.
 
-[Download the Windows portable package](https://github.com/Eyre5300/Fuji-RAW-Converter/releases/latest) · [简体中文](README.md) · [Camera and film list](docs/CAMERAS.md)
+[Download the Windows portable package](https://github.com/Eyre5300/Fuji-RAW-Converter/releases/latest) · [简体中文](README.md) · [Camera and film list](docs/CAMERAS.md) · [Illustrated Bilibili guide (Chinese)](https://www.bilibili.com/opus/1266000447263473686)
+
+Current version: **1.8.0**. Download `Fuji-RAW-Converter-1.8.0-Windows.zip` from the release; the **Source code** archives are for developers. Usage instructions and camera tables are maintained here rather than bundled with the portable application.
+
+![Fuji RAW Converter 1.8.0 with separate film selections for a mixed-camera batch](docs/images/interface.png)
+
+*An X-T5, X-Pro1 and GFX 50S batch with separate film selections for each camera.*
+
+## Focused on batch conversion
+
+The official software provides many adjustment tools and panels, which can make a simple batch export cumbersome. Fuji RAW Converter brings photo selection, film simulation, format and output location into one window for a conversion-focused workflow.
+
+Multiple independent conversion processes run in parallel to reduce serial waiting and use multiple CPU cores. The concurrency setting defaults to the logical processor count and can be changed manually. Each batch starts with one task to measure memory usage, then adjusts concurrency to available memory. When memory and disk throughput permit, this can improve CPU utilization and batch throughput. Actual speed depends on the camera files, output format and hardware.
 
 ## Getting started
 
@@ -28,9 +40,23 @@ The complete portable package needs no separate converter installation or connec
 | X-series and GFX | Model-specific PROVIA, Velvia, ASTIA, PRO Neg., Classic Chrome, ACROS, ETERNA and other modes |
 | Newer cameras with the corresponding modes | Classic Neg., ETERNA Bleach Bypass, Nostalgic Neg., REALA ACE |
 
-The X/GFX film menus cover 59 camera models. Choices vary by model: X-Pro1 offers 10 simulations, X-T1 offers 11, X-T3 offers 16, and X-T5 and X-T50 offer 20. Each also has **Default / As shot**. See the [complete camera and film list](docs/CAMERAS.md).
+The X/GFX film menus cover 59 camera models. Representative models are shown below; see the [complete camera and film list](docs/CAMERAS.md) for all options.
+
+| Representative camera | Film count | Examples (not an exhaustive list) |
+|---|---:|---|
+| X-Pro1 | 10 | PROVIA, Velvia, ASTIA, PRO Neg., Monochrome, Sepia |
+| X-T1 | 11 | Includes Classic Chrome |
+| X-T3 | 16 | Includes ACROS and ETERNA |
+| GFX 50S | 17 | Includes Classic Neg. and ETERNA |
+| X-T5, X-T50 | 20 | Includes Nostalgic Neg. and REALA ACE |
+
+Counts include monochrome filter variants and exclude the additional **Default / As shot** option. The list follows the official conversion components included in this version, including their expanded film options for certain GFX models.
 
 Mixed-camera batches have separate film selections for each model. **Help** describes the available films. **Default / As shot** retains the official component's default processing; choose PROVIA for explicit color rendering. ACROS and Monochrome produce black-and-white images; Sepia produces a brown monochrome image.
+
+![PROVIA, Velvia, Monochrome and Sepia exports from four camera models](docs/images/film-comparison.png)
+
+*Each row uses the same RAW file. Columns: PROVIA, Velvia, Monochrome, Sepia. Rows: X-Pro1, X-T3, X-T5, GFX 50S. These are reduced previews of official-component exports, with no additional grading. Sample files: [raw.pixls.us](https://raw.pixls.us/) (CC0).*
 
 ## Output and batch tools
 

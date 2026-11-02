@@ -6,7 +6,19 @@
 
 RAW 解码、显影和胶片效果由富士官方软件配套的转换组件完成：S3/S5 等早期机型使用富士原厂转换内核，X/GFX 使用 **RAW FILE CONVERTER EX 3.0 powered by SILKYPIX**。本项目负责界面、参数传递、任务调度和文件导出，JPEG 编码使用 Windows 图像组件。
 
-[下载 Windows 便携包](https://github.com/Eyre5300/Fuji-RAW-Converter/releases/latest) · [English](README.en.md) · [机型与胶片清单](docs/CAMERAS.md)
+[下载 Windows 便携包](https://github.com/Eyre5300/Fuji-RAW-Converter/releases/latest) · [English](README.en.md) · [机型与胶片清单](docs/CAMERAS.md) · [B 站图文介绍](https://www.bilibili.com/opus/1266000447263473686)
+
+当前版本：**1.8.0**。下载 Release 中的 `Fuji-RAW-Converter-1.8.0-Windows.zip`；`Source code` 是源码包。便携包不附使用说明，操作步骤和机型表统一在本仓库维护。
+
+![Fuji RAW Converter 1.8.0：混合导入多种机型，分别选择胶片模拟](docs/images/interface.png)
+
+*X-T5、X-Pro1 和 GFX 50S 混合导入示例；各机型有独立的胶片选择。*
+
+## 专注批量转换
+
+官方软件包含较多调节功能和面板，只想把一批 RAW 转成图片时，界面和操作步骤显得冗杂。Fuji RAW Converter 将选片、胶片、格式和输出目录集中在一个窗口，适合以转换为主的工作流程。
+
+批量任务使用多个独立转换进程并行运行，减少逐张串行等待，充分利用多核 CPU。默认并行数取逻辑处理器数量，也可以手动设置；每批先运行一个任务测量内存，再根据内存余量调整实际并行数。内存和磁盘条件允许时，可提高 CPU 利用率和批量吞吐量；实际速度取决于机型、输出格式及电脑配置。
 
 ## 开始使用
 
@@ -28,9 +40,23 @@ RAW 解码、显影和胶片效果由富士官方软件配套的转换组件完�
 | X 系列、GFX | 按机型提供对应的 PROVIA、Velvia、ASTIA、PRO Neg.、Classic Chrome、ACROS、ETERNA 等模式 |
 | 配备相应模式的新机型 | 另提供 Classic Neg.、ETERNA Bleach Bypass、Nostalgic Neg.、REALA ACE |
 
-X/GFX 的胶片菜单覆盖 59 个机型，具体模式随机型变化。例如，X-Pro1 提供 10 种、X-T1 提供 11 种、X-T3 提供 16 种、X-T5 和 X-T50 提供 20 种；每个机型另有“默认 / 拍摄设置”。完整对应关系见[机型与胶片清单](docs/CAMERAS.md)。
+X/GFX 的胶片菜单覆盖 59 个机型。以下为部分代表机型，完整对应关系见[机型与胶片清单](docs/CAMERAS.md)。
+
+| 代表机型 | 胶片数量 | 模式示例（非完整列表） |
+|---|---:|---|
+| X-Pro1 | 10 | PROVIA、Velvia、ASTIA、PRO Neg.、黑白、Sepia |
+| X-T1 | 11 | 包含 Classic Chrome |
+| X-T3 | 16 | 包含 ACROS、ETERNA |
+| GFX 50S | 17 | 包含 Classic Neg.、ETERNA |
+| X-T5、X-T50 | 20 | 包含 Nostalgic Neg.、REALA ACE |
+
+数量包含黑白滤镜变体，不含各机型另有的“默认 / 拍摄设置”。清单按本版官方转换组件提供的选项整理，包含其为部分 GFX 机型提供的胶片扩展。
 
 混合导入多个机型时，可以分别选择胶片。点击旁边的“帮助”查看当前机型可选模式的特点。“默认 / 拍摄设置”保留官方转换组件的默认处理；要明确输出彩色，可选择 PROVIA。ACROS 和黑白系列输出黑白，Sepia 输出棕褐单色。
+
+![四种机型的 PROVIA、Velvia、黑白和 Sepia 转换结果](docs/images/film-comparison.png)
+
+*每行使用同一张 RAW，从左到右为 PROVIA、Velvia、黑白、Sepia；从上到下为 X-Pro1、X-T3、X-T5、GFX 50S。图像为官方组件转换结果的缩略拼图，未添加额外调色。样片来源：[raw.pixls.us](https://raw.pixls.us/)（CC0）。*
 
 ## 输出与批量处理
 
